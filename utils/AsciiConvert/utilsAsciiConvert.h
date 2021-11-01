@@ -12,7 +12,7 @@
 #ifndef UTILSASCIICONVERT_H
 #define UTILSASCIICONVERT_H
 
-#include "../Include/Common.h"
+#include "../Include/summary.h"
 bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int int_size);
 
 #endif

@@ -12,7 +12,7 @@
 #ifndef SORT_H
 #define SORT_H
 
-#include "../Include/Common.h"
+#include "../Include/summary.h"
 
 void bubblesort(int *array, int size);
 void quicksort(int *array, int size);
