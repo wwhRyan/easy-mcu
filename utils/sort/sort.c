@@ -81,5 +81,3 @@ void selectionsort(int *array, int size)
         array[min] = temp;
     }
 }
-
-

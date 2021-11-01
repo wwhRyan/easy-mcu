@@ -12,6 +12,11 @@
 #ifndef SORT_H
 #define SORT_H
 
-#include "../utils/Include/Common.h"
+#include "../Include/Common.h"
+
+void bubblesort(int *array, int size);
+void quicksort(int *array, int size);
+void insertsort(int *array, int size);
+void selectionsort(int *array, int size);
 
 #endif
