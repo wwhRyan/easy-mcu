@@ -178,7 +178,7 @@ static void m_getIndefinitelengthNumber(const char *cmd, ...)
     memset(tmp, 0, strlen((char *)tmp));
     memset(data, 0, MAX_WRITE_LEN * sizeof(uint32_t));
 
-    strcpy(tmp, cmd);
+    strcpy(tmp, cmd + cmdsize);
     char *token = NULL;
     token = strtok((char *)tmp, ",");
 
@@ -189,5 +189,11 @@ static void m_getIndefinitelengthNumber(const char *cmd, ...)
     }
 
     int len = i;
+
+    for (size_t i = 0; i < len; i++)
+    {
+        printf("%X \n", data[i]);
+    }
+
     free(tmp);
 }

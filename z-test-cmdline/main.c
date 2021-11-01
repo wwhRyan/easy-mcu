@@ -9,3 +9,17 @@
  * 
  */
 
+#include "../Include/Common.h"
+#include "../CmdProtocol/CmdLine.h"
+
+int main(void)
+{
+    char cmd[0xff] = {0};
+
+    printf("input cmd:\n");
+    scanf("%s", cmd);
+
+    ICmdLinesInput(cmd);
+
+    return 0;
+}
