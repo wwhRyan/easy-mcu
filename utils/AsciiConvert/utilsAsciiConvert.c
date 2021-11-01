@@ -117,22 +117,3 @@ bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int int_size)
     free(p_mem);
     return ret;
 }
-
-/**
- * @brief test case
- * 
- * 
- */
-
-void main()
-{
-    char *tmp = "01ff010001010203";
-    uint16_t data[100] = {0};
-    AsciiToInt(tmp, data, sizeof(data[0]));
-
-    for (size_t i = 0; i < sizeof(tmp); i++)
-    {
-        printf("%X ", data[i]);
-    }
-    printf("\n");
-}

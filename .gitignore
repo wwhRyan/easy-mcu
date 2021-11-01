@@ -56,3 +56,4 @@ workspace.code-workspace
 
 # Custom
 /.vscode
+/build
