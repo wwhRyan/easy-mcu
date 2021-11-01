@@ -1,17 +1,18 @@
-/*
- * @File: cmdline.h
- * @Author: gengliang(gengliang@appotronics.cn)
- * @Brief:  
- * @Date: 2021-10-15 12:19:16
- * @LastEditTime: 2021-10-15 21:00:50
- * @Copyright: Copyright (c) 2021
+/**
+ * @file CmdLine.h
+ * @author Wu Wenhao (whwu@appotronics.com)
+ * @brief 
+ * @version 1.02
+ * @date 2021-11-01
+ * 
+ * @copyright Copyright@appotronics 2021. All Rights Reserved
+ * 
  */
 
-#ifndef __APPO_CMD_LINE_H
-#define __APPO_CMD_LINE_H
+#ifndef __CMD_LINE_H__
+#define __CMD_LINE_H__
 
-#include "GlobalDef.h"
-
+#include "../Include/Common.h"
 #define MAX_CMD_SIZE       (0x1F)
 
 typedef void(*CmdFuncProtoType)(const char*, ...);
@@ -24,7 +25,5 @@ typedef struct _CmdListUnit {
 extern CmdListUnit g_CmdList[];
 
 void ICmdLinesInput(char *cmd);
-void m_3555_Data_Write(uint16_t reg_addr, uint32_t *reg_data, uint16_t data_size, uint8_t access_byte);
-void m_3555_Data_Read(uint16_t reg_addr, uint16_t size);
 
-#endif //__APPO_CMD_LINE_H
+#endif //__CMD_LINE_H__

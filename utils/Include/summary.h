@@ -9,6 +9,11 @@
  * 
  */
 
-#include "common.h"
+#ifndef __SUMMARY_H__
+#define __SUMMARY_H__
+
+#include "../../Include/Common.h"
 #include "../AsciiConvert/utilsAsciiConvert.h"
 #include "../Sort/sort.h"
+
+#endif
