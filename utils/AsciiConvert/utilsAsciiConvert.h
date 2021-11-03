@@ -14,5 +14,14 @@
 
 #include "../Include/summary.h"
 bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int int_size);
+bool AsciiToIntPro(const char *p_ascii_data, void *p_void_data, int int_size);
+
+/**
+ * @brief convert string to hex data
+ * #p_ascii string pointer, no include ' '!
+ * #p_data hex data pointer
+ */
+#define ASCII_TO_INT(p_ascii, p_data) \
+    AsciiToIntPro(p_ascii, p_data, sizeof(p_data[0]))
 
 #endif

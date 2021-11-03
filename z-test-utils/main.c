@@ -15,7 +15,7 @@ int main()
 {
     char *tmp = "01ff010001010203";
     uint16_t data[100] = {0};
-    AsciiToInt(tmp, data, sizeof(data[0]));
+    ASCII_TO_INT(tmp, data);
 
     for (size_t i = 0; i < sizeof(tmp); i++)
     {

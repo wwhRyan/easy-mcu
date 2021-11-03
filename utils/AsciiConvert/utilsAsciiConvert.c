@@ -117,3 +117,51 @@ bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int int_size)
     free(p_mem);
     return ret;
 }
+
+/**
+ * @brief eg：将字符串 "12344321" --Convert--> 12,34,43,21 Or 1234,4321 Or 12344321, 无内存消耗
+ * 
+ * @param p_ascii_data 字符串指针,string no including ' '
+ * @param p_void_data 数组指针,adapter to int_size
+ * @param int_size 一个整型(Int)包含字符(char)个数，通常是2、4、8
+ * @return true 
+ * @return false 
+ */
+bool AsciiToIntPro(const char *p_ascii_data, void *p_void_data, int int_size)
+{
+    int num_ascii_data = strlen(p_ascii_data);
+
+    uint8_t *p_uint8_t = (uint8_t *)p_void_data;
+    uint16_t *p_uint16_t = (uint16_t *)p_void_data;
+    uint32_t *p_uint32_t = (uint32_t *)p_void_data;
+
+    int_size = int_size * 2;
+    if (int_size != 2 && int_size != 4 && int_size != 8)
+    {
+        printf("error int_size. %d\n", int_size);
+        return false;
+    }
+
+    if (num_ascii_data % int_size != 0)
+    {
+        printf("error ascii_data_num %d\n", num_ascii_data);
+        return false;
+    }
+
+    //ascii string to int
+    char unit_string[8] = {0};
+    for (size_t i = 0; i < num_ascii_data / int_size; i++)
+    {
+        memset(unit_string, 0, sizeof(unit_string));
+        strncpy(unit_string, p_ascii_data + i * int_size, int_size);
+
+        switch (int_size)
+        {
+        case 2:     sscanf(unit_string, "%x", (int *)&p_uint8_t[i]);    break;
+        case 4:     sscanf(unit_string, "%x", (int *)&p_uint16_t[i]);   break;
+        case 8:     sscanf(unit_string, "%x", (int *)&p_uint32_t[i]);   break;
+        default:    break;
+        }
+    }
+    return true;
+}
