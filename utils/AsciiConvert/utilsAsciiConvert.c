@@ -223,22 +223,21 @@ void swap_endian_uint16_t(uint16_t *p_uint16, int num)
 /**
  * @brief swap bytes order, little endian to big endian, big endian to little endian.
  * 
- * @param pdata array buffer
+ * @param pdata array buffer or data pointer
  * @param num array num
- * @param size array size
+ * @param size array member size, like sizeof(*array_pointer); data size, like sizeof(data);
  * @return true 
  * @return false 
  */
 bool SwapEndianPro(void *pdata, int num, int size)
 {
-    int member_size = size / num;
-    if(member_size != 2 && member_size != 4 && member_size != 8)
+    if(size != 2 && size != 4 && size != 8)
     {
-        printf("error member_size. %d\n", member_size);
+        printf("error size. %d\n", size);
         return false;
     }
     
-    switch (member_size)
+    switch (size)
     {
     case 1:
         break;

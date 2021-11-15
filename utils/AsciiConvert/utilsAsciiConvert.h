@@ -27,7 +27,4 @@ uint32_t swap_endian(uint32_t x);
 #define ASCII_TO_INT(p_ascii, p_data) \
     AsciiToIntPro(p_ascii, p_data, sizeof(p_data[0]))
 
-#define SWAP_ENDIAN(pdata,num) \
-    SwapEndianPro(pdata, num, sizeof(*pdata))
-
 #endif

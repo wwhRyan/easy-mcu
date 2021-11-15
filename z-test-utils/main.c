@@ -37,9 +37,11 @@ int test_SwapEndian()
     uint32_t pdata32[10] = {0};
     uint16_t data16 = 0x1234;
     uint32_t data32 = 0x12345678;
+    uint16_t *pdata16_swap = (uint16_t *)pdata16;
+    uint32_t *pdata32_swap = (uint32_t *)pdata32;
 
-    SWAP_ENDIAN(&data16, 1);
-    SWAP_ENDIAN(&data32, 1);
+    SwapEndianPro(&data16, 1, sizeof(data16));
+    SwapEndianPro(&data32, 1, sizeof(data32));
 
     printf("data16 %X\n", data16);
     printf("data32 %X\n", data32);
@@ -50,7 +52,7 @@ int test_SwapEndian()
         printf("%.4X\n", pdata16[i]);
     }
 
-    SWAP_ENDIAN(&pdata16, ARRAY_SIZE(pdata16));
+    SwapEndianPro(pdata16_swap, ARRAY_SIZE(pdata16), sizeof(*pdata16));
 
     printf("after swap\n");
     for (size_t i = 0; i < ARRAY_SIZE(pdata16); i++)
@@ -65,7 +67,7 @@ int test_SwapEndian()
         printf("%.8X\n", pdata32[i]);
     }
 
-    SWAP_ENDIAN(&pdata32, ARRAY_SIZE(pdata32));
+    SwapEndianPro(pdata32_swap, ARRAY_SIZE(pdata32), sizeof(*pdata32));
 
     printf("after swap\n");
     for (size_t i = 0; i < ARRAY_SIZE(pdata32); i++)
@@ -73,6 +75,12 @@ int test_SwapEndian()
         printf("%.8X\n", pdata32[i]);
     }
 }
+/**
+ * @brief sizeof(array) is total size of array
+ * sizeof(array[0]) is size of array member
+ * sizeof(*array) also is size of array memer
+ * 
+ */
 
 int main()
 {
