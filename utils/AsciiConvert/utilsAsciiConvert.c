@@ -157,11 +157,102 @@ bool AsciiToIntPro(const char *p_ascii_data, void *p_void_data, int int_size)
 
         switch (int_size)
         {
-        case 2:     sscanf(unit_string, "%x", (int *)&p_uint8_t[i]);    break;
-        case 4:     sscanf(unit_string, "%x", (int *)&p_uint16_t[i]);   break;
-        case 8:     sscanf(unit_string, "%x", (int *)&p_uint32_t[i]);   break;
-        default:    break;
+        case 2:
+            sscanf(unit_string, "%x", (int *)&p_uint8_t[i]);
+            break;
+        case 4:
+            sscanf(unit_string, "%x", (int *)&p_uint16_t[i]);
+            break;
+        case 8:
+            sscanf(unit_string, "%x", (int *)&p_uint32_t[i]);
+            break;
+        default:
+            break;
         }
+    }
+    return true;
+}
+
+/**
+ * @brief whether it is Little end byte order?
+ * 
+ * @return true 
+ * @return false 
+ */
+bool IsLittleEndian()
+{
+    int x = 1;
+    if (*(char *)&x == 1)
+        return true;
+    else
+        return false;
+}
+
+/**
+ * @brief swap bytes order, little endian to big endian, big endian to little endian.
+ * 
+ * @param x 
+ * @return uint32_t 
+ */
+uint32_t swap_endian(uint32_t x)
+{
+    x = ((x << 8) & 0xFF00FF00) | ((x >> 8) & 0xFF00FF);
+    return (x << 16) | (x >> 16);
+}
+
+void swap_endian_uint32_t(uint32_t *p_uint16, int num)
+{
+    uint32_t *pdata = p_uint16;
+    for (size_t i = 0; i < num; i++)
+    {
+        *pdata = swap_endian(*pdata);
+        pdata++;
+    }
+}
+
+void swap_endian_uint16_t(uint16_t *p_uint16, int num)
+{
+    uint16_t *pdata = p_uint16;
+    for (size_t i = 0; i < num; i++)
+    {
+        *pdata = ((*pdata << 8) & 0xFF00) | ((*pdata >> 8) & 0x00FF);
+        pdata++;
+    }
+}
+
+/**
+ * @brief swap bytes order, little endian to big endian, big endian to little endian.
+ * 
+ * @param pdata array buffer
+ * @param num array num
+ * @param size array size
+ * @return true 
+ * @return false 
+ */
+bool SwapEndianPro(void *pdata, int num, int size)
+{
+    int member_size = size / num;
+    if(member_size != 2 && member_size != 4 && member_size != 8)
+    {
+        printf("error member_size. %d\n", member_size);
+        return false;
+    }
+    
+    switch (member_size)
+    {
+    case 1:
+        break;
+
+    case 2:
+        swap_endian_uint16_t((uint16_t *)pdata, num);
+        break;
+
+    case 4:
+        swap_endian_uint32_t((uint32_t *)pdata, num);
+        break;
+
+    default:
+        return false;
     }
     return true;
 }

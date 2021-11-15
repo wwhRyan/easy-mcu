@@ -15,5 +15,6 @@
 #include "../../Include/Common.h"
 #include "../AsciiConvert/utilsAsciiConvert.h"
 #include "../Sort/sort.h"
+#include "log.h"
 
 #endif
