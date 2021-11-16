@@ -231,7 +231,7 @@ void swap_endian_uint16_t(uint16_t *p_uint16, int num)
  */
 bool SwapEndianPro(void *pdata, int num, int size)
 {
-    if(size != 2 && size != 4 && size != 8)
+    if(size != sizeof(uint8_t) && size != sizeof(uint16_t) && size != sizeof(uint32_t))
     {
         printf("error size. %d\n", size);
         return false;
@@ -239,14 +239,14 @@ bool SwapEndianPro(void *pdata, int num, int size)
     
     switch (size)
     {
-    case 1:
+    case sizeof(uint8_t):
         break;
 
-    case 2:
+    case sizeof(uint16_t):
         swap_endian_uint16_t((uint16_t *)pdata, num);
         break;
 
-    case 4:
+    case sizeof(uint32_t):
         swap_endian_uint32_t((uint32_t *)pdata, num);
         break;
 
