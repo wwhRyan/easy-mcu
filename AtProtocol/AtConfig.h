@@ -32,7 +32,8 @@ extern "C"{
 /* AT commands' keys and values shall be allocated into AtObjUnits[],
    and the total string length shall be controlled. */
 #define MAX_KV_COUPLES_NUM      (10)   ///< k-v couples' num
-#define MAX_ATCMD_STR_LEN       (255)  ///< k-v string maximum length
+#define MAX_ATCMD_STR_LEN       (1280)  ///< k-v string maximum length
+#define MAX_FEEDBACK_STR_LEN    (255)  ///< k-v string maximum length
 
 
 #ifdef __cplusplus

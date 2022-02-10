@@ -318,21 +318,21 @@ STATIC aeAtBool m_ParseAtKeyValues(asAtObj *obj, char* str_kvs, uint32_t MAX_KVS
         return kAtFalse;
     }
 
-    /* Too many key-values. */
-    //if(MAX_KVS_STR_LEN == strnlen(str_kvs, MAX_KVS_STR_LEN))
-    if(MAX_KVS_STR_LEN == strlen(str_kvs))
-    {
-        AtTracePrintf("K-V overflow!");
-        __IRaiseAtError(kAtKeyValueOverflow);
-        return kAtFalse;
-    }
-
     if(NULL != str_kvs && "" != str_kvs)
     {
         AtTracePrintf("Start parsing!");
         char* kv_couples[MAX_KV_COUPLES_NUM];
 
         int kv_num = m_SplitStr2Tokens(str_kvs, ",", kv_couples, MAX_KV_COUPLES_NUM);
+
+        /* Too many key-values. */
+        if (MAX_KVS_STR_LEN <= kv_num)
+        {
+            AtTracePrintf("K-V overflow!");
+            __IRaiseAtError(kAtKeyValueOverflow);
+            return kAtFalse;
+        }
+
         obj->pKv_list->size = kv_num;
         for(int i = 0; i < kv_num; i++)
         {
@@ -340,11 +340,9 @@ STATIC aeAtBool m_ParseAtKeyValues(asAtObj *obj, char* str_kvs, uint32_t MAX_KVS
             char* tmp_rest_str;
             obj->pKv_list->pList[i].key.pData = AtStrtok(kv_couples[i], ":", &tmp_rest_str);
             if(NULL != obj->pKv_list->pList[i].key.pData)
-            //obj->pKv_list->pList[i].key.size = strnlen(obj->pKv_list->pList[i].key.pData, MAX_ATCMD_STR_LEN);
             obj->pKv_list->pList[i].key.size = strlen(obj->pKv_list->pList[i].key.pData);
             obj->pKv_list->pList[i].value.pData = AtStrtok(NULL, ":", &tmp_rest_str);
             if(NULL != obj->pKv_list->pList[i].value.pData)
-            //obj->pKv_list->pList[i].value.size = strnlen(obj->pKv_list->pList[i].value.pData, MAX_ATCMD_STR_LEN);
             obj->pKv_list->pList[i].value.size = strlen(obj->pKv_list->pList[i].value.pData);
         }
         return kAtTrue;

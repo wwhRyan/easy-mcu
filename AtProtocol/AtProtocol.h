@@ -155,7 +155,7 @@ typedef struct __asAtKvUnit_Enum asAtKvUnit_Enum;
     do                                                                                             \
     {                                                                                              \
         memset(pAt_str->pData, 0, pAt_str->size);                                                  \
-        pAt_str->size = snprintf((char *)pAt_str->pData, MAX_ATCMD_STR_LEN, format, ##__VA_ARGS__); \
+        pAt_str->size = snprintf((char *)pAt_str->pData, MAX_FEEDBACK_STR_LEN, format, ##__VA_ARGS__); \
     } while (0)
 
 /* API fucntion declarations */

@@ -5,6 +5,6 @@ project(easy-mcu)
 # sub-directories
 add_subdirectory(utils)
 add_subdirectory(CmdProtocol)
-
+add_subdirectory(AtProtocol)
 add_subdirectory(TestCase)
 

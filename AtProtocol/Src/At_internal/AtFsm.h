@@ -58,7 +58,7 @@ void IAtFsmInit(p_VoidFuncpChar feedback_func);
 void IRaiseNewEvent(int type);
 asEvent* IGetCurrEventPtr(void);
 void IAtFsmHandleInnerEvent(void);
-void IInputAtStrToFsm(const char* at_cmd_kv);
+void IInputAtStrToFsm(char* at_cmd_kv);
 
 /* Private Methods Extern for Testing */
 #ifdef __TEST__

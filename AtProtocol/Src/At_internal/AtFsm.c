@@ -2,7 +2,6 @@
 #include "AtCmdHashTable.h"
 #include "AtUtils.h"
 #include <string.h>
-#include "Utilities.h"
 
 /* ________      __          __     _    __          
   / ____/ /___  / /_  ____ _/ /    | |  / /___ ______
@@ -22,8 +21,8 @@ STATIC asState \
                     gError_state, \
                     gFsm_error_state;
 
-STATIC char gsAt_buff_str[MAX_ATCMD_STR_LEN] = {0};
-STATIC char gsAt_feedback_buff_str[MAX_ATCMD_STR_LEN] = {0};
+
+STATIC char gsAt_feedback_buff_str[MAX_FEEDBACK_STR_LEN] = {0};
 STATIC asAtKvUnit gsAt_units[MAX_KV_COUPLES_NUM] = {0};
 
 /********* Export variables *********/
@@ -31,7 +30,7 @@ asStateMachine gFsm;
 asEvent gEvent;
 
 asAtKvList gAt_kv_list = {gsAt_units, 0};
-asAtStr gAt_str = {gsAt_buff_str, 0};
+asAtStr gAt_str = {NULL, 0};
 asAtStr gFeedback_at_str = {gsAt_feedback_buff_str, 0};
 aeAtErrorCode gAt_status_code = kAtOk;
 asAtObj gAt_Obj = {kAtControlType, &gAt_str, &gAt_kv_list, NULL, kAtOk, NULL, &gFeedback_at_str};
@@ -46,7 +45,7 @@ void IAtFsmInit(p_VoidFuncpChar feedback_func)
 {
     IStateMachineInit(&gFsm, &gIdle_state, &gFsm_error_state);
 
-    gAt_str.pData = gsAt_buff_str;
+    gAt_str.pData = NULL;
     gFeedback_at_str.pData = gsAt_feedback_buff_str;
     gAt_kv_list.pList = gsAt_units;
 
@@ -73,16 +72,15 @@ void IAtFsmHandleInnerEvent(void)
     IStateMachineHandleEvent(&gFsm, &gEvent);
 }
 
-void IInputAtStrToFsm(const char* at_cmd_kv)
+void IInputAtStrToFsm(char* at_cmd_kv)
 {
-    //gAt_Obj.pAt_str->size = strnlen(at_cmd_kv, MAX_ATCMD_STR_LEN);
     gAt_Obj.pAt_str->size = strlen(at_cmd_kv);
-    strncpy(gAt_Obj.pAt_str->pData, at_cmd_kv, MAX_ATCMD_STR_LEN);
+    gAt_Obj.pAt_str->pData = at_cmd_kv;
 }
 
 void m_ClearFsmGlobalVariables(void)
 {
-    memset(gAt_Obj.pAt_str->pData, 0, MAX_ATCMD_STR_LEN);
+    gAt_Obj.pAt_str->pData = NULL;
     memset(gAt_Obj.pFeedback_at_str->pData, 0, MAX_ATCMD_STR_LEN);
     memset(gAt_Obj.pKv_list->pList, 0, sizeof(asAtKvUnit) * MAX_KV_COUPLES_NUM);
     gAt_Obj.pAt_str->size = 0;
@@ -332,19 +330,16 @@ STATIC asState gFsm_error_state = {
 /* Guard */
 STATIC bool m_GuardIdle2Processing(void *condition, asEvent *event)
 {
-    char at_temp[MAX_ATCMD_STR_LEN];
-    memset(at_temp, 0, MAX_ATCMD_STR_LEN);
-    strncpy(at_temp, ((asAtStr*)event->data)->pData, ((asAtStr*)event->data)->size);
+    char *at_temp = ((asAtStr *)event->data)->pData;
 
-    if(NULL != strstr(at_temp, (char*)condition))
+    if (NULL != strstr(at_temp, (char *)condition))
     {
-        uint8_t len = strlen(at_temp);
-        for(uint8_t i=0; i<len; i++)
+        int len = strlen(at_temp);
+        for (int i = 0; i < len; i++)
         {
-            if(at_temp[i] == '\r' || at_temp[i] == '\n')
+            if (at_temp[i] == '\r' || at_temp[i] == '\n')
             {
-                memset(gAt_Obj.pAt_str->pData, 0, gAt_Obj.pAt_str->size);
-                strncpy(gAt_Obj.pAt_str->pData, at_temp, i);
+                memset(gAt_Obj.pAt_str->pData + i, 0, len - i); // ignore other cmds. including \r\n
 
                 AtTracePrintf("AT format is right!");
                 AtTracePrintf("%s", gAt_Obj.pAt_str->pData);
@@ -353,6 +348,7 @@ STATIC bool m_GuardIdle2Processing(void *condition, asEvent *event)
         }
     }
     __IRaiseAtError(kAtError);
+    AtTracePrintf("AT format need 'AT+' Or '\\n' Or '\\r' !");
     return kAtFalse;
 }
 
@@ -381,24 +377,12 @@ STATIC void m_ActionIdle2Processing(\
 {
    AtTracePrintf("Action: Idle to Processing!");
     /* Get AT <Cmd + kvs>'s size, remove the AT header. */
-    //uint8_t at_head_size = strnlen(at_header_str, MAX_ATCMD_STR_LEN);
-    #if 0
-    uint8_t at_head_size = strlen(at_header_str);
-    uint16_t at_str_size = gAt_Obj.pAt_str->size - at_head_size;
-    gAt_Obj.pAt_str->size = at_str_size;
-
-    /* Remove the "AT+" header */
-    AtTracePrintf("%s, %s", gAt_Obj.pAt_str->pData, gAt_Obj.pAt_str->pData + at_head_size);
-    memcpy(gAt_Obj.pAt_str->pData, gAt_Obj.pAt_str->pData + at_head_size, \
-            at_str_size + at_head_size);
-    #else
 
     uint8_t at_head_size = strlen(at_header_str);
     uint16_t at_str_size = gAt_Obj.pAt_str->size - at_head_size;
     char *at_head = strstr(gAt_Obj.pAt_str->pData, at_header_str);
     memcpy(gAt_Obj.pAt_str->pData, at_head + at_head_size, at_str_size);
 
-    #endif
     AtTracePrintf("End!");
 }
 
@@ -549,9 +533,9 @@ STATIC void m_ActionFeedback2Idle(\
     /* Check if feedback_str is NULL and take the default or custom feedback. */
     if(0 != at_obj->pFeedback_at_str->size)
     {
-        strncat(at_obj->pAt_str->pData, "#", MAX_ATCMD_STR_LEN);
-        strncat(at_obj->pAt_str->pData, at_obj->pFeedback_at_str->pData, MAX_ATCMD_STR_LEN);
-        snprintf(at_obj->pFeedback_at_str->pData, MAX_ATCMD_STR_LEN, "AT+%s\r\n", at_obj->pAt_str->pData);
+        strncat(at_obj->pAt_str->pData, "#", MAX_FEEDBACK_STR_LEN);
+        strncat(at_obj->pAt_str->pData, at_obj->pFeedback_at_str->pData, MAX_FEEDBACK_STR_LEN);
+        snprintf(at_obj->pFeedback_at_str->pData, MAX_FEEDBACK_STR_LEN, "AT+%s\r\n", at_obj->pAt_str->pData);
     }
 
     /* Run the Feedback fucntion.  */
@@ -589,7 +573,7 @@ STATIC void m_EntryErrorState( void *stateData, asEvent *event )
 {
     /* Feedback the Error log. */
    AtTracePrintf("AT Error: %s", gAt_error_code_str[__ICheckAtErrorCode()]);
-   snprintf(gAt_Obj.pFeedback_at_str->pData ,MAX_ATCMD_STR_LEN, "AT ErrorCode: %s\r\n", gAt_error_code_str[__ICheckAtErrorCode()]);
+   snprintf(gAt_Obj.pFeedback_at_str->pData ,MAX_FEEDBACK_STR_LEN, "AT ErrorCode: %s\r\n", gAt_error_code_str[__ICheckAtErrorCode()]);
    //gAt_Obj.feedbackFunc(gAt_Obj.pFeedback_at_str->pData);
    printf((gAt_Obj.pFeedback_at_str)->pData);
 
