@@ -11,30 +11,19 @@
 
 #include "CmdLine.h"
 
-#define WRONG_CMD (0xFF)
-#define MAX_WRITE_LEN (0x7F)
-
-static void m_hello(const char *cmd, ...);
-static void m_getNumber(const char *cmd, ...);
-static void m_getMutiNumber(const char *cmd, ...);
-static void m_getIndefinitelengthNumber(const char *cmd, ...);
+uint16_t cmd_cnt;
 
 static int m_FindInputCmdId(const char *inputCmd, const CmdListUnit *cmdList);
 
-#define CMDLIST_SIZE sizeof(g_CmdList) / sizeof(CmdListUnit)
-CmdListUnit g_CmdList[] =
-    {
-        {"hello", m_hello},
-        {"getNumber", m_getNumber},
-        {"getMutiNumber", m_getMutiNumber},
-        {"getIndefinitelengthNumber", m_getIndefinitelengthNumber},
-};
+// #define CMDLIST_SIZE sizeof(g_CmdList) / sizeof(CmdListUnit)
+CmdListUnit g_CmdList[255] = {0};
 
+uint16_t max_cmd_list_size = sizeof(g_CmdList) / sizeof(CmdListUnit);
 /**
  * Return cmdSize before flag like ":" or "=", cmdSize contains ":"
  * eg: CatchCmdSizeBeforeFlag("setPid=xxx", "=") = 7(not 6!)
  */
-static size_t m_CatchCmdSizeBeforeFlag(const char *cmd, char *flag)
+size_t m_CatchCmdSizeBeforeFlag(const char *cmd, char *flag)
 {
     size_t ret = 0;
     char *tmp = (char *)malloc(strlen(cmd));
@@ -46,7 +35,7 @@ static size_t m_CatchCmdSizeBeforeFlag(const char *cmd, char *flag)
     return ret;
 }
 
-static uint32_t getIndexOfSigns(char ch)
+uint32_t getIndexOfSigns(char ch)
 {
     if (ch >= '0' && ch <= '9')
     {
@@ -63,7 +52,7 @@ static uint32_t getIndexOfSigns(char ch)
     return 999;
 }
 
-static uint32_t hex2dec(unsigned char *source)
+uint32_t hex2dec(unsigned char *source)
 {
     uint32_t sum = 0;
     uint32_t t = 1;
@@ -78,7 +67,7 @@ static uint32_t hex2dec(unsigned char *source)
     return sum;
 }
 
-static uint32_t m_CatchCmdSizeAfterFlag(const char *cmd, char *flag)
+uint32_t m_CatchCmdSizeAfterFlag(const char *cmd, char *flag)
 {
     uint8_t i = 0;
     uint32_t data[2];
@@ -100,7 +89,7 @@ static uint32_t m_CatchCmdSizeAfterFlag(const char *cmd, char *flag)
 
 static int m_FindInputCmdId(const char *inputCmd, const CmdListUnit *cmdList)
 {
-    for (int i = 0; i < CMDLIST_SIZE; i++)
+    for (int i = 0; i < cmd_cnt; i++)
     {
         if ((strstr(inputCmd, cmdList[i].CmdString)))
         {
@@ -125,75 +114,4 @@ void ICmdLinesInput(char *cmd)
             printf("WRONG_CMD!\r\n");
         }
     }
-}
-
-/**
-                        __   ____                     __   _             
-  _____ ____ ___   ____/ /  / __/__  __ ____   _____ / /_ (_)____   ____ 
- / ___// __ `__ \ / __  /  / /_ / / / // __ \ / ___// __// // __ \ / __ \
-/ /__ / / / / / // /_/ /  / __// /_/ // / / // /__ / /_ / // /_/ // / / /
-\___//_/ /_/ /_/ \__,_/  /_/   \__,_//_/ /_/ \___/ \__//_/ \____//_/ /_/ 
- */
-
-static void m_hello(const char *cmd, ...)
-{
-    printf("hello\n");
-}
-
-static void m_getNumber(const char *cmd, ...)
-{
-    int data = 0;
-    int cmdsize = m_CatchCmdSizeBeforeFlag(cmd, "=");
-    sscanf(cmd + cmdsize, "%d", &data);
-    printf("%d\n", data);
-}
-
-static void m_getMutiNumber(const char *cmd, ...)
-{
-    int data[8] = {0};
-    int cmdsize = m_CatchCmdSizeBeforeFlag(cmd, "=");
-
-    if (8 != sscanf(cmd + cmdsize, "%d,%d,%d,%d,%d,%d,%d,%d",
-                    &data[0], &data[1], &data[2], &data[3],
-                    &data[4], &data[5], &data[6], &data[7]))
-    {
-        printf("m_getMutiNumber cmd error!");
-        return;
-    }
-
-    for (size_t i = 0; i < ARRAY_SIZE(data); i++)
-    {
-        printf("%d \n", data[i]);
-    }
-}
-
-static void m_getIndefinitelengthNumber(const char *cmd, ...)
-{
-    uint8_t i = 0;
-    uint32_t data[MAX_WRITE_LEN];
-    int cmdsize = m_CatchCmdSizeBeforeFlag(cmd, "=");
-
-    char *tmp = (char *)malloc(strlen((char *)cmd));
-
-    memset(tmp, 0, strlen((char *)tmp));
-    memset(data, 0, MAX_WRITE_LEN * sizeof(uint32_t));
-
-    strcpy(tmp, cmd + cmdsize);
-    char *token = NULL;
-    token = strtok((char *)tmp, ",");
-
-    while (token)
-    {
-        data[i++] = (hex2dec((unsigned char *)token)) & 0xFFFFFFFF;
-        token = strtok(NULL, ",");
-    }
-
-    int len = i;
-
-    for (size_t i = 0; i < len; i++)
-    {
-        printf("%X \n", data[i]);
-    }
-
-    free(tmp);
 }
