@@ -27,30 +27,62 @@ typedef struct _CmdListUnit
 
 extern CmdListUnit g_CmdList[];
 
-#define CMD_PREINIT(cmd_cnt, cmd_str, cmd_func)              \
-    __attribute__((constructor)) int RegisterCmdFunc##cmd_func()  \
-    {                                                        \
-        extern CmdListUnit g_CmdList[];                      \
-        extern uint16_t max_cmd_list_size;                   \
-        if ((cmd_cnt >= 0) && (cmd_cnt < max_cmd_list_size)) \
-        {                                                    \
-            g_CmdList[cmd_cnt].CmdString = cmd_str;          \
-            g_CmdList[cmd_cnt].CmdFuncPtr = cmd_func;        \
-            cmd_cnt++;                                       \
-            return 0;                                        \
-        }                                                    \
-        else                                                 \
-            return -1;                                       \
+/**
+ * @brief Register a command function
+ * 
+ * @param cmd_list_cnt how many commands have been registered
+ * @param cmd_str registered command string pointer
+ * @param cmd_func registered command function pointer
+ * @return int 
+ * @example CMD_PREINIT(cmd_list_cnt, m_hello_str, m_hello);
+ * ----------------------------------------
+ * __attribute__((constructor)) int RegisterCmdFuncm_hello()
+ * {
+ *     extern CmdListUnit g_CmdList[];
+ *     extern uint16_t max_cmd_list_size;
+ *     if ((cmd_list_cnt >= 0) && (cmd_list_cnt < max_cmd_list_size))
+ *     {
+ *         g_CmdList[cmd_list_cnt].CmdString = m_hello_str;
+ *         g_CmdList[cmd_list_cnt].CmdFuncPtr = m_hello;
+ *         cmd_list_cnt++;
+ *         return 0;
+ *     }
+ *     else
+ *         return -1;
+ * }
+ */
+#define CMD_PREINIT(cmd_list_cnt, cmd_str, cmd_func)                  \
+    __attribute__((constructor)) int RegisterCmdFunc##cmd_func() \
+    {                                                            \
+        extern CmdListUnit g_CmdList[];                          \
+        extern uint16_t max_cmd_list_size;                       \
+        if ((cmd_list_cnt >= 0) && (cmd_list_cnt < max_cmd_list_size))     \
+        {                                                        \
+            g_CmdList[cmd_list_cnt].CmdString = cmd_str;              \
+            g_CmdList[cmd_list_cnt].CmdFuncPtr = cmd_func;            \
+            cmd_list_cnt++;                                           \
+            return 0;                                            \
+        }                                                        \
+        else                                                     \
+            return -1;                                           \
     }
 
 /**
  * @brief Register a command function
- * @param cmd_str string of command, char*
- * @param cmd_func function pointer of command, CmdFuncProtoType
+ * @param cmd_str string of command, char*, like "hello"
+ * @param cmd_func function pointer of command, CmdFuncProtoType, like m_hello
+ * @example ICmdRegister("hello", m_hello);
+ * ----------------------------------------
+ * extern uint16_t cmd_list_cnt; char *m_hello_str = "hello"; CMD_PREINIT(cmd_list_cnt, m_hello_str, m_hello)
  */
 #define ICmdRegister(cmd_str, cmd_func) \
-    extern uint16_t cmd_cnt;            \
-    CMD_PREINIT(cmd_cnt, cmd_str, cmd_func)
+    extern uint16_t cmd_list_cnt;            \
+    char *cmd_func##_str = cmd_str;     \
+    CMD_PREINIT(cmd_list_cnt, cmd_func##_str, cmd_func)
+
+/**
+
+ */
 
 void ICmdLinesInput(char *cmd);
 size_t m_CatchCmdSizeBeforeFlag(const char *cmd, char *flag);

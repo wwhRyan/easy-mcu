@@ -11,7 +11,7 @@
 
 #include "CmdLine.h"
 
-uint16_t cmd_cnt;
+uint16_t cmd_list_cnt;
 
 static int m_FindInputCmdId(const char *inputCmd, const CmdListUnit *cmdList);
 
@@ -89,7 +89,7 @@ uint32_t m_CatchCmdSizeAfterFlag(const char *cmd, char *flag)
 
 static int m_FindInputCmdId(const char *inputCmd, const CmdListUnit *cmdList)
 {
-    for (int i = 0; i < cmd_cnt; i++)
+    for (int i = 0; i < cmd_list_cnt; i++)
     {
         if ((strstr(inputCmd, cmdList[i].CmdString)))
         {

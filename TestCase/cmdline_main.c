@@ -17,15 +17,10 @@ static void m_getNumber(const char *cmd, ...);
 static void m_getMutiNumber(const char *cmd, ...);
 static void m_getIndefinitelengthNumber(const char *cmd, ...);
 
-char *hello_str = "hello";
-char *getNumber_str = "getNumber";
-char *getMutiNumber_str = "getMutiNumber";
-char *hgetIndefinitelengthNumber_str = "getIndefinitelengthNumber";
-
-ICmdRegister(hello_str, m_hello);
-ICmdRegister(getNumber_str, m_getNumber);
-ICmdRegister(getMutiNumber_str, m_getMutiNumber);
-ICmdRegister(hgetIndefinitelengthNumber_str, m_getIndefinitelengthNumber);
+ICmdRegister("hello", m_hello);
+ICmdRegister("getNumber", m_getNumber);
+ICmdRegister("getMutiNumber", m_getMutiNumber);
+ICmdRegister("getIndefinitelengthNumber", m_getIndefinitelengthNumber);
 
 int main(void)
 {
