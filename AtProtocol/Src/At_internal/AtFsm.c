@@ -81,7 +81,7 @@ void IInputAtStrToFsm(char* at_cmd_kv)
 void m_ClearFsmGlobalVariables(void)
 {
     gAt_Obj.pAt_str->pData = NULL;
-    memset(gAt_Obj.pFeedback_at_str->pData, 0, MAX_ATCMD_STR_LEN);
+    memset(gAt_Obj.pFeedback_at_str->pData, 0, MAX_FEEDBACK_STR_LEN);
     memset(gAt_Obj.pKv_list->pList, 0, sizeof(asAtKvUnit) * MAX_KV_COUPLES_NUM);
     gAt_Obj.pAt_str->size = 0;
     gAt_Obj.pFeedback_at_str->size = 0;
@@ -574,8 +574,7 @@ STATIC void m_EntryErrorState( void *stateData, asEvent *event )
     /* Feedback the Error log. */
    AtTracePrintf("AT Error: %s", gAt_error_code_str[__ICheckAtErrorCode()]);
    snprintf(gAt_Obj.pFeedback_at_str->pData ,MAX_FEEDBACK_STR_LEN, "AT ErrorCode: %s\r\n", gAt_error_code_str[__ICheckAtErrorCode()]);
-   //gAt_Obj.feedbackFunc(gAt_Obj.pFeedback_at_str->pData);
-   printf((gAt_Obj.pFeedback_at_str)->pData);
+   gAt_Obj.feedbackFunc(gAt_Obj.pFeedback_at_str->pData);
 
     /* Clear all the global buffers. */
     m_ClearFsmGlobalVariables();

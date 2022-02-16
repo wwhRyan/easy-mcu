@@ -31,8 +31,8 @@ extern CmdListUnit g_CmdList[];
  * @brief Register a command function
  * 
  * @param cmd_list_cnt how many commands have been registered
- * @param cmd_str registered command string pointer
- * @param cmd_func registered command function pointer
+ * @param p_str registered command string pointer
+ * @param p_func registered command function pointer
  * @return int 
  * @example CMD_PREINIT(cmd_list_cnt, m_hello_str, m_hello);
  * ----------------------------------------
@@ -51,20 +51,20 @@ extern CmdListUnit g_CmdList[];
  *         return -1;
  * }
  */
-#define CMD_PREINIT(cmd_list_cnt, cmd_str, cmd_func)                  \
-    __attribute__((constructor)) int RegisterCmdFunc##cmd_func() \
-    {                                                            \
-        extern CmdListUnit g_CmdList[];                          \
-        extern uint16_t max_cmd_list_size;                       \
-        if ((cmd_list_cnt >= 0) && (cmd_list_cnt < max_cmd_list_size))     \
-        {                                                        \
-            g_CmdList[cmd_list_cnt].CmdString = cmd_str;              \
-            g_CmdList[cmd_list_cnt].CmdFuncPtr = cmd_func;            \
-            cmd_list_cnt++;                                           \
-            return 0;                                            \
-        }                                                        \
-        else                                                     \
-            return -1;                                           \
+#define CMD_PREINIT(cmd_list_cnt, p_str, p_func)           \
+    __attribute__((constructor)) int RegisterCmd##p_func() \
+    {                                                      \
+        extern CmdListUnit g_CmdList[];                    \
+        extern uint16_t max_cmd_list_size;                 \
+        if (cmd_list_cnt < max_cmd_list_size)              \
+        {                                                  \
+            g_CmdList[cmd_list_cnt].CmdString = p_str;     \
+            g_CmdList[cmd_list_cnt].CmdFuncPtr = p_func;   \
+            cmd_list_cnt++;                                \
+            return 0;                                      \
+        }                                                  \
+        else                                               \
+            return -1;                                     \
     }
 
 /**
@@ -76,7 +76,7 @@ extern CmdListUnit g_CmdList[];
  * extern uint16_t cmd_list_cnt; char *m_hello_str = "hello"; CMD_PREINIT(cmd_list_cnt, m_hello_str, m_hello)
  */
 #define ICmdRegister(cmd_str, cmd_func) \
-    extern uint16_t cmd_list_cnt;            \
+    extern uint16_t cmd_list_cnt;       \
     char *cmd_func##_str = cmd_str;     \
     CMD_PREINIT(cmd_list_cnt, cmd_func##_str, cmd_func)
 

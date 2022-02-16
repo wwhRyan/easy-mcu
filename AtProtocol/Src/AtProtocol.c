@@ -105,9 +105,9 @@ void m_RunAtDecodeWorkflow(asAtProtocol *obj, char* input_at_str)
     // obj->feedbackFunc("\r\nInput:");
     // obj->feedbackFunc(input_at_str);
     // obj->feedbackFunc("\n");
-    printf("\r\nInput:");
-    printf(input_at_str);
-    printf("\n");
+    // printf("\r\nInput:");
+    // printf(input_at_str);
+    // printf("\n");
 
     /* Input AT string to Fsm. */
     IInputAtStrToFsm(input_at_str);
