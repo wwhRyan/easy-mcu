@@ -82,8 +82,8 @@ bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int int_size)
     case 2:
         for (size_t i = 0; i < ascii_data_num / int_size; i++)
         {
-            int data;
-            sscanf(p_destin, "%x", (int *)&data);
+            uint32_t data;
+            sscanf(p_destin, "%x", (uint32_t *)&data);
             p_uint8_t[i] = data;
             p_destin += int_size;
             p_destin += 1;
@@ -92,8 +92,8 @@ bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int int_size)
     case 4:
         for (size_t i = 0; i < ascii_data_num / int_size; i++)
         {
-            int data;
-            sscanf(p_destin, "%x", (int *)&data);
+            uint32_t data;
+            sscanf(p_destin, "%x", (uint32_t *)&data);
             p_uint16_t[i] = data;
             p_destin += int_size;
             p_destin += 1;
@@ -102,8 +102,8 @@ bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int int_size)
     case 8:
         for (size_t i = 0; i < ascii_data_num / int_size; i++)
         {
-            int data;
-            sscanf(p_destin, "%x", (int *)&data);
+            uint32_t data;
+            sscanf(p_destin, "%x", (uint32_t *)&data);
             p_uint32_t[i] = data;
             p_destin += int_size;
             p_destin += 1;
@@ -158,13 +158,13 @@ bool AsciiToIntPro(const char *p_ascii_data, void *p_void_data, int int_size)
         switch (int_size)
         {
         case 2:
-            sscanf(unit_string, "%x", (int *)&p_uint8_t[i]);
+            sscanf(unit_string, "%x", (uint32_t *)&p_uint8_t[i]);
             break;
         case 4:
-            sscanf(unit_string, "%x", (int *)&p_uint16_t[i]);
+            sscanf(unit_string, "%x", (uint32_t *)&p_uint16_t[i]);
             break;
         case 8:
-            sscanf(unit_string, "%x", (int *)&p_uint32_t[i]);
+            sscanf(unit_string, "%x", (uint32_t *)&p_uint32_t[i]);
             break;
         default:
             break;

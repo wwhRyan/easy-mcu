@@ -35,6 +35,7 @@
  * 
  */
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
+#define ARRAYNUM(arr_name)     (uint32_t)(sizeof(arr_name) / sizeof(*(arr_name)))
 
 
 

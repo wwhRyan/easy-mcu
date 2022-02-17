@@ -144,10 +144,10 @@ aeAtBool __ICheckAtCmdFormatAndLoadAtObj(asAtObj *pObj)
 
 void __ICastKvListTo_kAtValueInt(asAtKvList* kv_list_str, asAtKvUnit_Int* kv_list,size_t array_size)
 {
-    /* num is MIN (kv_list_str->size , num), avoiding arrar bounds error.*/
-    int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
     if (NULL != kv_list_str && NULL != kv_list)
     {
+        /* num is MIN (kv_list_str->size , num), avoiding arrar bounds error.*/
+        int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
         for (int i = 0; i < num; i++)
         {
             /* TODO check the index = -1 !!!! */
@@ -157,11 +157,11 @@ void __ICastKvListTo_kAtValueInt(asAtKvList* kv_list_str, asAtKvUnit_Int* kv_lis
     }
 }
 
-void __ICastKvListTo_kAtValueFloat(asAtKvList* kv_list_str, asAtKvUnit_Float* kv_list,size_t array_size)
+void __ICastKvListTo_kAtValueFloat(asAtKvList *kv_list_str, asAtKvUnit_Float *kv_list, size_t array_size)
 {
-    int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
     if (NULL != kv_list_str && NULL != kv_list)
     {
+        int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
         for (int i = 0; i < num; i++)
         {
             kv_list[i].key = (aeKeyName)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].key.pData);
@@ -170,11 +170,11 @@ void __ICastKvListTo_kAtValueFloat(asAtKvList* kv_list_str, asAtKvUnit_Float* kv
     }
 }
 
-void __ICastKvListTo_kAtValueStr(asAtKvList* kv_list_str, asAtKvUnit_Str* kv_list,size_t array_size)
+void __ICastKvListTo_kAtValueStr(asAtKvList *kv_list_str, asAtKvUnit_Str *kv_list, size_t array_size)
 {
-    int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
     if (NULL != kv_list_str && NULL != kv_list)
     {
+        int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
         for (int i = 0; i < num; i++)
         {
             kv_list[i].key = (aeKeyName)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].key.pData);
@@ -185,9 +185,9 @@ void __ICastKvListTo_kAtValueStr(asAtKvList* kv_list_str, asAtKvUnit_Str* kv_lis
 
 void __ICastKvListTo_kAtValueEnum(asAtKvList *kv_list_str, asAtKvUnit_Enum *kv_list, size_t array_size)
 {
-    int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
     if (NULL != kv_list_str && NULL != kv_list)
     {
+        int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
         for (int i = 0; i < num; i++)
         {
             kv_list[i].key = (aeKeyName)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].key.pData);
@@ -318,7 +318,7 @@ STATIC aeAtBool m_ParseAtKeyValues(asAtObj *obj, char* str_kvs, uint32_t MAX_KVS
         return kAtFalse;
     }
 
-    if(NULL != str_kvs && "" != str_kvs)
+    if (NULL != str_kvs && 0 != strcmp("", str_kvs))
     {
         AtTracePrintf("Start parsing!");
         char* kv_couples[MAX_KV_COUPLES_NUM];
@@ -355,7 +355,7 @@ STATIC aeAtBool m_ParseAtKeyValues(asAtObj *obj, char* str_kvs, uint32_t MAX_KVS
 
 STATIC int m_SplitStr2Tokens(char* s, char *delimeter, char **tokens, int max_token_num)
 {
-    if("" != s && NULL != s && NULL != delimeter)
+    if (NULL != s && 0 != strcmp("", s) && NULL != delimeter )
     {
         char* rest_str;
         char* token = AtStrtok(s, delimeter, &rest_str);
