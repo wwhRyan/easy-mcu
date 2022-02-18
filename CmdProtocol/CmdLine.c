@@ -12,27 +12,21 @@
 #include "CmdLine.h"
 
 uint16_t cmd_list_cnt;
+CmdListUnit g_CmdList[MAX_CMDLINE_REGISTER_NUM] = {0};
+uint16_t max_cmd_list_size = sizeof(g_CmdList) / sizeof(CmdListUnit);
 
 static int m_FindInputCmdId(const char *inputCmd, const CmdListUnit *cmdList);
 
-// #define CMDLIST_SIZE sizeof(g_CmdList) / sizeof(CmdListUnit)
-CmdListUnit g_CmdList[255] = {0};
-
-uint16_t max_cmd_list_size = sizeof(g_CmdList) / sizeof(CmdListUnit);
 /**
  * Return cmdSize before flag like ":" or "=", cmdSize contains ":"
  * eg: CatchCmdSizeBeforeFlag("setPid=xxx", "=") = 7(not 6!)
  */
 size_t m_CatchCmdSizeBeforeFlag(const char *cmd, char *flag)
 {
-    size_t ret = 0;
-    char *tmp = (char *)malloc(strlen(cmd));
-    strcpy(tmp, cmd);
     char *token;
-    token = strtok(tmp, flag);
-    ret = strlen(token) + 1;
-    free(tmp);
-    return ret;
+    char *cmd_temp = (char*)cmd;
+    token = strtok(cmd_temp, flag);
+    return strlen(token) + 1;
 }
 
 uint32_t getIndexOfSigns(char ch)
@@ -71,19 +65,15 @@ uint32_t m_CatchCmdSizeAfterFlag(const char *cmd, char *flag)
 {
     uint8_t i = 0;
     uint32_t data[2];
-
-    char *tmp = (char *)malloc(strlen((char *)cmd));
-    strcpy(tmp, cmd);
     char *token = NULL;
 
-    token = strtok((char *)tmp, flag);
+    token = strtok((char *)cmd, flag);
     while (token)
     {
         data[i++] = hex2dec((unsigned char *)token);
         token = strtok(NULL, flag);
     }
 
-    free(tmp);
     return data[1];
 }
 
@@ -102,6 +92,11 @@ static int m_FindInputCmdId(const char *inputCmd, const CmdListUnit *cmdList)
 void ICmdLinesInput(char *cmd)
 {
     uint8_t WRONG_asMsg[] = "\0";
+    if(strlen(cmd) > MAX_CMD_SIZE)
+    {
+        printf("too long cmd!\n");
+        return;
+    }
     if (strcmp(cmd, (char *)WRONG_asMsg))
     {
         int cmdId = m_FindInputCmdId(cmd, g_CmdList);

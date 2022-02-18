@@ -12,10 +12,7 @@
 #ifndef __CMD_LINE_H__
 #define __CMD_LINE_H__
 
-#include "../Include/Common.h"
-#define MAX_CMD_SIZE (0x1F)
-#define WRONG_CMD (0xFF)
-#define MAX_WRITE_LEN (0x7F)
+#include "Common.h"
 
 typedef void (*CmdFuncProtoType)(const char *, ...);
 

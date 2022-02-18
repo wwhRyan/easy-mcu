@@ -17,8 +17,16 @@ target_link_libraries(ATProtocalTest
 
 #/*-----------------------------------------------------------*/
 
+include_directories(
+    ${PROJECT_SOURCE_DIR}/../Include
+    ${PROJECT_SOURCE_DIR}/../CmdProtocol
+)
+
 # Create the executable
-add_executable(cmdlineTest ${PROJECT_SOURCE_DIR}/cmdline_main.c)
+add_executable(
+    cmdlineTest ${PROJECT_SOURCE_DIR}/cmdline_main.c 
+    ${PROJECT_SOURCE_DIR}/../CmdProtocol/CmdlineRegister.c
+)
 
 # Link the libraries
 target_link_libraries(cmdlineTest
