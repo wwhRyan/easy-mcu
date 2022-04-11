@@ -15,16 +15,6 @@
 
 #include "CmdLine.h"
 
-static void m_hello(const char *cmd, ...);
-static void m_getNumber(const char *cmd, ...);
-static void m_getMutiNumber(const char *cmd, ...);
-static void m_getIndefinitelengthNumber(const char *cmd, ...);
-
-ICmdRegister("hello", m_hello);
-ICmdRegister("getNumber", m_getNumber);
-ICmdRegister("getMutiNumber", m_getMutiNumber);
-ICmdRegister("getIndefinitelengthNumber", m_getIndefinitelengthNumber);
-
 /**
                         __   ____                     __   _             
   _____ ____ ___   ____/ /  / __/__  __ ____   _____ / /_ (_)____   ____ 
@@ -33,56 +23,93 @@ ICmdRegister("getIndefinitelengthNumber", m_getIndefinitelengthNumber);
 \___//_/ /_/ /_/ \__,_/  /_/   \__,_//_/ /_/ \___/ \__//_/ \____//_/ /_/ 
  */
 
-static void m_hello(const char *cmd, ...)
+static void hello(char argc, char *argv)
 {
-    printf("hello\n");
+    cmd_printf("hello\n");
 }
 
-static void m_getNumber(const char *cmd, ...)
+static void getnumber(char argc, char *argv)
 {
     int data = 0;
-    int cmdsize = m_CatchCmdSizeBeforeFlag(cmd, "=");
-    sscanf(cmd + cmdsize, "%d", &data);
-    printf("%d\n", data);
+    if (argc > 1 && argc < 3)
+    {
+        sscanf((const char *)&(argv[argv[1]]), "%d", &data);
+        cmd_printf("%d\n", data);
+    }
+    else
+    {
+        cmd_printf("input a number\n");
+        cmd_printf("getnumber need right arguments!\r\n");
+    }
 }
 
-static void m_getMutiNumber(const char *cmd, ...)
+static void getmutinumber(char argc, char *argv)
 {
-    int data[8] = {0};
-    int cmdsize = m_CatchCmdSizeBeforeFlag(cmd, "=");
-
-    if (8 != sscanf(cmd + cmdsize, "%d,%d,%d,%d,%d,%d,%d,%d",
-                    &data[0], &data[1], &data[2], &data[3],
-                    &data[4], &data[5], &data[6], &data[7]))
+    if (argc > 1)
     {
-        printf("m_getMutiNumber cmd error!");
-        return;
+        for (size_t i = 1; i < argc; i++)
+        {
+            cmd_printf("%d \n", atoi((const char *)&(argv[argv[i]])));
+        }
     }
-
-    for (size_t i = 0; i < ARRAY_SIZE(data); i++)
+    else
     {
-        printf("%d \n", data[i]);
+        cmd_printf("getmutinumber need right arguments!\r\n");
     }
 }
 
-static void m_getIndefinitelengthNumber(const char *cmd, ...)
+/**
+ * @brief ls command
+ */
+void ls(char argc, char *argv)
 {
-    uint8_t i = 0;
-    int data[MAX_CMD_SIZE] = {0};
-    int cmdsize = m_CatchCmdSizeBeforeFlag(cmd, "=");
-
-    char *token = NULL;
-    token = strtok((char *)(cmd + cmdsize), ",");
-
-    while (token)
+    if (argc > 1)
     {
-        sscanf((const char *)token, "%d", &data[i++]);
-        token = strtok(NULL, ",");
+        if (!strcmp("cmd", &argv[argv[1]]))
+        {
+            for (int i = 0; i < get_cmd_table_cnt(); i++)
+            {
+                cmd_printf("%s", get_cmd_table()[i].CmdString);
+                cmd_printf("\r\n");
+            }
+        }
+        else if (!strcmp("-v", &argv[argv[1]]))
+        {
+            cmd_printf("ls version 1.0.\r\n");
+        }
+        else if (!strcmp("-h", &argv[argv[1]]))
+        {
+            cmd_printf("useage: ls [options]\r\n");
+            cmd_printf("options: \r\n");
+            cmd_printf("\t -h \t: show help\r\n");
+            cmd_printf("\t -v \t: show version\r\n");
+            cmd_printf("\t cmd \t: show all commands\r\n");
+        }
     }
-
-    int len = i;
-    for (size_t i = 0; i < len; i++)
+    else
     {
-        printf("%d \n", data[i]);
+        cmd_printf("ls need more arguments!\r\n");
     }
 }
+
+/**
+ * @brief tell user how to use the command
+ * 
+ * @param argc the number of arguments, must larger than 1, the first argument is the command name "test"
+ * @param argv char array, index + buffer, index argv[index], buffer argv[argv[index]]
+ */
+void test(char argc, char *argv)
+{
+    int i;
+    cmd_printf("test command:\r\n");
+    for (i = 0; i < argc; i++)
+    {
+        cmd_printf("paras %d: %s\r\n", i, &(argv[argv[i]]));
+    }
+}
+
+ICmdRegister("ls", ls);
+ICmdRegister("test", test);
+ICmdRegister("hello", hello);
+ICmdRegister("getnumber", getnumber);
+ICmdRegister("getmutinumber", getmutinumber);

@@ -11,11 +11,11 @@
 
 #include "CmdLine.h"
 
-uint16_t cmd_list_cnt;
-CmdListUnit g_CmdList[MAX_CMDLINE_REGISTER_NUM] = {0};
-uint16_t max_cmd_list_size = sizeof(g_CmdList) / sizeof(CmdListUnit);
+uint16_t cmd_table_cnt;
+cmd_table_t st_cmd_table[MAX_CMDLINE_REGISTER_NUM] = {0};
+uint16_t max_cmd_list_size = sizeof(st_cmd_table) / sizeof(cmd_table_t);
 
-static int m_FindInputCmdId(const char *inputCmd, const CmdListUnit *cmdList);
+static int m_FindInputCmdId(const char *input_cmd, const cmd_table_t *cmd_table);
 
 /**
  * Return cmdSize before flag like ":" or "=", cmdSize contains ":"
@@ -24,7 +24,7 @@ static int m_FindInputCmdId(const char *inputCmd, const CmdListUnit *cmdList);
 size_t m_CatchCmdSizeBeforeFlag(const char *cmd, char *flag)
 {
     char *token;
-    char *cmd_temp = (char*)cmd;
+    char *cmd_temp = (char *)cmd;
     token = strtok(cmd_temp, flag);
     return strlen(token) + 1;
 }
@@ -77,11 +77,11 @@ uint32_t m_CatchCmdSizeAfterFlag(const char *cmd, char *flag)
     return data[1];
 }
 
-static int m_FindInputCmdId(const char *inputCmd, const CmdListUnit *cmdList)
+static int m_FindInputCmdId(const char *input_cmd, const cmd_table_t *cmd_table)
 {
-    for (int i = 0; i < cmd_list_cnt; i++)
+    for (int i = 0; i < cmd_table_cnt; i++)
     {
-        if ((strstr(inputCmd, cmdList[i].CmdString)))
+        if ((strstr(input_cmd, cmd_table[i].CmdString)))
         {
             return i;
         }
@@ -89,24 +89,66 @@ static int m_FindInputCmdId(const char *inputCmd, const CmdListUnit *cmdList)
     return WRONG_CMD;
 }
 
-void ICmdLinesInput(char *cmd)
+cmd_table_t* get_cmd_table()
+{
+    return st_cmd_table;
+}
+
+uint16_t get_cmd_table_cnt()
+{
+    return cmd_table_cnt;
+}
+
+cmd_func_t cmd_search_func(char *cmd)
 {
     uint8_t WRONG_asMsg[] = "\0";
-    if(strlen(cmd) > MAX_CMD_SIZE)
+    if (strlen(cmd) > MAX_CMD_SIZE)
     {
         printf("too long cmd!\n");
-        return;
+        return NULL;
     }
     if (strcmp(cmd, (char *)WRONG_asMsg))
     {
-        int cmdId = m_FindInputCmdId(cmd, g_CmdList);
+        int cmdId = m_FindInputCmdId(cmd, st_cmd_table);
         if (cmdId != WRONG_CMD)
         {
-            g_CmdList[cmdId].CmdFuncPtr(cmd);
+            return st_cmd_table[cmdId].CmdFuncPtr;
         }
         else
         {
-            printf("WRONG_CMD!\r\n");
+            return NULL;
         }
     }
+}
+
+void ICmdLinesInput(char *cmd)
+{
+    cmd_func_t fp;
+
+    char argc = 0;
+    char argv[CMD_PARAS_MAX_NUM + MAX_CMD_SIZE] = {0};
+    char *token = NULL;
+    char index = CMD_PARAS_MAX_NUM;
+
+    fp = cmd_search_func(cmd);
+    if (fp != NULL)
+    {
+    }
+    else
+    {
+        printf("WRONG_CMD!\r\n");
+        return;
+    }
+
+    token = strtok((char *)cmd, " ");
+    while (token != NULL)
+    {
+        argv[argc] = index;
+        strcpy(argv + index, token);
+        index += strlen(token) + 1;
+        argc++;
+        token = strtok(NULL, " ");
+    }
+
+    fp(argc, argv);
 }

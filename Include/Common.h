@@ -37,9 +37,4 @@
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 #define ARRAYNUM(arr_name) (uint32_t)(sizeof(arr_name) / sizeof(*(arr_name)))
 
-/* Cmdlines Config */
-#define MAX_CMDLINE_REGISTER_NUM (20) // max number of cmdline register
-#define MAX_CMD_SIZE (0xFF)           // max size of single cmdline
-#define WRONG_CMD (0xFF)              // wrong cmd
-
 #endif

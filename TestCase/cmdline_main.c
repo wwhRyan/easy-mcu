@@ -17,8 +17,10 @@ int main(void)
     for (;;)
     {
         printf("input cmd:\n");
-        scanf("%254s", cmd);
+        scanf("%254[^\n]s", cmd); // get a string until '\n'
         ICmdLinesInput(cmd);
+        memset(cmd, 0, sizeof(cmd));
+        fflush(stdin); // clear the buffer
     }
 
     return 0;
