@@ -89,7 +89,7 @@ static int m_FindInputCmdId(const char *input_cmd, const cmd_table_t *cmd_table)
     return WRONG_CMD;
 }
 
-cmd_table_t* get_cmd_table()
+cmd_table_t *get_cmd_table()
 {
     return st_cmd_table;
 }
@@ -107,7 +107,7 @@ cmd_func_t cmd_search_func(char *cmd)
         printf("too long cmd!\n");
         return NULL;
     }
-    if (strcmp(cmd, (char *)WRONG_asMsg))
+    else if (strcmp(cmd, (char *)WRONG_asMsg))
     {
         int cmdId = m_FindInputCmdId(cmd, st_cmd_table);
         if (cmdId != WRONG_CMD)
@@ -118,6 +118,10 @@ cmd_func_t cmd_search_func(char *cmd)
         {
             return NULL;
         }
+    }
+    else
+    {
+        return NULL;
     }
 }
 
