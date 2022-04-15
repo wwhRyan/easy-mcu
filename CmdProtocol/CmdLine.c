@@ -79,9 +79,25 @@ uint32_t m_CatchCmdSizeAfterFlag(const char *cmd, char *flag)
 
 static int m_FindInputCmdId(const char *input_cmd, const cmd_table_t *cmd_table)
 {
+    char *token;
+    int len;
+    token = strstr(input_cmd, " ");
+    if (token == NULL)
+    {
+        len = strlen(input_cmd);
+    }
+    else
+    {
+        len = token - input_cmd;
+    }
+
     for (int i = 0; i < cmd_table_cnt; i++)
     {
-        if ((strstr(input_cmd, cmd_table[i].CmdString)))
+        // if ((strstr(input_cmd, cmd_table[i].CmdString)))
+        // {
+        //     return i;
+        // }
+        if ((strncmp(input_cmd, cmd_table[i].CmdString, len) == 0))
         {
             return i;
         }
@@ -125,6 +141,19 @@ cmd_func_t cmd_search_func(char *cmd)
     }
 }
 
+void remove_cmd_tail(char *cmd)
+{
+    int len = strlen(cmd);
+
+    for (int i = 0; i < len; i++)
+    {
+        if (cmd[i] == '\r' || cmd[i] == '\n')
+        {
+            memset(cmd + i, 0, len - i); // ignore other cmds. including \r\n
+        }
+    }
+}
+
 void ICmdLinesInput(char *cmd)
 {
     cmd_func_t fp;
@@ -133,6 +162,8 @@ void ICmdLinesInput(char *cmd)
     char argv[CMD_PARAS_MAX_NUM + MAX_CMD_SIZE] = {0};
     char *token = NULL;
     char index = CMD_PARAS_MAX_NUM;
+
+    remove_cmd_tail(cmd);
 
     fp = cmd_search_func(cmd);
     if (fp != NULL)
@@ -144,14 +175,17 @@ void ICmdLinesInput(char *cmd)
         return;
     }
 
-    token = strtok((char *)cmd, " ");
+    // A pointer, which we will be used as the context variable
+    // Initially, we will set it to NULL
+    char *context = NULL;
+    token = strtok_r((char *)cmd, " ", &context);
     while (token != NULL)
     {
         argv[argc] = index;
         strcpy(argv + index, token);
         index += strlen(token) + 1;
         argc++;
-        token = strtok(NULL, " ");
+        token = strtok_r(NULL, " ", &context); // We pass the context variable to strtok_r
     }
 
     fp(argc, argv);

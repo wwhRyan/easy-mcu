@@ -15,7 +15,7 @@
 #include "Common.h"
 
 /* Cmdlines Config */
-#define MAX_CMDLINE_REGISTER_NUM (20) // max number of cmdline register table
+#define MAX_CMDLINE_REGISTER_NUM (30) // max number of cmdline register table
 #define MAX_CMD_SIZE (0xFF)           // max size of single cmdline
 #define WRONG_CMD (0xFF)              // wrong cmd
 #define CMD_PARAS_MAX_NUM 10          // max number of parameters
