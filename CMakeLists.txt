@@ -7,4 +7,5 @@ add_subdirectory(utils)
 add_subdirectory(CmdProtocol)
 add_subdirectory(AtProtocol)
 add_subdirectory(TestCase)
+add_subdirectory(reg_config)
 
