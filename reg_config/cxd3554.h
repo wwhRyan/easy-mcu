@@ -33,6 +33,9 @@
 #define REG_ADDR(_BASE_ADDR, _BLK_T, _REG) \
     (_BASE_ADDR + offsetof(_BLK_T, _REG))
 
+#include "misc.h"
+
+#if 0
 #define MISC_ADDR 0x0000
 #define MISC_REG_ADDR(reg) REG_ADDR(MISC_ADDR, misc_t, reg)
 
@@ -54,5 +57,7 @@ typedef struct MISC_T
 {
     union REG_00 reg00;
 } misc_t;
+
+#endif
 
 #endif

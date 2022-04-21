@@ -1,5 +1,5 @@
 /**
- * @file cxd3554.c
+ * @file misc.c
  * @author Wu Wenhao (whwu@appotronics.com)
  * @brief 
  * @version 1.02
@@ -11,4 +11,4 @@
 
 #include "cxd3554.h"
 
-#include "misc.c"
+misc_t misc = {.reg00.byte = 0x1F};
