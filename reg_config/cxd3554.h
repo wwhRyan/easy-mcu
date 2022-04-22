@@ -18,11 +18,11 @@
 //include/stddef.h:414: note: this is the location of the previous definition
 // #define offsetof(struct_t, member) ((int)&((struct_t *)0)->member)
 
-#define container_of(ptr, type, member) (                  \
-    {                                                      \
-        const typeof(((type *)0)->member) *__mptr = (ptr); \
-        (type *)((char *)__mptr - offsetof(type, member)); \
-    })
+// #define container_of(ptr, type, member) (                  \
+//     {                                                      \
+//         const typeof(((type *)0)->member) *__mptr = (ptr); \
+//         (type *)((char *)__mptr - offsetof(type, member)); \
+//     })
 
 /**
  * @brief get the address of the register
@@ -33,7 +33,20 @@
 #define REG_ADDR(_BASE_ADDR, _BLK_T, _REG) \
     (_BASE_ADDR + offsetof(_BLK_T, _REG))
 
+#include "ckg.h"
+#include "ddr2.h"
+#include "frc.h"
+#include "ipg.h"
+#include "led.h"
+#include "lpddr2.h"
+#include "mini-dsi.h"
+#include "pi.h"
+#include "tx.h"
 #include "misc.h"
+#include "i2cm.h"
+#include "mipi.h"
+#include "inp.h"
+#include "tpg.h"
 
 #if 0
 #define MISC_ADDR 0x0000
