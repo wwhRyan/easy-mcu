@@ -3773,7 +3773,7 @@ uint8_t  :1;
 union FRC_REG_1E9 {
 uint8_t byte;    struct {
 uint8_t H2_FRC_FIFO_UF_CLEAN:4;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;

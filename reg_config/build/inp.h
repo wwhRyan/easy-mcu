@@ -519,7 +519,7 @@ uint8_t  :1;
 };};
 union INP_REG_43 {
 uint8_t byte;    struct {
-uint8_t H1_INP_FIFO_STATUS_EN:4;
+uint8_t H1_INP_FIFO_STATUS_EN_LOW:4;
 uint8_t H1_INP_FIFO_STATUS_EN:4;
 };};
 union INP_REG_44 {
@@ -532,7 +532,7 @@ uint8_t  :1;
 };};
 union INP_REG_45 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;

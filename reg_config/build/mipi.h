@@ -13,32 +13,32 @@ uint8_t :1;
 uint8_t H1_MIPI_L_LANE_NUM:1;
 uint8_t :1;
 uint8_t H1_MIPI_L_VC_MAIN:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t H1_MIPI_L_CD_DISABLE:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
 };};
 union MIPI_REG_01 {
 uint8_t byte;    struct {
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t :1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
 uint8_t H1_MIPI_L_ECC_IGNORE:1;
 uint8_t H1_MIPI_L_RXCRC_ENABLE:1;
 };};
 union MIPI_REG_02 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t H1_MIPI_L_NGATECLK:1;
 uint8_t H1_MIPI_L_HS_ZERO_EN:1;
 uint8_t H1_MIPI_L_HS_WAIT_EN:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
 };};
 union MIPI_REG_03 {
 uint8_t byte;    struct {
@@ -49,11 +49,11 @@ uint8_t H1_MIPI_L_FIFO_BLANK:1;
 uint8_t H1_MIPI_L_PN_CHANGE:1;
 uint8_t H1_MIPI_L_RSTTRIG:1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 };};
 union MIPI_REG_04 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t H1_MIPI_L_SWCTRL_CLP:1;
 uint8_t H1_MIPI_L_SWCTRL_CHSR:1;
 uint8_t H1_MIPI_L_SWCTRL_CHS:1;
@@ -67,8 +67,8 @@ uint8_t byte;    struct {
 uint8_t H1_MIPI_L_SWCTRL_DTX:1;
 uint8_t H1_MIPI_L_SWCTRL_DTXO:1;
 uint8_t H1_MIPI_L_SWCTRL_CD:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
 uint8_t :1;
 uint8_t H1_MIPI_L_DBG_MUX_SW:1;
 uint8_t H1_MIPI_L_CTRLPHYSW:1;
@@ -90,21 +90,21 @@ uint8_t H1_MIPI_L_ULPS_BYDL0:1;
 uint8_t H1_MIPI_L_EOTPKT_EN:1;
 uint8_t H1_MIPI_L_HSCLK_D2SEN:1;
 uint8_t H1_MIPI_L_HSCLK_D2SEN_OPT:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
 uint8_t H1_MIPI_L_CD_DLY:1;
 uint8_t H1_MIPI_L_VC_CHECK_EN:1;
 };};
 union MIPI_REG_08 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
 uint8_t :1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
 uint8_t H1_MIPI_L_TXCRC_ENABLE:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 };};
 union MIPI_REG_09 {
 uint8_t byte;    struct {
@@ -115,7 +115,7 @@ uint8_t :1;
 uint8_t :1;
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 };};
 union MIPI_REG_0A {
 uint8_t byte;    struct {
@@ -126,11 +126,11 @@ uint8_t :1;
 uint8_t :1;
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 };};
 union MIPI_REG_0B {
 uint8_t byte;    struct {
-uint8_t RESERVED:3;
+uint8_t  :3;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -146,7 +146,7 @@ uint8_t :1;
 uint8_t :1;
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 };};
 union MIPI_REG_0D {
 uint8_t byte;    struct {
@@ -1461,7 +1461,7 @@ union MIPI_REG_84 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1472,7 +1472,7 @@ union MIPI_REG_85 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1483,7 +1483,7 @@ union MIPI_REG_86 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1494,7 +1494,7 @@ union MIPI_REG_87 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1505,7 +1505,7 @@ union MIPI_REG_88 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1516,7 +1516,7 @@ union MIPI_REG_89 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1571,7 +1571,7 @@ union MIPI_REG_8E {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1582,7 +1582,7 @@ union MIPI_REG_8F {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1593,7 +1593,7 @@ union MIPI_REG_90 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1604,7 +1604,7 @@ union MIPI_REG_91 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1615,7 +1615,7 @@ union MIPI_REG_92 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1624,7 +1624,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_93 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1635,7 +1635,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_94 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1646,7 +1646,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_95 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1659,7 +1659,7 @@ union MIPI_REG_96 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1669,7 +1669,7 @@ uint8_t  :1;
 union MIPI_REG_97 {
 uint8_t byte;    struct {
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1680,7 +1680,7 @@ uint8_t  :1;
 union MIPI_REG_98 {
 uint8_t byte;    struct {
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1701,7 +1701,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_9A {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1723,7 +1723,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_9C {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1734,7 +1734,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_9D {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1745,7 +1745,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_9E {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1803,7 +1803,7 @@ uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1811,7 +1811,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_A4 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1836,7 +1836,7 @@ uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1868,7 +1868,7 @@ union MIPI_REG_A9 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1900,7 +1900,7 @@ uint8_t  :1;
 union MIPI_REG_AC {
 uint8_t byte;    struct {
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -1912,7 +1912,7 @@ union MIPI_REG_AD {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -2827,32 +2827,32 @@ uint8_t :1;
 uint8_t H1_MIPI_R_LANE_NUM:1;
 uint8_t :1;
 uint8_t H1_MIPI_R_VC_MAIN:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t H1_MIPI_R_CD_DISABLE:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
 };};
 union MIPI_REG_101 {
 uint8_t byte;    struct {
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t :1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
 uint8_t H1_MIPI_R_ECC_IGNORE:1;
 uint8_t H1_MIPI_R_RXCRC_ENABLE:1;
 };};
 union MIPI_REG_102 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t H1_MIPI_R_NGATECLK:1;
 uint8_t H1_MIPI_R_HS_ZERO_EN:1;
 uint8_t H1_MIPI_R_HS_WAIT_EN:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
 };};
 union MIPI_REG_103 {
 uint8_t byte;    struct {
@@ -2863,11 +2863,11 @@ uint8_t H1_MIPI_R_FIFO_BLANK:1;
 uint8_t H1_MIPI_R_PN_CHANGE:1;
 uint8_t H1_MIPI_R_RSTTRIG:1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 };};
 union MIPI_REG_104 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t H1_MIPI_R_SWCTRL_CLP:1;
 uint8_t H1_MIPI_R_SWCTRL_CHSR:1;
 uint8_t H1_MIPI_R_SWCTRL_CHS:1;
@@ -2881,8 +2881,8 @@ uint8_t byte;    struct {
 uint8_t H1_MIPI_R_SWCTRL_DTX:1;
 uint8_t H1_MIPI_R_SWCTRL_DTXO:1;
 uint8_t H1_MIPI_R_SWCTRL_CD:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
 uint8_t :1;
 uint8_t H1_MIPI_R_DBG_MUX_SW:1;
 uint8_t H1_MIPI_R_CTRLPHYSW:1;
@@ -2904,21 +2904,21 @@ uint8_t H1_MIPI_R_ULPS_BYDL0:1;
 uint8_t H1_MIPI_R_EOTPKT_EN:1;
 uint8_t H1_MIPI_R_HSCLK_D2SEN:1;
 uint8_t H1_MIPI_R_HSCLK_D2SEN_OPT:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
 uint8_t H1_MIPI_R_CD_DLY:1;
 uint8_t H1_MIPI_R_VC_CHECK_EN:1;
 };};
 union MIPI_REG_108 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
 uint8_t :1;
-uint8_t RESERVED:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
+uint8_t  :1;
 uint8_t H1_MIPI_R_TXCRC_ENABLE:1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 };};
 union MIPI_REG_109 {
 uint8_t byte;    struct {
@@ -2929,7 +2929,7 @@ uint8_t :1;
 uint8_t :1;
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 };};
 union MIPI_REG_10A {
 uint8_t byte;    struct {
@@ -2940,11 +2940,11 @@ uint8_t :1;
 uint8_t :1;
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 };};
 union MIPI_REG_10B {
 uint8_t byte;    struct {
-uint8_t RESERVED:3;
+uint8_t  :3;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -2960,7 +2960,7 @@ uint8_t :1;
 uint8_t :1;
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 };};
 union MIPI_REG_10D {
 uint8_t byte;    struct {
@@ -4275,7 +4275,7 @@ union MIPI_REG_184 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4286,7 +4286,7 @@ union MIPI_REG_185 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4297,7 +4297,7 @@ union MIPI_REG_186 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4308,7 +4308,7 @@ union MIPI_REG_187 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4319,7 +4319,7 @@ union MIPI_REG_188 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4330,7 +4330,7 @@ union MIPI_REG_189 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4385,7 +4385,7 @@ union MIPI_REG_18E {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4396,7 +4396,7 @@ union MIPI_REG_18F {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4407,7 +4407,7 @@ union MIPI_REG_190 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4418,7 +4418,7 @@ union MIPI_REG_191 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4429,7 +4429,7 @@ union MIPI_REG_192 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4438,7 +4438,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_193 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4449,7 +4449,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_194 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4460,7 +4460,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_195 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4473,7 +4473,7 @@ union MIPI_REG_196 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4483,7 +4483,7 @@ uint8_t  :1;
 union MIPI_REG_197 {
 uint8_t byte;    struct {
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4494,7 +4494,7 @@ uint8_t  :1;
 union MIPI_REG_198 {
 uint8_t byte;    struct {
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4515,7 +4515,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_19A {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4537,7 +4537,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_19C {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4548,7 +4548,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_19D {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4559,7 +4559,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_19E {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4617,7 +4617,7 @@ uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4625,7 +4625,7 @@ uint8_t  :1;
 };};
 union MIPI_REG_1A4 {
 uint8_t byte;    struct {
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4650,7 +4650,7 @@ uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4682,7 +4682,7 @@ union MIPI_REG_1A9 {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4714,7 +4714,7 @@ uint8_t  :1;
 union MIPI_REG_1AC {
 uint8_t byte;    struct {
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
@@ -4726,7 +4726,7 @@ union MIPI_REG_1AD {
 uint8_t byte;    struct {
 uint8_t :1;
 uint8_t :1;
-uint8_t RESERVED:1;
+uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;

@@ -18,15 +18,25 @@ wb = load_workbook(filename=path, data_only=True, read_only=True)
 ws = wb[sheet_name]
 data = tuple(ws)
 
+# C macro no allow '-'
+sheet_name_macro = sheet_name.replace('-', '_')
+
 setting = {}
 for idx in range(start_row, end_row):
     if data[idx][12].value != None:
-        setting[idx - start_row] = data[idx][12].value
+        if data[idx][12].value == '-':
+            # if dafault value is '-', then set to 0
+            setting[idx - start_row] = '00'
+        else:
+            setting[idx - start_row] = data[idx][12].value
     elif data[idx][10].value == 'ReadOnly':
-        #if dafault value is ReadOnly, then set to 0
+        # if dafault value is ReadOnly, then set to 0
         setting[idx - start_row] = '00'
     elif data[idx][10].value == 'WriteOnly':
-        #if dafault value is WriteOnly, then set to 0
+        # if dafault value is WriteOnly, then set to 0
+        setting[idx - start_row] = '00'
+    elif data[idx][10].value == '-':
+        # if dafault value is '-', then set to 0
         setting[idx - start_row] = '00'
     else:
         setting[idx - start_row] = data[idx][10].value
@@ -34,7 +44,7 @@ for idx in range(start_row, end_row):
 print("#include \"{}\"".format(sheet_name.lower() + ".h"))
 
 print("")
-print("{}_t {}".format(sheet_name.lower(), sheet_name.lower()) + " = {")
+print("{}_t {}".format(sheet_name_macro.lower(), sheet_name_macro.lower()) + " = {")
 for idx in range(start_row, end_row):
     print("    .reg{:02X}.byte = 0x{},".format(
         idx - start_row, setting[idx - start_row]))

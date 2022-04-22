@@ -6,7 +6,7 @@ import sys
 
 def make_C_files(path, sheet_name, start_row, end_row):
     # make C files
-    print("*** Start to make C files ***")
+    print("*** Start to make {} files ***".format(sheet_name))
     print("sheet_name: " + sheet_name)
     cmd = 'python cxd3554_header_file_create.py "' + path + '" ' + sheet_name + \
         ' ' + str(start_row) + ' ' + str(end_row) + \

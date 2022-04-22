@@ -602,7 +602,7 @@ uint8_t H2_LPDDR2_CKSRX:8;
 };};
 union LPDDR2_REG_5F {
 uint8_t byte;    struct {
-uint8_t RESERVED:8;
+uint8_t  :8;
 };};
 union LPDDR2_REG_60 {
 uint8_t byte;    struct {

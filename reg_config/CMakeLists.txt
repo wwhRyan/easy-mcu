@@ -2,6 +2,7 @@ project(reg_config)
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/../Include
+    ${CMAKE_CURRENT_SOURCE_DIR}/build
 )
 
 add_library(${PROJECT_NAME} cxd3554.c build/ckg.c   build/frc.c   build/inp.c  build/led.c     build/mini-dsi.c  build/misc.c  build/tpg.c
