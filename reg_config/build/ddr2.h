@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 #define DDR2_BASE_ADDRESS 0x0800
-#define DDR2_REG_NUM 147
+#define DDR2_REG_NUM 398
 #define DDR2_REG_ADDR(reg) REG_ADDR(DDR2_BASE_ADDRESS,ddr2_t,reg)
 
 union DDR2_REG_00 {
@@ -1095,6 +1095,1217 @@ uint8_t  :1;
 uint8_t  :1;
 uint8_t  :1;
 };};
+union DDR2_REG_93 {
+uint8_t byte;    struct {
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_94 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_INT_STATUS:8;
+};};
+union DDR2_REG_95 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_INT_STATUS:5;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_96 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_INT_ACK:8;
+};};
+union DDR2_REG_97 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_INT_ACK:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_98 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_INT_MASK:8;
+};};
+union DDR2_REG_99 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_INT_MASK:5;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_9A {
+uint8_t byte;    struct {
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_9B {
+uint8_t byte;    struct {
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_9C {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_OUT_OF_RANGE_ADDR:8;
+};};
+union DDR2_REG_9D {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_OUT_OF_RANGE_ADDR:8;
+};};
+union DDR2_REG_9E {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_OUT_OF_RANGE_ADDR:8;
+};};
+union DDR2_REG_9F {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_OUT_OF_RANGE_ADDR:8;
+};};
+union DDR2_REG_A0 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_OUT_OF_RANGE_LENGTH:8;
+};};
+union DDR2_REG_A1 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_OUT_OF_RANGE_TYPE:6;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_A2 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_OUT_OF_RANGE_SOURCE_ID:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_A3 {
+uint8_t byte;    struct {
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_A4 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_A5 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_A6 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_A7 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_A8 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_A9 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_AA {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_AB {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_AC {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_AD {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_AE {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_AF {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_B0 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_B1 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_B2 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_B3 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_EXP_DATA:8;
+};};
+union DDR2_REG_B4 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_B5 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_B6 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_B7 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_B8 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_B9 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_BA {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_BB {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_BC {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_BD {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_BE {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_BF {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_C0 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_C1 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_C2 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_C3 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_DATA:8;
+};};
+union DDR2_REG_C4 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_ADDR:8;
+};};
+union DDR2_REG_C5 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_ADDR:8;
+};};
+union DDR2_REG_C6 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_ADDR:8;
+};};
+union DDR2_REG_C7 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_BIST_FAIL_ADDR:8;
+};};
+union DDR2_REG_C8 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PORT_CMD_ERROR_ADDR:8;
+};};
+union DDR2_REG_C9 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PORT_CMD_ERROR_ADDR:8;
+};};
+union DDR2_REG_CA {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PORT_CMD_ERROR_ADDR:8;
+};};
+union DDR2_REG_CB {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PORT_CMD_ERROR_ADDR:8;
+};};
+union DDR2_REG_CC {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PORT_CMD_ERROR_ID:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_CD {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PORT_CMD_ERROR_TYPE:2;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_CE {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TODTL_2CMD:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_CF {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TODTH_WR:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_D0 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_ODT_EN:1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_D1 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_ADD_ODT_CLK_R2W_SAMECS:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_D2 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_ADD_ODT_CLK_W2R_SAMECS:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_D3 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_R2R_SAMECS_DLY:3;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_D4 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_R2W_SAMECS_DLY:3;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_D5 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_W2R_SAMECS_DLY:3;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_D6 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_W2W_SAMECS_DLY:3;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_D7 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_OCD_ADJUST_PDN_CS_0:5;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_D8 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_OCD_ADJUST_PUP_CS_0:5;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_D9 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_AXI0_R_PRIORITY:3;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_DA {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_AXI0_W_PRIORITY:3;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_DB {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_AXI0_FIFO_TYPE_REG:2;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_DC {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_CKE_STATUS:1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_DD {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DLL_RST_DELAY:8;
+};};
+union DDR2_REG_DE {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DLL_RST_DELAY:8;
+};};
+union DDR2_REG_DF {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DLL_RST_ADJ_DLY:8;
+};};
+union DDR2_REG_E0 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_PHY_WRLAT:5;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_E1 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_UPDATE_ERROR_STATUS:7;
+uint8_t  :1;
+};};
+union DDR2_REG_E2 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_PHY_RDLAT:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_E3 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_RDDATA_EN:5;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_E4 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DRAM_CLK_DISABLE:1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_E5 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_CTRLUPD_MIN:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_E6 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_CTRLUPD_MAX:8;
+};};
+union DDR2_REG_E7 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_CTRLUPD_MAX:6;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_E8 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_PHYUPD_TYPE0:8;
+};};
+union DDR2_REG_E9 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_PHYUPD_TYPE0:8;
+};};
+union DDR2_REG_EA {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_PHYUPD_TYPE1:8;
+};};
+union DDR2_REG_EB {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_PHYUPD_TYPE1:8;
+};};
+union DDR2_REG_EC {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_PHYUPD_TYPE2:8;
+};};
+union DDR2_REG_ED {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_PHYUPD_TYPE2:8;
+};};
+union DDR2_REG_EE {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_PHYUPD_TYPE3:8;
+};};
+union DDR2_REG_EF {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_PHYUPD_TYPE3:8;
+};};
+union DDR2_REG_F0 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_PHYUPD_RESP:8;
+};};
+union DDR2_REG_F1 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_PHYUPD_RESP:6;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_F2 {
+uint8_t byte;    struct {
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_F3 {
+uint8_t byte;    struct {
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_F4 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_CTRLUPD_INTERVAL:8;
+};};
+union DDR2_REG_F5 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_CTRLUPD_INTERVAL:8;
+};};
+union DDR2_REG_F6 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_CTRLUPD_INTERVAL:8;
+};};
+union DDR2_REG_F7 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_CTRLUPD_INTERVAL:8;
+};};
+union DDR2_REG_F8 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_RDLAT_ADJ:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_F9 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_WRLAT_ADJ:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_FA {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_CTRL_DELAY:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_FB {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_DRAM_CLK_DISABLE:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_FC {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_TDFI_DRAM_CLK_ENABLE:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_FD {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_ODT_ALT_EN:1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_FE {
+uint8_t byte;    struct {
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_FF {
+uint8_t byte;    struct {
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union DDR2_REG_100 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_0:8;
+};};
+union DDR2_REG_101 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_0:8;
+};};
+union DDR2_REG_102 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_0:8;
+};};
+union DDR2_REG_103 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_0:8;
+};};
+union DDR2_REG_104 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_0:8;
+};};
+union DDR2_REG_105 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_0:8;
+};};
+union DDR2_REG_106 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_0:8;
+};};
+union DDR2_REG_107 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_0:8;
+};};
+union DDR2_REG_108 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_0:8;
+};};
+union DDR2_REG_109 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_0:8;
+};};
+union DDR2_REG_10A {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_0:8;
+};};
+union DDR2_REG_10B {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_0:8;
+};};
+union DDR2_REG_10C {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_0:8;
+};};
+union DDR2_REG_10D {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_0:8;
+};};
+union DDR2_REG_10E {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_0:8;
+};};
+union DDR2_REG_10F {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_0:8;
+};};
+union DDR2_REG_110 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_0:8;
+};};
+union DDR2_REG_111 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_0:8;
+};};
+union DDR2_REG_112 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_0:8;
+};};
+union DDR2_REG_113 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_0:8;
+};};
+union DDR2_REG_114 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_0:8;
+};};
+union DDR2_REG_115 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_0:8;
+};};
+union DDR2_REG_116 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_0:8;
+};};
+union DDR2_REG_117 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_0:8;
+};};
+union DDR2_REG_118 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_0:8;
+};};
+union DDR2_REG_119 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_0:8;
+};};
+union DDR2_REG_11A {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_0:8;
+};};
+union DDR2_REG_11B {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_0:8;
+};};
+union DDR2_REG_11C {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_0:8;
+};};
+union DDR2_REG_11D {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_0:8;
+};};
+union DDR2_REG_11E {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_0:8;
+};};
+union DDR2_REG_11F {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_0:8;
+};};
+union DDR2_REG_120 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_1:8;
+};};
+union DDR2_REG_121 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_1:8;
+};};
+union DDR2_REG_122 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_1:8;
+};};
+union DDR2_REG_123 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_1:8;
+};};
+union DDR2_REG_124 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_1:8;
+};};
+union DDR2_REG_125 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_1:8;
+};};
+union DDR2_REG_126 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_1:8;
+};};
+union DDR2_REG_127 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_1:8;
+};};
+union DDR2_REG_128 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_1:8;
+};};
+union DDR2_REG_129 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_1:8;
+};};
+union DDR2_REG_12A {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_1:8;
+};};
+union DDR2_REG_12B {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_1:8;
+};};
+union DDR2_REG_12C {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_1:8;
+};};
+union DDR2_REG_12D {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_1:8;
+};};
+union DDR2_REG_12E {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_1:8;
+};};
+union DDR2_REG_12F {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_1:8;
+};};
+union DDR2_REG_130 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_1:8;
+};};
+union DDR2_REG_131 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_1:8;
+};};
+union DDR2_REG_132 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_1:8;
+};};
+union DDR2_REG_133 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_1:8;
+};};
+union DDR2_REG_134 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_1:8;
+};};
+union DDR2_REG_135 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_1:8;
+};};
+union DDR2_REG_136 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_1:8;
+};};
+union DDR2_REG_137 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_1:8;
+};};
+union DDR2_REG_138 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_1:8;
+};};
+union DDR2_REG_139 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_1:8;
+};};
+union DDR2_REG_13A {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_1:8;
+};};
+union DDR2_REG_13B {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_1:8;
+};};
+union DDR2_REG_13C {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_1:8;
+};};
+union DDR2_REG_13D {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_1:8;
+};};
+union DDR2_REG_13E {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_1:8;
+};};
+union DDR2_REG_13F {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_1:8;
+};};
+union DDR2_REG_140 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_2:8;
+};};
+union DDR2_REG_141 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_2:8;
+};};
+union DDR2_REG_142 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_2:8;
+};};
+union DDR2_REG_143 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_2:8;
+};};
+union DDR2_REG_144 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_2:8;
+};};
+union DDR2_REG_145 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_2:8;
+};};
+union DDR2_REG_146 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_2:8;
+};};
+union DDR2_REG_147 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_2:8;
+};};
+union DDR2_REG_148 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_2:8;
+};};
+union DDR2_REG_149 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_2:8;
+};};
+union DDR2_REG_14A {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_2:8;
+};};
+union DDR2_REG_14B {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_2:8;
+};};
+union DDR2_REG_14C {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_2:8;
+};};
+union DDR2_REG_14D {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_2:8;
+};};
+union DDR2_REG_14E {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_2:8;
+};};
+union DDR2_REG_14F {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_2:8;
+};};
+union DDR2_REG_150 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_2:8;
+};};
+union DDR2_REG_151 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_2:8;
+};};
+union DDR2_REG_152 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_2:8;
+};};
+union DDR2_REG_153 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_2:8;
+};};
+union DDR2_REG_154 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_2:8;
+};};
+union DDR2_REG_155 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_2:8;
+};};
+union DDR2_REG_156 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_2:8;
+};};
+union DDR2_REG_157 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_2:8;
+};};
+union DDR2_REG_158 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_2:8;
+};};
+union DDR2_REG_159 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_2:8;
+};};
+union DDR2_REG_15A {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_2:8;
+};};
+union DDR2_REG_15B {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_2:8;
+};};
+union DDR2_REG_15C {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_2:8;
+};};
+union DDR2_REG_15D {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_2:8;
+};};
+union DDR2_REG_15E {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_2:8;
+};};
+union DDR2_REG_15F {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_2:8;
+};};
+union DDR2_REG_160 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_3:8;
+};};
+union DDR2_REG_161 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_3:8;
+};};
+union DDR2_REG_162 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_3:8;
+};};
+union DDR2_REG_163 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQ_TIMING_REG_3:8;
+};};
+union DDR2_REG_164 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_3:8;
+};};
+union DDR2_REG_165 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_3:8;
+};};
+union DDR2_REG_166 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_3:8;
+};};
+union DDR2_REG_167 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_DQS_TIMING_REG_3:8;
+};};
+union DDR2_REG_168 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_3:8;
+};};
+union DDR2_REG_169 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_3:8;
+};};
+union DDR2_REG_16A {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_3:8;
+};};
+union DDR2_REG_16B {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_GATE_LPBK_CTRL_REG_3:8;
+};};
+union DDR2_REG_16C {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_3:8;
+};};
+union DDR2_REG_16D {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_3:8;
+};};
+union DDR2_REG_16E {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_3:8;
+};};
+union DDR2_REG_16F {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_MASTER_CTRL_REG_3:8;
+};};
+union DDR2_REG_170 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_3:8;
+};};
+union DDR2_REG_171 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_3:8;
+};};
+union DDR2_REG_172 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_3:8;
+};};
+union DDR2_REG_173 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_SLAVE_CTRL_REG_3:8;
+};};
+union DDR2_REG_174 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_3:8;
+};};
+union DDR2_REG_175 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_3:8;
+};};
+union DDR2_REG_176 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_3:8;
+};};
+union DDR2_REG_177 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_OBS_REG_0_3:8;
+};};
+union DDR2_REG_178 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_3:8;
+};};
+union DDR2_REG_179 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_3:8;
+};};
+union DDR2_REG_17A {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_3:8;
+};};
+union DDR2_REG_17B {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_0_3:8;
+};};
+union DDR2_REG_17C {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_3:8;
+};};
+union DDR2_REG_17D {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_3:8;
+};};
+union DDR2_REG_17E {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_3:8;
+};};
+union DDR2_REG_17F {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_DLL_OBS_REG_1_3:8;
+};};
+union DDR2_REG_180 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_CTRL_REG:8;
+};};
+union DDR2_REG_181 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_CTRL_REG:8;
+};};
+union DDR2_REG_182 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_CTRL_REG:8;
+};};
+union DDR2_REG_183 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_CTRL_REG:8;
+};};
+union DDR2_REG_184 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_PAD_TSEL_REG:8;
+};};
+union DDR2_REG_185 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_PAD_TSEL_REG:8;
+};};
+union DDR2_REG_186 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_PAD_TSEL_REG:8;
+};};
+union DDR2_REG_187 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_DEN_PHY_PAD_TSEL_REG:8;
+};};
+union DDR2_REG_188 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_PAD_DRIVE_REG_0:8;
+};};
+union DDR2_REG_189 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_PAD_DRIVE_REG_0:8;
+};};
+union DDR2_REG_18A {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_PAD_DRIVE_REG_0:8;
+};};
+union DDR2_REG_18B {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_PAD_DRIVE_REG_0:8;
+};};
+union DDR2_REG_18C {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_PAD_DRIVE_REG_1:8;
+};};
+union DDR2_REG_18D {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_PAD_DRIVE_REG_1:8;
+};};
 typedef struct DDR2_T {
 union DDR2_REG_00 reg00;
 union DDR2_REG_01 reg01;
@@ -1243,6 +2454,257 @@ union DDR2_REG_8F reg8F;
 union DDR2_REG_90 reg90;
 union DDR2_REG_91 reg91;
 union DDR2_REG_92 reg92;
+union DDR2_REG_93 reg93;
+union DDR2_REG_94 reg94;
+union DDR2_REG_95 reg95;
+union DDR2_REG_96 reg96;
+union DDR2_REG_97 reg97;
+union DDR2_REG_98 reg98;
+union DDR2_REG_99 reg99;
+union DDR2_REG_9A reg9A;
+union DDR2_REG_9B reg9B;
+union DDR2_REG_9C reg9C;
+union DDR2_REG_9D reg9D;
+union DDR2_REG_9E reg9E;
+union DDR2_REG_9F reg9F;
+union DDR2_REG_A0 regA0;
+union DDR2_REG_A1 regA1;
+union DDR2_REG_A2 regA2;
+union DDR2_REG_A3 regA3;
+union DDR2_REG_A4 regA4;
+union DDR2_REG_A5 regA5;
+union DDR2_REG_A6 regA6;
+union DDR2_REG_A7 regA7;
+union DDR2_REG_A8 regA8;
+union DDR2_REG_A9 regA9;
+union DDR2_REG_AA regAA;
+union DDR2_REG_AB regAB;
+union DDR2_REG_AC regAC;
+union DDR2_REG_AD regAD;
+union DDR2_REG_AE regAE;
+union DDR2_REG_AF regAF;
+union DDR2_REG_B0 regB0;
+union DDR2_REG_B1 regB1;
+union DDR2_REG_B2 regB2;
+union DDR2_REG_B3 regB3;
+union DDR2_REG_B4 regB4;
+union DDR2_REG_B5 regB5;
+union DDR2_REG_B6 regB6;
+union DDR2_REG_B7 regB7;
+union DDR2_REG_B8 regB8;
+union DDR2_REG_B9 regB9;
+union DDR2_REG_BA regBA;
+union DDR2_REG_BB regBB;
+union DDR2_REG_BC regBC;
+union DDR2_REG_BD regBD;
+union DDR2_REG_BE regBE;
+union DDR2_REG_BF regBF;
+union DDR2_REG_C0 regC0;
+union DDR2_REG_C1 regC1;
+union DDR2_REG_C2 regC2;
+union DDR2_REG_C3 regC3;
+union DDR2_REG_C4 regC4;
+union DDR2_REG_C5 regC5;
+union DDR2_REG_C6 regC6;
+union DDR2_REG_C7 regC7;
+union DDR2_REG_C8 regC8;
+union DDR2_REG_C9 regC9;
+union DDR2_REG_CA regCA;
+union DDR2_REG_CB regCB;
+union DDR2_REG_CC regCC;
+union DDR2_REG_CD regCD;
+union DDR2_REG_CE regCE;
+union DDR2_REG_CF regCF;
+union DDR2_REG_D0 regD0;
+union DDR2_REG_D1 regD1;
+union DDR2_REG_D2 regD2;
+union DDR2_REG_D3 regD3;
+union DDR2_REG_D4 regD4;
+union DDR2_REG_D5 regD5;
+union DDR2_REG_D6 regD6;
+union DDR2_REG_D7 regD7;
+union DDR2_REG_D8 regD8;
+union DDR2_REG_D9 regD9;
+union DDR2_REG_DA regDA;
+union DDR2_REG_DB regDB;
+union DDR2_REG_DC regDC;
+union DDR2_REG_DD regDD;
+union DDR2_REG_DE regDE;
+union DDR2_REG_DF regDF;
+union DDR2_REG_E0 regE0;
+union DDR2_REG_E1 regE1;
+union DDR2_REG_E2 regE2;
+union DDR2_REG_E3 regE3;
+union DDR2_REG_E4 regE4;
+union DDR2_REG_E5 regE5;
+union DDR2_REG_E6 regE6;
+union DDR2_REG_E7 regE7;
+union DDR2_REG_E8 regE8;
+union DDR2_REG_E9 regE9;
+union DDR2_REG_EA regEA;
+union DDR2_REG_EB regEB;
+union DDR2_REG_EC regEC;
+union DDR2_REG_ED regED;
+union DDR2_REG_EE regEE;
+union DDR2_REG_EF regEF;
+union DDR2_REG_F0 regF0;
+union DDR2_REG_F1 regF1;
+union DDR2_REG_F2 regF2;
+union DDR2_REG_F3 regF3;
+union DDR2_REG_F4 regF4;
+union DDR2_REG_F5 regF5;
+union DDR2_REG_F6 regF6;
+union DDR2_REG_F7 regF7;
+union DDR2_REG_F8 regF8;
+union DDR2_REG_F9 regF9;
+union DDR2_REG_FA regFA;
+union DDR2_REG_FB regFB;
+union DDR2_REG_FC regFC;
+union DDR2_REG_FD regFD;
+union DDR2_REG_FE regFE;
+union DDR2_REG_FF regFF;
+union DDR2_REG_100 reg100;
+union DDR2_REG_101 reg101;
+union DDR2_REG_102 reg102;
+union DDR2_REG_103 reg103;
+union DDR2_REG_104 reg104;
+union DDR2_REG_105 reg105;
+union DDR2_REG_106 reg106;
+union DDR2_REG_107 reg107;
+union DDR2_REG_108 reg108;
+union DDR2_REG_109 reg109;
+union DDR2_REG_10A reg10A;
+union DDR2_REG_10B reg10B;
+union DDR2_REG_10C reg10C;
+union DDR2_REG_10D reg10D;
+union DDR2_REG_10E reg10E;
+union DDR2_REG_10F reg10F;
+union DDR2_REG_110 reg110;
+union DDR2_REG_111 reg111;
+union DDR2_REG_112 reg112;
+union DDR2_REG_113 reg113;
+union DDR2_REG_114 reg114;
+union DDR2_REG_115 reg115;
+union DDR2_REG_116 reg116;
+union DDR2_REG_117 reg117;
+union DDR2_REG_118 reg118;
+union DDR2_REG_119 reg119;
+union DDR2_REG_11A reg11A;
+union DDR2_REG_11B reg11B;
+union DDR2_REG_11C reg11C;
+union DDR2_REG_11D reg11D;
+union DDR2_REG_11E reg11E;
+union DDR2_REG_11F reg11F;
+union DDR2_REG_120 reg120;
+union DDR2_REG_121 reg121;
+union DDR2_REG_122 reg122;
+union DDR2_REG_123 reg123;
+union DDR2_REG_124 reg124;
+union DDR2_REG_125 reg125;
+union DDR2_REG_126 reg126;
+union DDR2_REG_127 reg127;
+union DDR2_REG_128 reg128;
+union DDR2_REG_129 reg129;
+union DDR2_REG_12A reg12A;
+union DDR2_REG_12B reg12B;
+union DDR2_REG_12C reg12C;
+union DDR2_REG_12D reg12D;
+union DDR2_REG_12E reg12E;
+union DDR2_REG_12F reg12F;
+union DDR2_REG_130 reg130;
+union DDR2_REG_131 reg131;
+union DDR2_REG_132 reg132;
+union DDR2_REG_133 reg133;
+union DDR2_REG_134 reg134;
+union DDR2_REG_135 reg135;
+union DDR2_REG_136 reg136;
+union DDR2_REG_137 reg137;
+union DDR2_REG_138 reg138;
+union DDR2_REG_139 reg139;
+union DDR2_REG_13A reg13A;
+union DDR2_REG_13B reg13B;
+union DDR2_REG_13C reg13C;
+union DDR2_REG_13D reg13D;
+union DDR2_REG_13E reg13E;
+union DDR2_REG_13F reg13F;
+union DDR2_REG_140 reg140;
+union DDR2_REG_141 reg141;
+union DDR2_REG_142 reg142;
+union DDR2_REG_143 reg143;
+union DDR2_REG_144 reg144;
+union DDR2_REG_145 reg145;
+union DDR2_REG_146 reg146;
+union DDR2_REG_147 reg147;
+union DDR2_REG_148 reg148;
+union DDR2_REG_149 reg149;
+union DDR2_REG_14A reg14A;
+union DDR2_REG_14B reg14B;
+union DDR2_REG_14C reg14C;
+union DDR2_REG_14D reg14D;
+union DDR2_REG_14E reg14E;
+union DDR2_REG_14F reg14F;
+union DDR2_REG_150 reg150;
+union DDR2_REG_151 reg151;
+union DDR2_REG_152 reg152;
+union DDR2_REG_153 reg153;
+union DDR2_REG_154 reg154;
+union DDR2_REG_155 reg155;
+union DDR2_REG_156 reg156;
+union DDR2_REG_157 reg157;
+union DDR2_REG_158 reg158;
+union DDR2_REG_159 reg159;
+union DDR2_REG_15A reg15A;
+union DDR2_REG_15B reg15B;
+union DDR2_REG_15C reg15C;
+union DDR2_REG_15D reg15D;
+union DDR2_REG_15E reg15E;
+union DDR2_REG_15F reg15F;
+union DDR2_REG_160 reg160;
+union DDR2_REG_161 reg161;
+union DDR2_REG_162 reg162;
+union DDR2_REG_163 reg163;
+union DDR2_REG_164 reg164;
+union DDR2_REG_165 reg165;
+union DDR2_REG_166 reg166;
+union DDR2_REG_167 reg167;
+union DDR2_REG_168 reg168;
+union DDR2_REG_169 reg169;
+union DDR2_REG_16A reg16A;
+union DDR2_REG_16B reg16B;
+union DDR2_REG_16C reg16C;
+union DDR2_REG_16D reg16D;
+union DDR2_REG_16E reg16E;
+union DDR2_REG_16F reg16F;
+union DDR2_REG_170 reg170;
+union DDR2_REG_171 reg171;
+union DDR2_REG_172 reg172;
+union DDR2_REG_173 reg173;
+union DDR2_REG_174 reg174;
+union DDR2_REG_175 reg175;
+union DDR2_REG_176 reg176;
+union DDR2_REG_177 reg177;
+union DDR2_REG_178 reg178;
+union DDR2_REG_179 reg179;
+union DDR2_REG_17A reg17A;
+union DDR2_REG_17B reg17B;
+union DDR2_REG_17C reg17C;
+union DDR2_REG_17D reg17D;
+union DDR2_REG_17E reg17E;
+union DDR2_REG_17F reg17F;
+union DDR2_REG_180 reg180;
+union DDR2_REG_181 reg181;
+union DDR2_REG_182 reg182;
+union DDR2_REG_183 reg183;
+union DDR2_REG_184 reg184;
+union DDR2_REG_185 reg185;
+union DDR2_REG_186 reg186;
+union DDR2_REG_187 reg187;
+union DDR2_REG_188 reg188;
+union DDR2_REG_189 reg189;
+union DDR2_REG_18A reg18A;
+union DDR2_REG_18B reg18B;
+union DDR2_REG_18C reg18C;
+union DDR2_REG_18D reg18D;
 } ddr2_t;
 
 extern ddr2_t ddr2;

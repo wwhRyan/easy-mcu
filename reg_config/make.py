@@ -96,10 +96,10 @@ make_C_files(path, sheet_name, start_row, end_row)
 
 sheet_name = 'LPDDR2'
 start_row = 5 - 1
-end_row = 101
+end_row = 872
 make_C_files(path, sheet_name, start_row, end_row)
 
 sheet_name = 'DDR2'
 start_row = 5 - 1
-end_row = 151
+end_row = 402
 make_C_files(path, sheet_name, start_row, end_row)
