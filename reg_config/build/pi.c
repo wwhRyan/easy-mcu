@@ -37,4 +37,9 @@ pi_t pi = {
     .reg21.byte = 0x10,
     .reg22.byte = 0x00,
     .reg23.byte = 0x40,
+    .reg24.byte = 0x00,
+    .reg25.byte = 0x40,
+    .reg26.byte = 0x04,
+    .reg27.byte = 0x00,
+    .reg28.byte = 0x08,
 };

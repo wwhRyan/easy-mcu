@@ -1,6 +1,6 @@
 import sys
 from openpyxl import load_workbook
-path = '190604_CXD3554GG_register_setting_SXRD241_60Hz (E).xlsx'
+path = '220425[Appotronics]_CXD3554GG_register_setting_241Bgam_8time_RRGGBBGG_700Mbps_60Hz.xlsx'
 sheet_name = 'MISC'
 start_row = 5 - 1
 end_row = 165

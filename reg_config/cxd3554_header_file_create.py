@@ -1,6 +1,6 @@
 import sys
 from openpyxl import load_workbook
-path = '190604_CXD3554GG_register_setting_SXRD241_60Hz (E).xlsx'
+path = '220425[Appotronics]_CXD3554GG_register_setting_241Bgam_8time_RRGGBBGG_700Mbps_60Hz.xlsx'
 sheet_name = 'MISC'
 start_row = 5 - 1
 end_row = 165
@@ -48,9 +48,9 @@ for row in range(start_row, end_row):
     # calculate line[8] none element bits in count[8]
     count = [1, 1, 1, 1, 1, 1, 1, 1]
     for idx in range(0, 8):
-        if(line[idx] == None and count[idx] != 0):
+        if((line[idx] == None or line[idx] == '') and count[idx] != 0):
             count[idx] = count[idx] - 1
-            while line[idx] == None:
+            while line[idx] == None or line[idx] == '':
                 idx -= 1
             count[idx] += 1
 
@@ -59,6 +59,10 @@ for row in range(start_row, end_row):
         if line[idx] == "-":
             line[idx] = " "
         if line[idx] == "RESERVED":
+            line[idx] = " "
+        if line[idx] == "Sony Use Register":
+            line[idx] = " "
+        if line[idx] == 0:
             line[idx] = " "
         # cut off the useless '[x:x]'
         if(line[idx] != None):

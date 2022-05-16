@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 #define PI_BASE_ADDRESS 0x2E00
-#define PI_REG_NUM 36
+#define PI_REG_NUM 41
 #define PI_REG_ADDR(reg) REG_ADDR(PI_BASE_ADDRESS,pi_t,reg)
 
 union PI_REG_00 {
@@ -205,6 +205,36 @@ union PI_REG_23 {
 uint8_t byte;    struct {
 uint8_t PI_OPG_CHK_HW:8;
 };};
+union PI_REG_24 {
+uint8_t byte;    struct {
+uint8_t PI_OPG_CHK_VW:2;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union PI_REG_25 {
+uint8_t byte;    struct {
+uint8_t PI_OPG_CHK_VW:8;
+};};
+union PI_REG_26 {
+uint8_t byte;    struct {
+uint8_t PI_OPG_VXT_WIDTH:8;
+};};
+union PI_REG_27 {
+uint8_t byte;    struct {
+uint8_t PI_OPG_GRAY_INIT:4;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+uint8_t  :1;
+};};
+union PI_REG_28 {
+uint8_t byte;    struct {
+uint8_t PI_OPG_GRAY_INIT:8;
+};};
 typedef struct PI_T {
 union PI_REG_00 reg00;
 union PI_REG_01 reg01;
@@ -242,6 +272,11 @@ union PI_REG_20 reg20;
 union PI_REG_21 reg21;
 union PI_REG_22 reg22;
 union PI_REG_23 reg23;
+union PI_REG_24 reg24;
+union PI_REG_25 reg25;
+union PI_REG_26 reg26;
+union PI_REG_27 reg27;
+union PI_REG_28 reg28;
 } pi_t;
 
 extern pi_t pi;

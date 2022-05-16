@@ -28,7 +28,18 @@ if(len(sys.argv) == 1 + 1):
     print("*** Clean build files done ***")
     exit(0)
 
-path = '190604_CXD3554GG_register_setting_SXRD241_60Hz (E).xlsx'
+path = '220425[Appotronics]_CXD3554GG_register_setting_241Bgam_8time_RRGGBBGG_700Mbps_60Hz.xlsx'
+
+sheet_name = 'KST'
+start_row = 5 - 1
+end_row = 35
+make_C_files(path, sheet_name, start_row, end_row)
+
+sheet_name = 'BP'
+start_row = 5 - 1
+end_row = 15
+make_C_files(path, sheet_name, start_row, end_row)
+
 sheet_name = 'MISC'
 start_row = 5 - 1
 end_row = 165
@@ -64,10 +75,6 @@ start_row = 5 - 1
 end_row = 41
 make_C_files(path, sheet_name, start_row, end_row)
 
-sheet_name = 'INP'
-start_row = 5 - 1
-end_row = 74
-make_C_files(path, sheet_name, start_row, end_row)
 
 sheet_name = 'FRC'
 start_row = 5 - 1
@@ -76,7 +83,7 @@ make_C_files(path, sheet_name, start_row, end_row)
 
 sheet_name = 'PI'
 start_row = 5 - 1
-end_row = 40
+end_row = 45
 make_C_files(path, sheet_name, start_row, end_row)
 
 sheet_name = 'TX'
@@ -101,5 +108,15 @@ make_C_files(path, sheet_name, start_row, end_row)
 
 sheet_name = 'DDR2'
 start_row = 5 - 1
-end_row = 402
+end_row = 407
+make_C_files(path, sheet_name, start_row, end_row)
+
+sheet_name = 'SXRD241_Page0'
+start_row = 5 - 1
+end_row = 259
+make_C_files(path, sheet_name, start_row, end_row)
+
+sheet_name = 'SXRD241_Page1'
+start_row = 5 - 1
+end_row = 259
 make_C_files(path, sheet_name, start_row, end_row)

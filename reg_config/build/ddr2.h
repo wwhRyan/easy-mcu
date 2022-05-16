@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 #define DDR2_BASE_ADDRESS 0x0800
-#define DDR2_REG_NUM 398
+#define DDR2_REG_NUM 403
 #define DDR2_REG_ADDR(reg) REG_ADDR(DDR2_BASE_ADDRESS,ddr2_t,reg)
 
 union DDR2_REG_00 {
@@ -2306,6 +2306,26 @@ union DDR2_REG_18D {
 uint8_t byte;    struct {
 uint8_t H4_DDR2_PHY_PAD_DRIVE_REG_1:8;
 };};
+union DDR2_REG_18E {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_PAD_DRIVE_REG_1:8;
+};};
+union DDR2_REG_18F {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_PAD_DRIVE_REG_1:8;
+};};
+union DDR2_REG_190 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_PAD_DRIVE_REG_2:8;
+};};
+union DDR2_REG_191 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_PAD_DRIVE_REG_2:8;
+};};
+union DDR2_REG_192 {
+uint8_t byte;    struct {
+uint8_t H4_DDR2_PHY_PAD_DRIVE_REG_2:8;
+};};
 typedef struct DDR2_T {
 union DDR2_REG_00 reg00;
 union DDR2_REG_01 reg01;
@@ -2705,6 +2725,11 @@ union DDR2_REG_18A reg18A;
 union DDR2_REG_18B reg18B;
 union DDR2_REG_18C reg18C;
 union DDR2_REG_18D reg18D;
+union DDR2_REG_18E reg18E;
+union DDR2_REG_18F reg18F;
+union DDR2_REG_190 reg190;
+union DDR2_REG_191 reg191;
+union DDR2_REG_192 reg192;
 } ddr2_t;
 
 extern ddr2_t ddr2;

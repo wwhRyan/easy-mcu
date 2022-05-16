@@ -399,4 +399,9 @@ ddr2_t ddr2 = {
     .reg18B.byte = 0x00,
     .reg18C.byte = 0x04,
     .reg18D.byte = 0x00,
+    .reg18E.byte = 0x04,
+    .reg18F.byte = 0x00,
+    .reg190.byte = 0x04,
+    .reg191.byte = 0x00,
+    .reg192.byte = 0x04,
 };

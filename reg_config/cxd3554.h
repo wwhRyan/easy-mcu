@@ -47,30 +47,15 @@
 #include "mipi.h"
 #include "inp.h"
 #include "tpg.h"
+#include "kst.h"
+#include "bp.h"
+#include "sxrd241_page0.h"
+#include "sxrd241_page1.h"
 
-#if 0
-#define MISC_ADDR 0x0000
-#define MISC_REG_ADDR(reg) REG_ADDR(MISC_ADDR, misc_t, reg)
+#define CXD3554_ADDR 0x74
+#define CXD3554_WRITE (CXD3554_ADDR | 0x00)
+#define CXD3554_READ (CXD3554_ADDR | 0x01)
 
-union REG_00
-{
-    uint8_t byte;
-    struct
-    {
-        uint8_t gmport16_oe : 1;
-        uint8_t gmport17_oe : 1;
-        uint8_t gmport18_oe : 1;
-        uint8_t gmport19_oe : 1;
-        uint8_t gmport20_oe : 1;
-        uint8_t : 3;
-    };
-};
-
-typedef struct MISC_T
-{
-    union REG_00 reg00;
-} misc_t;
-
-#endif
+#define SXRD241_ADDR 0x92
 
 #endif
