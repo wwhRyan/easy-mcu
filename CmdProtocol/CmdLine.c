@@ -175,10 +175,13 @@ void ICmdLinesInput(char *cmd)
         return;
     }
 
+    char tmp[MAX_CMD_SIZE] = {0};
+    strcpy(tmp, cmd);
+
     // A pointer, which we will be used as the context variable
     // Initially, we will set it to NULL
     char *context = NULL;
-    token = strtok_r((char *)cmd, " ", &context);
+    token = strtok_r((char *)tmp, " ", &context);
     while (token != NULL)
     {
         argv[argc] = index;
