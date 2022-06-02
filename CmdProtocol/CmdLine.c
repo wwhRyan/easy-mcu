@@ -17,66 +17,6 @@ uint16_t max_cmd_list_size = sizeof(st_cmd_table) / sizeof(cmd_table_t);
 
 static int m_FindInputCmdId(const char *input_cmd, const cmd_table_t *cmd_table);
 
-/**
- * Return cmdSize before flag like ":" or "=", cmdSize contains ":"
- * eg: CatchCmdSizeBeforeFlag("setPid=xxx", "=") = 7(not 6!)
- */
-size_t m_CatchCmdSizeBeforeFlag(const char *cmd, char *flag)
-{
-    char *token;
-    char *cmd_temp = (char *)cmd;
-    token = strtok(cmd_temp, flag);
-    return strlen(token) + 1;
-}
-
-uint32_t getIndexOfSigns(char ch)
-{
-    if (ch >= '0' && ch <= '9')
-    {
-        return ch - '0';
-    }
-    else if (ch >= 'A' && ch <= 'F')
-    {
-        return ch - 'A' + 10;
-    }
-    else if (ch >= 'a' && ch <= 'f')
-    {
-        return ch - 'a' + 10;
-    }
-    return 999;
-}
-
-uint32_t hex2dec(unsigned char *source)
-{
-    uint32_t sum = 0;
-    uint32_t t = 1;
-    unsigned char i = 0;
-
-    unsigned char len = strlen((char *)source);
-    for (i = len; i >= 1; i--)
-    {
-        sum += t * getIndexOfSigns(*(source + i - 1));
-        t *= 16;
-    }
-    return sum;
-}
-
-uint32_t m_CatchCmdSizeAfterFlag(const char *cmd, char *flag)
-{
-    uint8_t i = 0;
-    uint32_t data[2];
-    char *token = NULL;
-
-    token = strtok((char *)cmd, flag);
-    while (token)
-    {
-        data[i++] = hex2dec((unsigned char *)token);
-        token = strtok(NULL, flag);
-    }
-
-    return data[1];
-}
-
 static int m_FindInputCmdId(const char *input_cmd, const cmd_table_t *cmd_table)
 {
     char *token;
@@ -154,7 +94,7 @@ void remove_cmd_tail(char *cmd)
     }
 }
 
-void ICmdLinesInput(char *cmd)
+void easy_shell_input(char *cmd)
 {
     cmd_func_t fp;
 

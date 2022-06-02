@@ -88,11 +88,7 @@ extern cmd_table_t st_cmd_table[];
 
  */
 
-void ICmdLinesInput(char *cmd);
-size_t m_CatchCmdSizeBeforeFlag(const char *cmd, char *flag);
-uint32_t getIndexOfSigns(char ch);
-uint32_t hex2dec(unsigned char *source);
-uint32_t m_CatchCmdSizeAfterFlag(const char *cmd, char *flag);
+void easy_shell_input(char *cmd);
 cmd_table_t *get_cmd_table(void);
 uint16_t get_cmd_table_cnt(void);
 

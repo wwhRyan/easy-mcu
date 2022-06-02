@@ -33,7 +33,7 @@ static void getnumber(char argc, char *argv)
     int data = 0;
     if (argc > 1 && argc < 3)
     {
-        sscanf((const char *)&(argv[argv[1]]), "%d", &data);
+        sscanf((const char *)&(argv[(uint8_t)argv[1]]), "%d", &data);
         cmd_printf("%d\n", data);
     }
     else
@@ -49,7 +49,7 @@ static void getmutinumber(char argc, char *argv)
     {
         for (size_t i = 1; i < argc; i++)
         {
-            cmd_printf("%d \n", atoi((const char *)&(argv[argv[i]])));
+            cmd_printf("%d \n", atoi((const char *)&(argv[(uint8_t)argv[i]])));
         }
     }
     else
@@ -65,7 +65,7 @@ void ls(char argc, char *argv)
 {
     if (argc > 1)
     {
-        if (!strcmp("cmd", &argv[argv[1]]))
+        if (!strcmp("cmd", &argv[(uint8_t)argv[1]]))
         {
             for (int i = 0; i < get_cmd_table_cnt(); i++)
             {
@@ -73,11 +73,11 @@ void ls(char argc, char *argv)
                 cmd_printf("\r\n");
             }
         }
-        else if (!strcmp("-v", &argv[argv[1]]))
+        else if (!strcmp("-v", &argv[(uint8_t)argv[1]]))
         {
             cmd_printf("ls version 1.0.\r\n");
         }
-        else if (!strcmp("-h", &argv[argv[1]]))
+        else if (!strcmp("-h", &argv[(uint8_t)argv[1]]))
         {
             cmd_printf("useage: ls [options]\r\n");
             cmd_printf("options: \r\n");
@@ -96,7 +96,7 @@ void ls(char argc, char *argv)
  * @brief tell user how to use the command
  * 
  * @param argc the number of arguments, must larger than 1, the first argument is the command name "test"
- * @param argv char array, index + buffer, index argv[index], buffer argv[argv[index]]
+ * @param argv char array, index + buffer, index argv[index], buffer argv[(uint8_t)argv[index]]
  */
 void test(char argc, char *argv)
 {
@@ -104,7 +104,7 @@ void test(char argc, char *argv)
     cmd_printf("test command:\r\n");
     for (i = 0; i < argc; i++)
     {
-        cmd_printf("paras %d: %s\r\n", i, &(argv[argv[i]]));
+        cmd_printf("paras %d: %s\r\n", i, &(argv[(uint8_t)argv[i]]));
     }
 }
 
