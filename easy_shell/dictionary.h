@@ -107,7 +107,7 @@ void dictionary_del(dictionary * vd);
   dictionary object, you should not try to free it or modify it.
  */
 /*--------------------------------------------------------------------------*/
-const char * dictionary_get(const dictionary * d, const char * key, const char * def);
+void * dictionary_get(const dictionary * d, const char * key, void * def);
 
 
 /*-------------------------------------------------------------------------*/
@@ -136,7 +136,7 @@ const char * dictionary_get(const dictionary * d, const char * key, const char *
   This function returns non-zero in case of failure.
  */
 /*--------------------------------------------------------------------------*/
-int dictionary_set(dictionary * vd, const char * key, const char * val);
+int dictionary_set(dictionary * vd, const char * key, void * val);
 
 /*-------------------------------------------------------------------------*/
 /**

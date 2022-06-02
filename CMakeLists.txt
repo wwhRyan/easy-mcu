@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.5)
+cmake_minimum_required(VERSION 3.5)
 
 project(easy-mcu)
 
@@ -8,4 +8,4 @@ add_subdirectory(CmdProtocol)
 add_subdirectory(AtProtocol)
 add_subdirectory(TestCase)
 add_subdirectory(reg_config)
-
+add_subdirectory(easy_shell)

@@ -9,14 +9,20 @@
  * 
  */
 
-#include "CmdLine.h"
+#include "easy_shell.h"
+
+void helloworld(char argc, char *argv)
+{
+    es_printf("helloworld\n");
+}
 
 int main(void)
 {
     char cmd[0xff] = {0};
+    shell_append("helloworld", helloworld);
     for (;;)
     {
-        printf("input cmd:\n");
+        es_printf("input cmd:\n");
         scanf("%254[^\n]s", cmd); // get a string until '\n'
         easy_shell_input(cmd);
         memset(cmd, 0, sizeof(cmd));

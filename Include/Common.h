@@ -37,4 +37,20 @@
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 #define ARRAYNUM(arr_name) (uint32_t)(sizeof(arr_name) / sizeof(*(arr_name)))
 
+#define E_assert(condition)                                   \
+    do                                                      \
+    {                                                       \
+        if (condition)                                      \
+            ;                                               \
+        else                                                \
+        {                                                   \
+            printf("\nERROR:%s, %d\n", __FILE__, __LINE__); \
+            for (;;)                                        \
+                ;                                           \
+        }                                                   \
+    } while (0)
+
+// #define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)   //获取文件名 linux下
+#define __FILENAME__ (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__) //获取文件名 windows下
+
 #endif
