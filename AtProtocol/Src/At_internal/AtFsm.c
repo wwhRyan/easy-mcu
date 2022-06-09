@@ -342,7 +342,7 @@ STATIC bool m_GuardIdle2Processing(void *condition, asEvent *event)
                 memset(gAt_Obj.pAt_str->pData + i, 0, len - i); // ignore other cmds. including \r\n
 
                 AtTracePrintf("AT format is right!");
-                AtTracePrintf("%s", gAt_Obj.pAt_str->pData);
+                AtTracePrintf("cmd string:%s", gAt_Obj.pAt_str->pData);
                 return kAtTrue;
             }
         }
@@ -502,7 +502,7 @@ STATIC void m_ActionFeedback2Idle(\
 
     if(kAtQueryType == at_obj->type)
     {
-        AtDebugPrintf("At Query!\n");
+        AtDebugPrintf("At Query!");
 
         /* Run the Registered function. */
         if(NULL != at_obj->pFunc)
@@ -541,7 +541,7 @@ STATIC void m_ActionFeedback2Idle(\
     /* Run the Feedback fucntion.  */
     if(NULL != at_obj->feedbackFunc)
     {
-        AtTracePrintf("feedback Func.\r\n");
+        AtTracePrintf("feedback Func.");
         if(at_obj->pFeedback_at_str->size > 0)
         {
             at_obj->feedbackFunc(at_obj->pFeedback_at_str->pData);
@@ -549,7 +549,7 @@ STATIC void m_ActionFeedback2Idle(\
     }
     else
     {
-        AtTracePrintf("No feedback Func!\r\n");
+        AtTracePrintf("No feedback Func!");
         __IRaiseAtError(kAtNotAllow);
     }
         

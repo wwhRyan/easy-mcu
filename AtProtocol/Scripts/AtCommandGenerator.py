@@ -1,3 +1,4 @@
+#!/c/Users/APPO/AppData/Local/Programs/Python/Python38/python.exe
 # -*- coding: utf-8 -*-
 """
 Created on Mon Oct 26 09:49:49 2020
@@ -88,8 +89,15 @@ class ctemplate:
         cm += ("unsigned short g_atcmd_htsize = %d;\t/* AtCmd HashTable Size */\n\n" %atsize)
         cm += ("unsigned char g_atcmd_htsize_bits = %d;\t/* AtCmd HashTable Size's bits */\n\n" %atsize.bit_length())
         cm += ("asCmdListUnit gsCmdList[] = {\n")
-        for i in range(0, atsize) :
-            atstr = "\t{ " + hex(hashtable[i]['value']) + ", NULL },"            
+        for i in range(0, atsize):
+            atstr = "\t{ " + hex(hashtable[i]['value']) + ", NULL ,"
+            cm += atstr
+            if(hashtable[i]['value'] != 0):
+                atstr = ("\"")+hashtable[i]['name'].decode("utf-8")+("\"")
+                cm += atstr
+            else:
+                cm += ("NULL")
+            atstr = "},"
             cm += atstr
             if(hashtable[i]['value'] != 0):
                 atstr = " /* " + hashtable[i]['name'].decode("utf-8") + " */\n"            
@@ -118,7 +126,7 @@ class ctemplate:
                 cm += (",\n")
         cm += ("} aeCmdName;\n\n")
         cm += ("typedef struct __asCmdListUnit {\n")
-        cm += ("\tunsigned char var;\n\tvoid (*func)(asAtKvList*, asAtStr*);\n} asCmdListUnit;\n\n")
+        cm += ("\tint var;\n\tvoid (*func)(asAtKvList*, asAtStr*);\n\tchar* str;\n} asCmdListUnit;\n\n")
         cm += ("extern unsigned short g_atcmd_max_collide_num;\n")
         cm += ("extern unsigned short g_atcmd_num;\n")
         cm += ("extern unsigned short g_atcmd_htsize;\n")

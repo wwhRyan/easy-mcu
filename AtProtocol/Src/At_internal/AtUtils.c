@@ -334,22 +334,40 @@ STATIC aeAtBool m_ParseAtKeyValues(asAtObj *obj, char* str_kvs, uint32_t MAX_KVS
         }
 
         obj->pKv_list->size = kv_num;
-        for(int i = 0; i < kv_num; i++)
+        for (int i = 0; i < kv_num; i++)
         {
             AtTracePrintf("i = %d, %p", i, obj->pKv_list->pList + i);
-            char* tmp_rest_str;
+            char *tmp_rest_str;
+
             obj->pKv_list->pList[i].key.pData = AtStrtok(kv_couples[i], ":", &tmp_rest_str);
-            if(NULL != obj->pKv_list->pList[i].key.pData)
-            obj->pKv_list->pList[i].key.size = strlen(obj->pKv_list->pList[i].key.pData);
+            if (NULL != obj->pKv_list->pList[i].key.pData)
+            {
+                obj->pKv_list->pList[i].key.size = strlen(obj->pKv_list->pList[i].key.pData);
+            }
+            else
+            {
+                AtTracePrintf("Key is NULL!");
+                obj->pKv_list->pList[i].key.pData = "NULL";
+                obj->pKv_list->pList[i].key.size = sizeof("NULL");
+            }
+
             obj->pKv_list->pList[i].value.pData = AtStrtok(NULL, ":", &tmp_rest_str);
-            if(NULL != obj->pKv_list->pList[i].value.pData)
-            obj->pKv_list->pList[i].value.size = strlen(obj->pKv_list->pList[i].value.pData);
+            if (NULL != obj->pKv_list->pList[i].value.pData)
+            {
+                obj->pKv_list->pList[i].value.size = strlen(obj->pKv_list->pList[i].value.pData);
+            }
+            else
+            {
+                AtTracePrintf("Value is NULL! copy to key!");
+                obj->pKv_list->pList[i].value.pData = obj->pKv_list->pList[i].key.pData;
+                obj->pKv_list->pList[i].value.size = obj->pKv_list->pList[i].key.size;
+            }
         }
         return kAtTrue;
     }
-    
+
     AtTracePrintf("Invalid input!");
-    __IRaiseAtError(kAtInvalidCmd);
+    __IRaiseAtError(kAtInvalidKey);
     return kAtFalse;
 }
 

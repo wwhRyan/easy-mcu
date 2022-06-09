@@ -1,3 +1,4 @@
+#!/c/Users/APPO/AppData/Local/Programs/Python/Python38/python.exe
 # -*- coding: utf-8 -*-
 """
 Created on Mon Oct 26 09:49:49 2020
@@ -88,7 +89,14 @@ class ctemplate:
         cm += ("unsigned char g_atkey_htsize_bits = %d;\t/* AtKey HashTable Size's bits */\n\n" %atsize.bit_length())
         cm += ("asKeyListUnit gsKeyList[] = {\n")
         for i in range(0, atsize) :
-            atstr = "\t{ " + hex(hashtable[i]['value']) + ", 0 },"            
+            atstr = "\t{ " + hex(hashtable[i]['value']) + ", 0 ,"            
+            cm += atstr
+            if(hashtable[i]['value'] != 0):
+                atstr = ("\"")+hashtable[i]['name'].decode("utf-8")+("\"")
+                cm += atstr
+            else:
+                cm += ("NULL")
+            atstr = "},"
             cm += atstr
             if(hashtable[i]['value'] != 0):
                 atstr = " /* " + hashtable[i]['name'].decode("utf-8") + " */\n"            
@@ -116,7 +124,7 @@ class ctemplate:
                 cm += (",\n")
         cm += ("} aeKeyName;\n\n")
         cm += ("typedef struct __asKeyListUnit {\n")
-        cm += ("\tunsigned char var;\n\tvoid* type;\n} asKeyListUnit;\n\n")
+        cm += ("\tint var;\n\tvoid* type;\n\tchar* str;\n\n} asKeyListUnit;\n\n")
         cm += ("extern unsigned short g_atkey_max_collide_num;\n")
         cm += ("extern unsigned short g_atkey_num;\n")
         cm += ("extern unsigned short g_atkey_htsize;\n")

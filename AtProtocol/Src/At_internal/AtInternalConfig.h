@@ -90,6 +90,7 @@ typedef enum __aeAtValueType {
 typedef struct __asAtHashUnit{
     unsigned var;
     void* ptr;
+	char* str;
 }asAtHashUnit;
 
 /* AT hash index and check value couples. */
