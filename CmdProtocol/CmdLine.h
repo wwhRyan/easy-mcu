@@ -88,7 +88,7 @@ extern cmd_table_t st_cmd_table[];
 
  */
 
-void easy_shell_input(char *cmd);
+void ICmdLinesInput(char *cmd);
 cmd_table_t *get_cmd_table(void);
 uint16_t get_cmd_table_cnt(void);
 

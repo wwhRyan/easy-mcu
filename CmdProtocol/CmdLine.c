@@ -94,7 +94,7 @@ void remove_cmd_tail(char *cmd)
     }
 }
 
-void easy_shell_input(char *cmd)
+void ICmdLinesInput(char *cmd)
 {
     cmd_func_t fp;
 

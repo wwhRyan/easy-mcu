@@ -1,15 +1,16 @@
 /**
  * @file unittest.c
  * @author Wu Wenhao (whwu@appotronics.com)
- * @brief 
+ * @brief
  * @version 1.02
  * @date 2021-10-29
- * 
+ *
  * @copyright Copyright@appotronics 2021. All Rights Reserved
- * 
+ *
  */
 
 #include "easy_shell.h"
+#include <windows.h>
 
 void helloworld(char argc, char *argv)
 {
@@ -24,7 +25,8 @@ int main(void)
     {
         es_printf("input cmd:\n");
         scanf("%254[^\n]s", cmd); // get a string until '\n'
-        easy_shell_input(cmd);
+        // easy_shell_input(cmd);
+        GET_TIME(easy_shell_input, cmd);
         memset(cmd, 0, sizeof(cmd));
         fflush(stdin); // clear the buffer
     }

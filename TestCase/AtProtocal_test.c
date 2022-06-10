@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "../AtProtocol/AtProtocol.h"
+#include "windows.h"
+#include "Common.h"
 
 asAtProtocol at_obj;
 
@@ -72,7 +74,8 @@ int main(int argc, char **argv)
         printf("\nPlease Input AT cmd:\n");
         scanf("%s", str);
         str[strlen(str)] = '\n'; // add '\n' to end of str
-        IAtCmdDecodeAndRun(&at_obj, str);
+        GET_TIME(IAtCmdDecodeAndRun, &at_obj, str);
+        // IAtCmdDecodeAndRun(&at_obj, str);
         memset(str, 0, 0xff);
     }
 }
