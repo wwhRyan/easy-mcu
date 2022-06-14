@@ -1,12 +1,12 @@
 /**
  * @file CmdLine.c
  * @author Wu Wenhao (whwu@appotronics.com)
- * @brief 
+ * @brief
  * @version 1.02
  * @date 2021-11-01
- * 
+ *
  * @copyright Copyright@appotronics 2021. All Rights Reserved
- * 
+ *
  */
 
 #include "CmdLine.h"
@@ -103,9 +103,11 @@ void ICmdLinesInput(char *cmd)
     char *token = NULL;
     char index = CMD_PARAS_MAX_NUM;
 
-    remove_cmd_tail(cmd);
+    char tmp[MAX_CMD_SIZE] = {0};
+    strcpy(tmp, cmd);
+    remove_cmd_tail(tmp);
 
-    fp = cmd_search_func(cmd);
+    fp = cmd_search_func(tmp);
     if (fp != NULL)
     {
     }
@@ -114,9 +116,6 @@ void ICmdLinesInput(char *cmd)
         printf("WRONG_CMD!\r\n");
         return;
     }
-
-    char tmp[MAX_CMD_SIZE] = {0};
-    strcpy(tmp, cmd);
 
     // A pointer, which we will be used as the context variable
     // Initially, we will set it to NULL
