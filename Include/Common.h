@@ -37,6 +37,7 @@
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 #define ARRAYNUM(arr_name) (uint32_t)(sizeof(arr_name) / sizeof(*(arr_name)))
 
+#ifdef DEBUG
 #define E_assert(condition)                                 \
     do                                                      \
     {                                                       \
@@ -49,6 +50,9 @@
                 ;                                           \
         }                                                   \
     } while (0)
+#else
+#define E_assert(condition)
+#endif
 
 #ifdef WIN32
 #define GET_TIME(func, ...)                                                       \
