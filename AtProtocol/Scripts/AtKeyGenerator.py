@@ -8,7 +8,7 @@ Created on Mon Oct 26 09:49:49 2020
 print("AtKey HashTable Generator")
 
 atnum    = 0     #AT命令个数
-fillrate = 0.6  #填充因子
+fillrate = 0.5  #填充因子
 
 import AtSupport as Ats
 from math import sqrt

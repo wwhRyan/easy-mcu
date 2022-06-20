@@ -5,6 +5,8 @@
 
 asAtProtocol at_obj;
 
+#define debug_printf printf
+
 // testcase AT+Gamma=On
 IAtOperationRegister(kCmdGamma, pAt_Kv_List, pAt_feedback_str)
 {
@@ -54,6 +56,26 @@ IAtOperationRegister(kCmdSystem, pAt_Kv_List, pAt_feedback_str)
         if (kKeyStatus == my_kvs[0].key)
         {
             IAddFeedbackStrTo(pAt_feedback_str, "OK\n");
+        }
+    }
+}
+
+IAtOperationRegister(kCmdLightSourceTime, pAt_Kv_List, pAt_feedback_str)
+{
+    asAtKvUnit_Enum my_kvs[1];
+    ICastAtKvListTo(kAtValueEnum, pAt_Kv_List, my_kvs);
+
+    IAddFeedbackStrTo(pAt_feedback_str, "OK\n");
+
+    if (kAtControlType == IGetAtCmdType(&at_obj))
+    {
+        debug_printf("system value error\n");
+    }
+    else
+    {
+        if (kKeyMinute == my_kvs[0].key)
+        {
+            IAddFeedbackStrTo(pAt_feedback_str, "Minute:%d\n", 10);
         }
     }
 }
