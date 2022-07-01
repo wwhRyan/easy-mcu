@@ -10,7 +10,7 @@
 extern aeAtErrorCode gAt_status_code;
 extern asAtObj gAt_Obj;
 
-const char gAt_error_code_str[][0x10] = {
+const char *gAt_error_code_str[] = {
     "Ok",
     "Error",
     "InvalidCmd",
@@ -21,8 +21,7 @@ const char gAt_error_code_str[][0x10] = {
     "NoOperation",
     "KeyValueOverflow",
     "AtEventError",
-    "UndefinedError"
-};
+    "UndefinedError"};
 
 STATIC uint32_t m_BkdrHash(const char* input_str);
 STATIC asAtHashCheck m_CalculateHashCheck(const char* input_str, uint8_t table_len_bits, uint32_t table_len);
@@ -323,10 +322,10 @@ STATIC aeAtBool m_ParseAtKeyValues(asAtObj *obj, char* str_kvs, uint32_t MAX_KVS
         AtTracePrintf("Start parsing!");
         char* kv_couples[MAX_KV_COUPLES_NUM];
 
-        int kv_num = m_SplitStr2Tokens(str_kvs, ",", kv_couples, MAX_KV_COUPLES_NUM);
+        int kv_num = m_SplitStr2Tokens(str_kvs, ",", kv_couples, MAX_KV_COUPLES_NUM + 1);
 
         /* Too many key-values. */
-        if (MAX_KVS_STR_LEN <= kv_num)
+        if (MAX_KV_COUPLES_NUM <= kv_num)
         {
             AtTracePrintf("K-V overflow!");
             __IRaiseAtError(kAtKeyValueOverflow);

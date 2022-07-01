@@ -120,7 +120,7 @@ typedef enum __aeAtAtStatus{
     /* At format error */                     
     kAtInvalidCmd,       
     kAtCmdNotSupport,             
-    kAtInvalidOperator,
+    kAtInvalidOperator,    // All the above reply “AT+NULL#...”
     kAtInvalidKey,
     kAtNotAllow,
     kAtNoOperation,

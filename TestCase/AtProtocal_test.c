@@ -7,6 +7,7 @@ asAtProtocol at_obj;
 
 #define debug_printf printf
 
+#if 0
 // testcase AT+Gamma=On
 IAtOperationRegister(kCmdGamma, pAt_Kv_List, pAt_feedback_str)
 {
@@ -20,6 +21,7 @@ IAtOperationRegister(kCmdGamma, pAt_Kv_List, pAt_feedback_str)
     }
     IAddFeedbackStrTo(pAt_feedback_str, "OK\n");
 }
+#endif
 
 // testcase AT+System=On
 IAtOperationRegister(kCmdSystem, pAt_Kv_List, pAt_feedback_str)

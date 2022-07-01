@@ -11,7 +11,7 @@
 
 /********* Internal variables *********/
 extern aeAtErrorCode gAt_status_code;
-extern char gAt_error_code_str[][0x10];
+extern const char *gAt_error_code_str[];
 
 /* States Declarations*/
 STATIC asState \
@@ -572,9 +572,17 @@ STATIC void m_ActionFeedback2Error(\
 STATIC void m_EntryErrorState( void *stateData, asEvent *event )
 {
     /* Feedback the Error log. */
-   AtTracePrintf("AT Error: %s", gAt_error_code_str[__ICheckAtErrorCode()]);
-   snprintf(gAt_Obj.pFeedback_at_str->pData ,MAX_FEEDBACK_STR_LEN, "AT ErrorCode: %s\r\n", gAt_error_code_str[__ICheckAtErrorCode()]);
-   gAt_Obj.feedbackFunc(gAt_Obj.pFeedback_at_str->pData);
+    AtTracePrintf("AT Error: %s", gAt_error_code_str[__ICheckAtErrorCode()]);
+
+    if (__ICheckAtErrorCode() > kAtInvalidOperator)
+    {
+        snprintf(gAt_Obj.pFeedback_at_str->pData, MAX_FEEDBACK_STR_LEN, "AT+%s#%s\r\n", gAt_Obj.pAt_str->pData, gAt_error_code_str[__ICheckAtErrorCode()]);
+    }
+    else
+    {
+        snprintf(gAt_Obj.pFeedback_at_str->pData, MAX_FEEDBACK_STR_LEN, "AT+%s#%s\r\n", "NULL", gAt_error_code_str[__ICheckAtErrorCode()]);
+    }
+    gAt_Obj.feedbackFunc(gAt_Obj.pFeedback_at_str->pData);
 
     /* Clear all the global buffers. */
     m_ClearFsmGlobalVariables();
