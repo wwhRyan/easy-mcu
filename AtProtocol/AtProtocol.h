@@ -158,21 +158,47 @@ typedef struct __asAtKvUnit_Enum asAtKvUnit_Enum;
         pAt_str->size = snprintf((char *)pAt_str->pData, MAX_FEEDBACK_STR_LEN, format, ##__VA_ARGS__); \
     } while (0)
 
-/* API fucntion declarations */
-void IInitAtLib(asAtProtocol* obj, \
-aeAtLibMode mode, void* mode_config, p_VoidFuncpChar feedbackFunc);
-	
-aeAtBool IGenerateAtTempCmd(asAtProtocol* obj, char* at_cmd_key_value, APPO_FUNC_SOLT func_pointer);
+/**
+ * @brief This API is a help macro for user to add feedback string into the pAt_str, the function can be repeat call in the
+ *        "IAtOperationRegister()" function, in order to feedback mutiply key-value commmand.
+ */
+#define IAddKeyValueStrTo(pAt_str, format, ...)                                                                                     \
+    do                                                                                                                              \
+    {                                                                                                                               \
+        if (pAt_str->size == 0 && pAt_str->pData[pAt_str->size] == 0)                                                               \
+        {                                                                                                                           \
+            pAt_str->size = snprintf((char *)pAt_str->pData, MAX_FEEDBACK_STR_LEN, format, ##__VA_ARGS__);                          \
+        }                                                                                                                           \
+        else if (pAt_str->size > 0 && pAt_str->pData[pAt_str->size - 1] == '\n')                                                    \
+        {                                                                                                                           \
+            pAt_str->pData[pAt_str->size - 1] = ',';                                                                                \
+            pAt_str->size += snprintf(pAt_str->pData + pAt_str->size, MAX_FEEDBACK_STR_LEN - pAt_str->size, format, ##__VA_ARGS__); \
+        }                                                                                                                           \
+        else if (pAt_str->size > 0 && pAt_str->pData[pAt_str->size - 1] != '\n')                                                    \
+        {                                                                                                                           \
+            pAt_str->size += snprintf(pAt_str->pData + pAt_str->size, MAX_FEEDBACK_STR_LEN - pAt_str->size, format, ##__VA_ARGS__); \
+        }                                                                                                                           \
+        else                                                                                                                        \
+        {                                                                                                                           \
+            E_assert(false);                                                                                                        \
+        }                                                                                                                           \
+    } while (0)
 
-aeAtBool IAtCmdDecodeAndRun(asAtProtocol* obj, char* at_cmd_key_value);
+        /* API fucntion declarations */
+    void IInitAtLib(asAtProtocol *obj,
+                    aeAtLibMode mode, void *mode_config, p_VoidFuncpChar feedbackFunc);
 
-aeAtBool IEnableAt(asAtProtocol* obj);
+    aeAtBool IGenerateAtTempCmd(asAtProtocol *obj, char *at_cmd_key_value, APPO_FUNC_SOLT func_pointer);
 
-aeAtBool IDisableAt(asAtProtocol* obj);
+    aeAtBool IAtCmdDecodeAndRun(asAtProtocol *obj, char *at_cmd_key_value);
 
-aeAtBool ICheckAtStatus(asAtProtocol* obj);
+    aeAtBool IEnableAt(asAtProtocol *obj);
 
-aeAtCmdType IGetAtCmdType(asAtProtocol* obj);
+    aeAtBool IDisableAt(asAtProtocol *obj);
+
+    aeAtBool ICheckAtStatus(asAtProtocol *obj);
+
+    aeAtCmdType IGetAtCmdType(asAtProtocol *obj);
 
 #ifdef __cplusplus
 }

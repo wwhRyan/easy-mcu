@@ -82,6 +82,50 @@ IAtOperationRegister(kCmdLightSourceTime, pAt_Kv_List, pAt_feedback_str)
     }
 }
 
+// AT+Version?Mcu,LightEngineBoard,Anf1,Anf2,Ovp921
+#define TEST_VERSION "TEST1.0"
+IAtOperationRegister(kCmdVersion, pAt_Kv_List, pAt_feedback_str)
+{
+    asAtKvUnit_Enum my_kvs[10];
+    ICastAtKvListTo(kAtValueEnum, pAt_Kv_List, my_kvs);
+    if (kAtControlType == IGetAtCmdType(&at_obj))
+    {
+        debug_printf("system value error\n");
+    }
+    else
+    {
+        for (size_t i = 0; i < pAt_Kv_List->size; i++)
+        {
+            if (kKeyMcu == my_kvs[i].key)
+            {
+                debug_printf("kKeyMcu\n");
+                IAddKeyValueStrTo(pAt_feedback_str, "%s:%s\n", pAt_Kv_List->pList[i].key.pData, TEST_VERSION);
+            }
+            else if (kKeyLightEngineBoard == my_kvs[i].key)
+            {
+                debug_printf("kKeyLightEngineBoard\n");
+                IAddKeyValueStrTo(pAt_feedback_str, "%s:VER1.%01X.VER0.%01X\n",
+                                  pAt_Kv_List->pList[i].key.pData, 1, 1);
+            }
+            else if (kKeyAnf1 == my_kvs[i].key)
+            {
+                debug_printf("kKeyAnf1\n");
+                IAddKeyValueStrTo(pAt_feedback_str, "%s:%s\n", pAt_Kv_List->pList[i].key.pData, TEST_VERSION);
+            }
+            else if (kKeyAnf2 == my_kvs[i].key)
+            {
+                debug_printf("kKeyAnf2\n");
+                IAddKeyValueStrTo(pAt_feedback_str, "%s:%s\n", pAt_Kv_List->pList[i].key.pData, TEST_VERSION);
+            }
+            else if (kKeyOvp921 == my_kvs[i].key)
+            {
+                debug_printf("kKeyOvp921\n");
+                IAddKeyValueStrTo(pAt_feedback_str, "%s:%s\n", pAt_Kv_List->pList[i].key.pData, TEST_VERSION);
+            }
+        }
+    }
+}
+
 void MyAtPrint(const char *str, ...)
 {
     printf("%s", str);
