@@ -75,17 +75,27 @@
 #endif
 
 #if defined(__CC_ARM)
-#define GET_TIME(func, ...)                                                  \
-    do                                                                       \
-    {                                                                        \
-        uint32_t start = 0, end = 0;                                         \
-        start = GET_SysTick;                                                 \
-        func(__VA_ARGS__);                                                   \
-        end = GET_SysTick;                                                   \
-        printf("%s-->%s-->%dUs\r\n", __FILENAME__, #func, abs(end - start)); \
-    } while (0)
 
-#define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__) //获取文件名 linux下
+/**
+ * @brief 需要更新SysTick计数最大值，使用cm4函数SysTick_Config(XXX);
+ * @note 更改了SysTick重载数值，被测试函数中不能使用依赖SysTick的延时函数。
+ * @note 使用RTOS，SysTick在1000U后就会重载。
+ */
+// #define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__) //获取文件名 linux下
+#define __FILENAME__ (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__) //获取文件名 windows下
+
+#define GET_TIME(func, ...)                                                                                \
+    do                                                                                                     \
+    {                                                                                                      \
+        uint32_t start = 0, end = 0;                                                                       \
+        uint32_t backup = SysTick->LOAD + 1;                                                               \
+        SysTick_Config(SysTick_LOAD_RELOAD_Msk);                                                           \
+        start = (uint32_t)(SysTick->VAL);                                                                  \
+        func(__VA_ARGS__);                                                                                 \
+        end = (uint32_t)(SysTick->VAL);                                                                    \
+        printf("%s-->%s-->%dUs\r\n", __FILENAME__, #func, abs(end - start) / (SystemCoreClock / 1000000)); \
+        SysTick_Config(backup);                                                                            \
+    } while (0)
 
 #endif
 
