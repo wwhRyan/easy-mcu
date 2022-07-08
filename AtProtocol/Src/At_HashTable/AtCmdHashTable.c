@@ -1,7 +1,7 @@
 #include "AtCmdHashTable.h"
 
-unsigned short g_atcmd_max_collide_num = 3;		/* AtCmd MAX Collide Num */
-unsigned short g_atcmd_num = 17;		/* AtCmd Num */
+unsigned short g_atcmd_max_collide_num = 1;		/* AtCmd MAX Collide Num */
+unsigned short g_atcmd_num = 18;		/* AtCmd Num */
 unsigned short g_atcmd_htsize = 37;	/* AtCmd HashTable Size */
 
 unsigned char g_atcmd_htsize_bits = 6;	/* AtCmd HashTable Size's bits */
@@ -22,9 +22,9 @@ asCmdListUnit gsCmdList[] = {
 	{ 0xea, NULL ,"Version"}, /* Version */
 	{ 0x0, NULL ,NULL},
 	{ 0x0, NULL ,NULL},
-	{ 0x6a, NULL ,"Upgrade"}, /* Upgrade */
 	{ 0x0, NULL ,NULL},
 	{ 0x0, NULL ,NULL},
+	{ 0x5d, NULL ,"UpgradeOvp921Firmware"}, /* UpgradeOvp921Firmware */
 	{ 0xbe, NULL ,"Eeprom"}, /* Eeprom */
 	{ 0x0, NULL ,NULL},
 	{ 0x0, NULL ,NULL},
@@ -37,7 +37,7 @@ asCmdListUnit gsCmdList[] = {
 	{ 0x0, NULL ,NULL},
 	{ 0xe, NULL ,"Current"}, /* Current */
 	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
+	{ 0xd0, NULL ,"UpgradeOvp921Anf"}, /* UpgradeOvp921Anf */
 	{ 0xd3, NULL ,"Reset"}, /* Reset */
 	{ 0x0, NULL ,NULL},
 	{ 0xea, NULL ,"InstallationMode"}, /* InstallationMode */

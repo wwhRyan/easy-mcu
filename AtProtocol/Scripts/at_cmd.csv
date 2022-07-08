@@ -7,6 +7,7 @@ LightSource,Status,enum,On
 ,,enum,Ok
 Version,Mcu,string,Empty
 ,Ovp921,string,Empty
+,Eeprom,string,Empty
 ,LightEngineBoard,string,Empty
 ,Anf1,string,Empty
 ,Anf2,string,Empty
@@ -19,6 +20,7 @@ LightSourceTime,Second,int,Empty
 ,Hour,int,Empty
 Error,Status,int,Empty
 LogInfo,Status,string,Empty
+,Clear,string,Empty
 InstallationMode,Status,enum,CeilingRear
 ,,enum,CeilingFront
 ,,enum,TableRear
@@ -44,7 +46,7 @@ Temperature,NtcBlue,int,Empty
 ,NtcGreen,int,Empty
 ,NtcLcos,int,Empty
 ,NtcEnv,int,Empty
-CwSpeed,ScatteringWheel ,int,Empty
+CwSpeed,ScatteringWheel,int,Empty
 Reset,Status,enum,Factory
 ,,enum,User
 ,,enum,Ok
@@ -53,8 +55,10 @@ Current,R,int,Empty
 ,B,int,Empty
 ,Y,int,Empty
 ,All,int,Empty
-Upgrade,Idx,string,Empty
+UpgradeOvp921Anf,Idx,string,Empty
 ,Crc,string,Empty
+,Data,string,Empty
+UpgradeOvp921Firmware,Crc,string,Empty
 ,Data,string,Empty
 Ovp921,Addr,string,Empty
 ,Size,string,Empty
@@ -62,6 +66,7 @@ Ovp921,Addr,string,Empty
 Eeprom,Addr,string,Empty
 ,Size,string,Empty
 ,Data,string,Empty
+,Clear,string,Empty
 SilentAsyncMessages,Status,enum,On
 ,,enum,Off
 ,,enum,Ok
