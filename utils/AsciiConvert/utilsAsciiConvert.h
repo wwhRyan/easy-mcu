@@ -12,9 +12,9 @@
 #ifndef UTILSASCIICONVERT_H
 #define UTILSASCIICONVERT_H
 
-#include "../Include/summary.h"
+#include "Common.h"
 bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int int_size);
-bool AsciiToIntPro(const char *p_ascii_data, void *p_void_data, int int_size);
+bool AsciiToIntPro(const char *p_ascii_data, void *p_void_data, int byte_size);
 
 bool SwapEndianPro(void *pdata, int num, int size);
 uint32_t swap_endian(uint32_t x);

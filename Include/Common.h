@@ -37,6 +37,17 @@
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 #define ARRAYNUM(arr_name) (uint32_t)(sizeof(arr_name) / sizeof(*(arr_name)))
 
+/* Swap bytes in 32 bit value.  */
+#define BSWAP_32(x)                                 \
+    (uint32_t)((((uint32_t)(x)&0xff000000) >> 24) | \
+               (((uint32_t)(x)&0x00ff0000) >> 8) |  \
+               (((uint32_t)(x)&0x0000ff00) << 8) |  \
+               (((uint32_t)(x)&0x000000ff) << 24))
+
+/* Swap bytes in 16 bit value.  */
+#define BSWAP_16(x) \
+    ((unsigned short int)((((x) >> 8) & 0xff) | (((x)&0xff) << 8)))
+
 #ifdef DEBUG
 #define E_assert(condition)                                 \
     do                                                      \

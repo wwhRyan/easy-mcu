@@ -122,12 +122,12 @@ bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int int_size)
  * @brief eg：将字符串 "12344321" --Convert--> 12,34,43,21 Or 1234,4321 Or 12344321, 无内存消耗
  * 
  * @param p_ascii_data 字符串指针,string no including ' '
- * @param p_void_data 数组指针,adapter to int_size
- * @param int_size 一个整型(Int)包含字符(char)个数，通常是2、4、8
+ * @param p_void_data 数组指针,adapter to output array
+ * @param byte_size 一个整型(Int)包含字符(byte)个数，通常是1、2、4
  * @return true 
  * @return false 
  */
-bool AsciiToIntPro(const char *p_ascii_data, void *p_void_data, int int_size)
+bool AsciiToIntPro(const char *p_ascii_data, void *p_void_data, int byte_size)
 {
     int num_ascii_data = strlen(p_ascii_data);
 
@@ -135,7 +135,7 @@ bool AsciiToIntPro(const char *p_ascii_data, void *p_void_data, int int_size)
     uint16_t *p_uint16_t = (uint16_t *)p_void_data;
     uint32_t *p_uint32_t = (uint32_t *)p_void_data;
 
-    int_size = int_size * 2;
+    int int_size = byte_size * 2;
     if (int_size != 2 && int_size != 4 && int_size != 8)
     {
         printf("error int_size. %d\n", int_size);
