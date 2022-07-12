@@ -1,6 +1,7 @@
 CMD,KEY,VALUE_TYPE,VALUE
 System,Status,enum,On
 ,,enum,Off
+,,enum,Idle
 ,,enum,Ok
 LightSource,Status,enum,On
 ,,enum,Off
