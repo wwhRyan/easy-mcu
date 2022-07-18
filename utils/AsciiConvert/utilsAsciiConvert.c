@@ -64,6 +64,34 @@ bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int byte_size)
     return true;
 }
 
+bool IntToAscii(void *p_void_data, char *p_ascii_data, int byte_size, size_t size)
+{
+    E_assert(byte_size == 1 || byte_size == 2 || byte_size == 4); // check byte size of int
+
+    uint8_t *p_uint8_t = (uint8_t *)p_void_data;
+    uint16_t *p_uint16_t = (uint16_t *)p_void_data;
+    uint32_t *p_uint32_t = (uint32_t *)p_void_data;
+
+    for (size_t i = 0; i < size; i++)
+    {
+        switch (byte_size)
+        {
+        case 1:
+            sprintf(p_ascii_data + i * 2, "%02X", p_uint8_t[i]);
+            break;
+        case 2:
+            sprintf(p_ascii_data + i * 4, "%04X", p_uint16_t[i]);
+            break;
+        case 4:
+            sprintf(p_ascii_data + i * 8, "%08X", p_uint32_t[i]);
+            break;
+        default:
+            return false;
+        }
+    }
+    return true;
+}
+
 /**
  * @brief whether it is Little end byte order?
  *

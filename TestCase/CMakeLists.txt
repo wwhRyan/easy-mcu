@@ -26,5 +26,8 @@ target_link_libraries(cmdlineTest CmdProtocol)
 
 # /*-----------------------------------------------------------*/
 
+include_directories(${PROJECT_SOURCE_DIR}/../Include
+                    ${PROJECT_SOURCE_DIR}/../utils/AsciiConvert)
+
 add_executable(utilsTest ${PROJECT_SOURCE_DIR}/utils_main.c)
 target_link_libraries(utilsTest AsciiConvert)
