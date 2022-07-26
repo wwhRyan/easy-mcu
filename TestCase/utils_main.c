@@ -15,12 +15,11 @@ int test_AsciiToInt()
 {
     printf("\n");
     printf("[%s - %d]\n", __func__, __LINE__);
-    char *tmp = "01ff010001010203";
-    uint16_t data[100] = {0};
+    char* tmp = "01ff010001010203";
+    uint16_t data[100] = { 0 };
     ASCII_TO_INT(tmp, data);
 
-    for (size_t i = 0; i < sizeof(tmp); i++)
-    {
+    for (size_t i = 0; i < strlen(tmp); i++) {
         printf("%X ", data[i]);
     }
     printf("\n");
