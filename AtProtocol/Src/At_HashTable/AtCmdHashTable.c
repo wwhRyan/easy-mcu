@@ -1,58 +1,24 @@
 #include "AtCmdHashTable.h"
 
-unsigned short g_atcmd_max_collide_num = 2;		/* AtCmd MAX Collide Num */
 unsigned short g_atcmd_num = 18;		/* AtCmd Num */
-unsigned short g_atcmd_htsize = 47;	/* AtCmd HashTable Size */
-
-unsigned char g_atcmd_htsize_bits = 6;	/* AtCmd HashTable Size's bits */
-
 asCmdListUnit gsCmdList[] = {
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0x2b, NULL ,"System"}, /* System */
-	{ 0xbe, NULL ,"Eeprom"}, /* Eeprom */
-	{ 0x1a, NULL ,"Ovp921"}, /* Ovp921 */
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0xea, NULL ,"Version"}, /* Version */
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0x57, NULL ,"Error"}, /* Error */
-	{ 0x0, NULL ,NULL},
-	{ 0xd0, NULL ,"UpgradeOvp921Anf"}, /* UpgradeOvp921Anf */
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0xa7, NULL ,"TestPattern"}, /* TestPattern */
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0x5d, NULL ,"UpgradeOvp921Firmware"}, /* UpgradeOvp921Firmware */
-	{ 0x4c, NULL ,"LogInfo"}, /* LogInfo */
-	{ 0x0, NULL ,NULL},
-	{ 0xe, NULL ,"Current"}, /* Current */
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0xd3, NULL ,"Reset"}, /* Reset */
-	{ 0x0, NULL ,NULL},
-	{ 0xea, NULL ,"InstallationMode"}, /* InstallationMode */
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0x42, NULL ,"LightSourceTime"}, /* LightSourceTime */
-	{ 0xf3, NULL ,"CwSpeed"}, /* CwSpeed */
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0xd4, NULL ,"LightSource"}, /* LightSource */
-	{ 0x0, NULL ,NULL},
-	{ 0xc0, NULL ,"SilentAsyncMessages"}, /* SilentAsyncMessages */
-	{ 0x34, NULL ,"Temperature"}, /* Temperature */
-	{ 0x0, NULL ,NULL},
-	{ 0x0, NULL ,NULL},
-	{ 0xaf, NULL ,"Sn"}, /* Sn */
+/*00*/	{ 0X2CCB5EC5, NULL ,"Current"}, /* Current */
+/*01*/	{ 0X02801EAB, NULL ,"System"}, /* System */
+/*02*/	{ 0X08563BBC, NULL ,"Version"}, /* Version */
+/*03*/	{ 0X5BA10D06, NULL ,"TestPattern"}, /* TestPattern */
+/*04*/	{ 0X030B85E1, NULL ,"InstallationMode"}, /* InstallationMode */
+/*05*/	{ 0X4C58DF1A, NULL ,"LightSourceTime"}, /* LightSourceTime */
+/*06*/	{ 0X41B4E980, NULL ,"Temperature"}, /* Temperature */
+/*07*/	{ 0X1FED8839, NULL ,"LightSource"}, /* LightSource */
+/*08*/	{ 0X2D00BBF3, NULL ,"CwSpeed"}, /* CwSpeed */
+/*09*/	{ 0X4DA43177, NULL ,"Reset"}, /* Reset */
+/*10*/	{ 0X786E80BE, NULL ,"UpgradeOvp921Anf"}, /* UpgradeOvp921Anf */
+/*11*/	{ 0X095B4C06, NULL ,"UpgradeOvp921Firmware"}, /* UpgradeOvp921Firmware */
+/*12*/	{ 0X0BBED600, NULL ,"Eeprom"}, /* Eeprom */
+/*13*/	{ 0X73BFD97F, NULL ,"SilentAsyncMessages"}, /* SilentAsyncMessages */
+/*14*/	{ 0X7CBE16F2, NULL ,"LogInfo"}, /* LogInfo */
+/*15*/	{ 0X00592743, NULL ,"Ovp921"}, /* Ovp921 */
+/*16*/	{ 0X2F13D444, NULL ,"Error"}, /* Error */
+/*17*/	{ 0X0010A1BF, NULL ,"Sn"}, /* Sn */
 };
 uint16_t gScmd_list_len = sizeof(gsCmdList) / sizeof(asCmdListUnit);

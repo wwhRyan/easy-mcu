@@ -8,24 +8,24 @@ extern "C" {
 #include "Src/At_internal/AtInternalConfig.h"
 typedef struct __asAtKvList asAtKvList;
 typedef enum __aeCmdName{
-	kCmdSystem = 0x7,
-	kCmdEeprom = 0x8,
-	kCmdOvp921 = 0x9,
-	kCmdVersion = 0xc,
-	kCmdError = 0xf,
-	kCmdUpgradeOvp921Anf = 0x11,
-	kCmdTestPattern = 0x15,
-	kCmdUpgradeOvp921Firmware = 0x19,
-	kCmdLogInfo = 0x1a,
-	kCmdCurrent = 0x1c,
-	kCmdReset = 0x1f,
-	kCmdInstallationMode = 0x21,
-	kCmdLightSourceTime = 0x24,
-	kCmdCwSpeed = 0x25,
-	kCmdLightSource = 0x28,
-	kCmdSilentAsyncMessages = 0x2a,
-	kCmdTemperature = 0x2b,
-	kCmdSn = 0x2e,
+	kCmdCurrent = 0x0,
+	kCmdSystem = 0x1,
+	kCmdVersion = 0x2,
+	kCmdTestPattern = 0x3,
+	kCmdInstallationMode = 0x4,
+	kCmdLightSourceTime = 0x5,
+	kCmdTemperature = 0x6,
+	kCmdLightSource = 0x7,
+	kCmdCwSpeed = 0x8,
+	kCmdReset = 0x9,
+	kCmdUpgradeOvp921Anf = 0xa,
+	kCmdUpgradeOvp921Firmware = 0xb,
+	kCmdEeprom = 0xc,
+	kCmdSilentAsyncMessages = 0xd,
+	kCmdLogInfo = 0xe,
+	kCmdOvp921 = 0xf,
+	kCmdError = 0x10,
+	kCmdSn = 0x11,
 } aeCmdName;
 
 typedef struct __asCmdListUnit {
@@ -34,10 +34,7 @@ typedef struct __asCmdListUnit {
 	char* str;
 } asCmdListUnit;
 
-extern unsigned short g_atcmd_max_collide_num;
 extern unsigned short g_atcmd_num;
-extern unsigned short g_atcmd_htsize;
-extern unsigned char g_atcmd_htsize_bits;
 extern asCmdListUnit gsCmdList[];
 extern uint16_t gScmd_list_len;
 

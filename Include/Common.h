@@ -56,7 +56,7 @@
             ;                                               \
         else                                                \
         {                                                   \
-            printf("\nERROR:%s, %d\n", __FILE__, __LINE__); \
+            printf("\nERROR %s:%d\n", __FILE__, __LINE__); \
             for (;;)                                        \
                 ;                                           \
         }                                                   \

@@ -1,4 +1,5 @@
 #include "AtUtils.h"
+#include <stdint.h>
 
 /* ________      __          __     _    __          
   / ____/ /___  / /_  ____ _/ /    | |  / /___ ______
@@ -24,7 +25,7 @@ const char *gAt_error_code_str[] = {
     "UndefinedError"};
 
 STATIC uint32_t m_BkdrHash(const char* input_str);
-STATIC asAtHashCheck m_CalculateHashCheck(const char* input_str, uint8_t table_len_bits, uint32_t table_len);
+STATIC uint32_t m_CalculateHashCheck(const char* input_str);
 STATIC int m_ReHash(uint16_t index, uint8_t val, uint8_t max_collide_num, asAtHashUnit* hash_table, uint16_t table_len);
 STATIC aeAtBool m_ParseAtKeyValues(asAtObj *obj, char* str_kvs, uint32_t MAX_KVS_STR_LEN);
 STATIC int m_SplitStr2Tokens(char* s, char *delimeter, char **tokens, int max_token_num);
@@ -36,14 +37,17 @@ STATIC int m_SplitStr2Tokens(char* s, char *delimeter, char **tokens, int max_to
 
 int __IGetHashIndex(aeAtCmdKeyFlag flag, char* input_str)
 {
-    void *hash_table = (kAtCmdFlag == flag) ? (void *)&gsCmdList : (void *)&gsKeyList;
-    uint8_t table_len_bits = (kAtCmdFlag == flag) ? g_atcmd_htsize_bits : g_atkey_htsize_bits;
+    asAtHashUnit* hash_table = (kAtCmdFlag == flag) ? (void*)&gsCmdList : (void*)&gsKeyList;
     uint16_t table_len = (kAtCmdFlag == flag) ? gScmd_list_len : gSkey_list_len;
-    uint16_t max_collide_num = (kAtCmdFlag == flag) ? g_atcmd_max_collide_num : g_atkey_max_collide_num;
 
-    asAtHashCheck tmp_check = m_CalculateHashCheck(input_str, table_len_bits, table_len);
+    uint32_t tmp_check = m_CalculateHashCheck(input_str);
 
-    return m_ReHash(tmp_check.index, tmp_check.check_val, max_collide_num, hash_table, table_len);
+    for (int i = 0; i < table_len; i++) {
+        if (tmp_check == hash_table[i].var) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 aeAtValueType __IGetValueType(int index)
@@ -195,13 +199,14 @@ void __ICastKvListTo_kAtValueEnum(asAtKvList *kv_list_str, asAtKvUnit_Enum *kv_l
     }
 }
 
+#if 0
 aeAtBool __IInputMallocAddrToHashTable(void* ptr, asAtHashUnit *addr_hash_table, uint8_t table_len)
 {
     char tmp[0x10] = {0};
     snprintf(tmp, 0x10, "%p", ptr);
 
     uint8_t UINT8_BITS = 8, MAX_DEFAULT_COLLIDE_NUM = 10;
-    asAtHashCheck tmp_check = m_CalculateHashCheck(tmp, UINT8_BITS, table_len);
+    asAtHashCheck tmp_check = m_CalculateHashCheck(tmp);
 
     /* Find empty position. */
     int re_index = m_ReHash(tmp_check.index, 0, MAX_DEFAULT_COLLIDE_NUM, addr_hash_table, table_len);
@@ -213,6 +218,7 @@ aeAtBool __IInputMallocAddrToHashTable(void* ptr, asAtHashUnit *addr_hash_table,
     }
     return kAtFalse;
 }
+
 
 int __IGetMallocedPtrIndex(void* ptr, asAtHashUnit *addr_hash_table, uint8_t table_len)
 {
@@ -251,6 +257,7 @@ void __IPrintCurrMallocsAndIfClear(aeAtBool clear_flag, asAtHashUnit *addr_hash_
         }
     }
 }
+#endif
 
 /*  ______                    ____       ____
    / ____/_  ______  _____   / __ \___  / __/
@@ -272,16 +279,9 @@ STATIC uint32_t m_BkdrHash(const char* input_str)
         return (hash & 0x7FFFFFFF);
 }
 
-STATIC asAtHashCheck m_CalculateHashCheck(const char* input_str, uint8_t table_len_bits, uint32_t table_len)
+STATIC uint32_t m_CalculateHashCheck(const char* input_str)
 {
-    uint32_t hash = m_BkdrHash(input_str);
-    uint16_t hash2 = ((hash) ^ (hash >> 16));
-    asAtHashCheck check_couples = {0};
-    check_couples.index = (hash2 >> (16 - table_len_bits)) % table_len;
-    check_couples.check_val = (hash2 % 256);
-    check_couples.check_val = (check_couples.check_val == 0) ? 1 : check_couples.check_val;
-
-    return check_couples;
+    return m_BkdrHash(input_str);
 }
 
 /* Variable table_len is a prime number in (1, 256). */

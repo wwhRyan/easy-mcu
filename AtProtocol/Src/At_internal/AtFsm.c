@@ -339,7 +339,7 @@ STATIC bool m_GuardIdle2Processing(void *condition, asEvent *event)
         {
             if (at_temp[i] == '\r' || at_temp[i] == '\n')
             {
-                memset(gAt_Obj.pAt_str->pData + i, 0, len - i); // ignore other cmds. including \r\n
+                memset(gAt_Obj.pAt_str->pData + i, 0, len - i); // ignore other cmds. including \n
 
                 AtTracePrintf("AT format is right!");
                 AtTracePrintf("cmd string:%s", gAt_Obj.pAt_str->pData);
@@ -535,7 +535,12 @@ STATIC void m_ActionFeedback2Idle(\
     {
         strncat(at_obj->pAt_str->pData, "#", MAX_FEEDBACK_STR_LEN);
         strncat(at_obj->pAt_str->pData, at_obj->pFeedback_at_str->pData, MAX_FEEDBACK_STR_LEN);
-        snprintf(at_obj->pFeedback_at_str->pData, MAX_FEEDBACK_STR_LEN, "AT+%s\r\n", at_obj->pAt_str->pData);
+
+        /* Prevent missing end line breaks */
+        if (at_obj->pAt_str->pData[strlen(at_obj->pAt_str->pData) - 1] == '\n') {
+            snprintf(at_obj->pFeedback_at_str->pData, MAX_FEEDBACK_STR_LEN, "AT+%s", at_obj->pAt_str->pData);
+        } else
+            snprintf(at_obj->pFeedback_at_str->pData, MAX_FEEDBACK_STR_LEN, "AT+%s\n", at_obj->pAt_str->pData);
     }
 
     /* Run the Feedback fucntion.  */
@@ -576,11 +581,11 @@ STATIC void m_EntryErrorState( void *stateData, asEvent *event )
 
     if (__ICheckAtErrorCode() > kAtInvalidOperator)
     {
-        snprintf(gAt_Obj.pFeedback_at_str->pData, MAX_FEEDBACK_STR_LEN, "AT+%s#%s\r\n", gAt_Obj.pAt_str->pData, gAt_error_code_str[__ICheckAtErrorCode()]);
+        snprintf(gAt_Obj.pFeedback_at_str->pData, MAX_FEEDBACK_STR_LEN, "AT+%s#%s\n", gAt_Obj.pAt_str->pData, gAt_error_code_str[__ICheckAtErrorCode()]);
     }
     else
     {
-        snprintf(gAt_Obj.pFeedback_at_str->pData, MAX_FEEDBACK_STR_LEN, "AT+%s#%s\r\n", "NULL", gAt_error_code_str[__ICheckAtErrorCode()]);
+        snprintf(gAt_Obj.pFeedback_at_str->pData, MAX_FEEDBACK_STR_LEN, "AT+%s#%s\n", "NULL", gAt_error_code_str[__ICheckAtErrorCode()]);
     }
     gAt_Obj.feedbackFunc(gAt_Obj.pFeedback_at_str->pData);
 

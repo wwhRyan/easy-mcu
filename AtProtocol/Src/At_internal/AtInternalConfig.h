@@ -44,7 +44,7 @@ AtDebugPrintf("No.%d--->free name:%s\n", gMalloc_cnt--, #ptr)
 // #define AtDebugPrintf(format,...) __AtDebugPrintf(format, ##__VA_ARGS__)
 #define AtTracePrintf(format,...)
 #define AtDebugPrintf(format,...)
-#define MarkPrintf(format,...)  printf(format"[ %s - %d ]\r\n", ##__VA_ARGS__,__func__, __LINE__)
+#define MarkPrintf(format,...)  printf(format"[ %s - %d ]\n", ##__VA_ARGS__,__func__, __LINE__)
 
 #define AtMalloc(pType, pData, size) \
 pData = (pType)__AtMalloc(size);     \
