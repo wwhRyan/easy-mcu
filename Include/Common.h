@@ -22,13 +22,14 @@
 #include <setjmp.h>
 #include <signal.h>
 #include <stdarg.h>
+#include <stdbool.h>
 #include <stddef.h>
-#include <string.h>
-#include <time.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
+#include <string.h>
+#include <time.h>
+
 
 /**
  * @brief get size of an array in number of elements
@@ -38,28 +39,23 @@
 #define ARRAYNUM(arr_name) (uint32_t)(sizeof(arr_name) / sizeof(*(arr_name)))
 
 /* Swap bytes in 32 bit value.  */
-#define BSWAP_32(x)                                 \
-    (uint32_t)((((uint32_t)(x)&0xff000000) >> 24) | \
-               (((uint32_t)(x)&0x00ff0000) >> 8) |  \
-               (((uint32_t)(x)&0x0000ff00) << 8) |  \
-               (((uint32_t)(x)&0x000000ff) << 24))
+#define BSWAP_32(x) \
+    (uint32_t)((((uint32_t)(x)&0xff000000) >> 24) | (((uint32_t)(x)&0x00ff0000) >> 8) | (((uint32_t)(x)&0x0000ff00) << 8) | (((uint32_t)(x)&0x000000ff) << 24))
 
 /* Swap bytes in 16 bit value.  */
 #define BSWAP_16(x) \
     ((unsigned short int)((((x) >> 8) & 0xff) | (((x)&0xff) << 8)))
 
 #ifdef DEBUG
-#define E_assert(condition)                                 \
-    do                                                      \
-    {                                                       \
-        if (condition)                                      \
-            ;                                               \
-        else                                                \
-        {                                                   \
+#define E_assert(condition)                                \
+    do {                                                   \
+        if (condition)                                     \
+            ;                                              \
+        else {                                             \
             printf("\nERROR %s:%d\n", __FILE__, __LINE__); \
-            for (;;)                                        \
-                ;                                           \
-        }                                                   \
+            for (;;)                                       \
+                ;                                          \
+        }                                                  \
     } while (0)
 #else
 #define E_assert(condition)
@@ -70,8 +66,7 @@
     LARGE_INTEGER timestart;                                                      \
     LARGE_INTEGER timeend;                                                        \
     LARGE_INTEGER freq;                                                           \
-    do                                                                            \
-    {                                                                             \
+    do {                                                                          \
         QueryPerformanceFrequency(&freq);                                         \
         double freq_d = (double)freq.QuadPart;                                    \
         QueryPerformanceCounter(&timestart);                                      \
@@ -96,8 +91,7 @@
 #define __FILENAME__ (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__) //获取文件名 windows下
 
 #define GET_TIME(func, ...)                                                                                \
-    do                                                                                                     \
-    {                                                                                                      \
+    do {                                                                                                   \
         uint32_t start = 0, end = 0;                                                                       \
         uint32_t backup = SysTick->LOAD + 1;                                                               \
         SysTick_Config(SysTick_LOAD_RELOAD_Msk);                                                           \

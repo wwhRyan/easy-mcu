@@ -20,34 +20,31 @@
  * @return true
  * @return false
  */
-bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int byte_size)
+bool AsciiToInt(const char* p_ascii_data, void* p_void_data, int byte_size)
 {
     E_assert(byte_size == 1 || byte_size == 2 || byte_size == 4); // check byte size of int
     int num_ascii_data = strlen(p_ascii_data);
 
-    uint8_t *p_uint8_t = (uint8_t *)p_void_data;
-    uint16_t *p_uint16_t = (uint16_t *)p_void_data;
-    uint32_t *p_uint32_t = (uint32_t *)p_void_data;
+    uint8_t* p_uint8_t = (uint8_t*)p_void_data;
+    uint16_t* p_uint16_t = (uint16_t*)p_void_data;
+    uint32_t* p_uint32_t = (uint32_t*)p_void_data;
 
     int int_size = byte_size * 2;
-    if (num_ascii_data % int_size != 0)
-    {
+    if (num_ascii_data % int_size != 0) {
         printf("error ascii_data_num %d\n", num_ascii_data);
         return false;
     }
 
     // ascii string to int
-    char unit_string[8] = {0};
+    char unit_string[8] = { 0 };
     uint32_t data;
-    for (size_t i = 0; i < num_ascii_data / int_size; i++)
-    {
+    for (size_t i = 0; i < num_ascii_data / int_size; i++) {
         memset(unit_string, 0, sizeof(unit_string));
         strncpy(unit_string, p_ascii_data + i * int_size, int_size);
-        if (sscanf(unit_string, "%x", (uint32_t *)&data) <= 0)
+        if (sscanf(unit_string, "%x", (uint32_t*)&data) <= 0)
             return false;
 
-        switch (int_size)
-        {
+        switch (int_size) {
         case 2:
             p_uint8_t[i] = data;
             break;
@@ -64,18 +61,16 @@ bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int byte_size)
     return true;
 }
 
-bool IntToAscii(void *p_void_data, char *p_ascii_data, int byte_size, size_t size)
+bool IntToAscii(void* p_void_data, char* p_ascii_data, int byte_size, size_t size)
 {
     E_assert(byte_size == 1 || byte_size == 2 || byte_size == 4); // check byte size of int
 
-    uint8_t *p_uint8_t = (uint8_t *)p_void_data;
-    uint16_t *p_uint16_t = (uint16_t *)p_void_data;
-    uint32_t *p_uint32_t = (uint32_t *)p_void_data;
+    uint8_t* p_uint8_t = (uint8_t*)p_void_data;
+    uint16_t* p_uint16_t = (uint16_t*)p_void_data;
+    uint32_t* p_uint32_t = (uint32_t*)p_void_data;
 
-    for (size_t i = 0; i < size; i++)
-    {
-        switch (byte_size)
-        {
+    for (size_t i = 0; i < size; i++) {
+        switch (byte_size) {
         case 1:
             sprintf(p_ascii_data + i * 2, "%02X", p_uint8_t[i]);
             break;
@@ -101,7 +96,7 @@ bool IntToAscii(void *p_void_data, char *p_ascii_data, int byte_size, size_t siz
 bool IsLittleEndian()
 {
     int x = 1;
-    if (*(char *)&x == 1)
+    if (*(char*)&x == 1)
         return true;
     else
         return false;

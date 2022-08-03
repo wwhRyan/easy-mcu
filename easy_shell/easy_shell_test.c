@@ -12,17 +12,16 @@
 #include "easy_shell.h"
 #include <windows.h>
 
-void helloworld(char argc, char *argv)
+void helloworld(char argc, char* argv)
 {
     es_printf("helloworld\n");
 }
 
 int main(void)
 {
-    char cmd[0xff] = {0};
+    char cmd[0xff] = { 0 };
     shell_append("helloworld", helloworld);
-    for (;;)
-    {
+    for (;;) {
         es_printf("input cmd:\n");
         scanf("%254[^\n]s", cmd); // get a string until '\n'
         // easy_shell_input(cmd);

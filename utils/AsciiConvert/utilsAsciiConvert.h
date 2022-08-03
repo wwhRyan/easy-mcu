@@ -13,8 +13,8 @@
 #define UTILSASCIICONVERT_H
 
 #include "Common.h"
-bool AsciiToInt(const char *p_ascii_data, void *p_void_data, int byte_size);
-bool IntToAscii(void *p_void_data, char *p_ascii_data, int byte_size, size_t size);
+bool AsciiToInt(const char* p_ascii_data, void* p_void_data, int byte_size);
+bool IntToAscii(void* p_void_data, char* p_ascii_data, int byte_size, size_t size);
 
 /**
  * @brief convert string to hex data

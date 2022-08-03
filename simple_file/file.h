@@ -35,13 +35,13 @@ typedef struct file_t {
     uint32_t (*check)(void*, size_t);
 } file_t;
 
-#pragma pack(1) 
+#pragma pack(1)
 typedef struct line_t {
     uint8_t level;
     uint32_t time;
     char text[TEXT_NUMBER];
 } line_t;
-#pragma pack() 
+#pragma pack()
 
 bool file_init(file_t* file, uint32_t start_addr, size_t total_size,
     void (*read)(void*, size_t, uint32_t), void (*write)(void*, size_t, uint32_t), uint32_t (*check)(void*, size_t));

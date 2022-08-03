@@ -12,3 +12,7 @@ add_library(
   Src/AtProtocol.c Src/At_HashTable/AtCmdHashTable.c
   Src/At_HashTable/AtKeyHashTable.c Src/At_internal/AtFsm.c
   Src/At_internal/AtUtils.c Src/At_internal/StateMachine/StateMachine.c)
+
+  include_directories(${PROJECT_SOURCE_DIR}/../Include)
+add_executable(${PROJECT_NAME}_test AtProtocal_test.c)
+target_link_libraries(${PROJECT_NAME}_test ATProtocol)

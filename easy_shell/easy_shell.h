@@ -13,25 +13,25 @@
 #define __CMD_LINE_H__
 
 #include "Common.h"
-#include "shell_config.h"
 #include "dictionary.h"
+#include "shell_config.h"
 
-typedef void (*cmd_func_t)(char, char *);
 
-#define shell_register(str, func)                                 \
-    extern dictionary *cmd_shell;                                 \
-    __attribute__((constructor)) void shell_register##func()      \
-    {                                                             \
-        if (cmd_shell == NULL)                                    \
-        {                                                         \
+typedef void (*cmd_func_t)(char, char*);
+
+#define shell_register(str, func)                                       \
+    extern dictionary* cmd_shell;                                       \
+    __attribute__((constructor)) void shell_register##func()            \
+    {                                                                   \
+        if (cmd_shell == NULL) {                                        \
             cmd_shell = dictionary_new(INITIAL_EASYSHELL_REGISTER_NUM); \
-        }                                                         \
-        dictionary_set(cmd_shell, str, func);                     \
+        }                                                               \
+        dictionary_set(cmd_shell, str, func);                           \
     }
 
-extern dictionary *cmd_shell;
+extern dictionary* cmd_shell;
 
-void easy_shell_input(char *cmd);
-void shell_append(char *cmd, cmd_func_t fp);
+void easy_shell_input(char* cmd);
+void shell_append(char* cmd, cmd_func_t fp);
 
 #endif
