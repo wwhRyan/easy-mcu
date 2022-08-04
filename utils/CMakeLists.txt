@@ -3,7 +3,7 @@
 add_subdirectory(AsciiConvert)
 
 include_directories(${PROJECT_SOURCE_DIR}/../Include
-                    ${PROJECT_SOURCE_DIR}/../utils/AsciiConvert)
+                    ${PROJECT_SOURCE_DIR}/AsciiConvert)
 
 add_executable(utils_test utils_test.c)
 target_link_libraries(utils_test AsciiConvert)
