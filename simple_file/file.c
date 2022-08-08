@@ -101,8 +101,8 @@ static void remove_oldest_line(file_t* pfile)
  * @param pfile file opt pointer
  * @param start_addr start to save the file
  * @param total_size file total size
- * @param read file read func
- * @param write file write func
+ * @param read file read func (void* pdata, size_t size, uint32_t addr)
+ * @param write file write func (void* pdata, size_t size, uint32_t addr)
  * @param check can be NULL, using internal check sum
  * @return true
  * @return false
@@ -134,7 +134,7 @@ bool file_init(file_t* pfile, uint32_t start_addr, size_t total_size,
         pfile->write(&pfile->header, sizeof(header_t), start_addr);
     }
 
-    return true;
+    return ret;
 }
 
 /**

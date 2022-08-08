@@ -8,7 +8,8 @@
  * @copyright Copyright@appotronics 2022. All Rights Reserved
  *
  */
-
+#ifndef _FILE_H_
+#define _FILE_H_
 #include <Common.h>
 
 #define LINE_SIZE 32
@@ -48,3 +49,5 @@ bool file_init(file_t* file, uint32_t start_addr, size_t total_size,
 bool file_remove_all(file_t* file);
 bool file_append_line(file_t* file, line_t* line_write);
 bool file_read(file_t* file, line_t* line_read, size_t idx);
+
+#endif
