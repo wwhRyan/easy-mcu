@@ -434,7 +434,7 @@ STATIC bool m_GuardFeedback2Idle(void* condition, asEvent* event)
 {
     AtTracePrintf("GuardFeedback2Idle");
     if (kAtObjectEvent == event->type) {
-        /* TODO Need the type of key in python scripts. Save the KvList in type in the event data. */
+        /* NOTE: Need the type of key in python scripts. Save the KvList in type in the event data. */
         // event->data = AtMalloc()
         if (kAtQueryType == gAt_Obj.type) {
             AtTracePrintf("pVoid_To_pAtObj(gFeedback_state.data)->pKv_list->pList[i].key.pData 0x%x", pVoid_To_pAtObj(gFeedback_state.data)->pKv_list->pList[0].key.pData[0]);

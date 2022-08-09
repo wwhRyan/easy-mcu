@@ -146,7 +146,6 @@ void __ICastKvListTo_kAtValueInt(asAtKvList* kv_list_str, asAtKvUnit_Int* kv_lis
         /* num is MIN (kv_list_str->size , num), avoiding arrar bounds error.*/
         int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
         for (int i = 0; i < num; i++) {
-            /* TODO check the index = -1 !!!! */
             kv_list[i].key = (aeKeyName)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].key.pData);
             kv_list[i].value = atoi(kv_list_str->pList[i].value.pData);
         }
