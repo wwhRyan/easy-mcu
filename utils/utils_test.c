@@ -9,6 +9,7 @@
  *
  */
 
+#include "sort.h"
 #include "utilsAsciiConvert.h"
 #include <stdint.h>
 #include <stdio.h>
@@ -62,6 +63,73 @@ void test_IntToAscii()
     // memset(output, 0, sizeof(output));
 }
 
+void test_bubble_sort(void)
+{
+    printf("\n");
+    printf("[%s - %d]\n", __func__, __LINE__);
+
+    int test_case[] = { 1, 7, 6, 5, 8, 9, 0, 4, 3, 2 };
+    bubble_sort(test_case, ARRAY_SIZE(test_case));
+
+    char output[ARRAY_SIZE(test_case) * sizeof(int) + 1] = { 0 };
+    IntToAscii(test_case, output, sizeof(int), ARRAY_SIZE(test_case));
+    printf("%s\n", output);
+    if (strcmp(output, "00000000000000010000000200000003000000040000000500000006000000070000000800000009") == 0) {
+        printf("SUCCESS!\n");
+    }
+}
+
+void test_quick_sort(void)
+{
+    printf("\n");
+    printf("[%s - %d]\n", __func__, __LINE__);
+
+    int test_case[] = { 1, 7, 6, 5, 8, 9, 0, 4, 3, 2 };
+    quick_sort(test_case, 0, ARRAY_SIZE(test_case) - 1);
+
+    char output[ARRAY_SIZE(test_case) * sizeof(int) + 1] = { 0 };
+    IntToAscii(test_case, output, sizeof(int), ARRAY_SIZE(test_case));
+    printf("%s\n", output);
+    if (strcmp(output, "00000000000000010000000200000003000000040000000500000006000000070000000800000009") == 0) {
+        printf("SUCCESS!\n");
+    }
+}
+
+void test_array_shift(void)
+{
+    printf("\n");
+    printf("[%s - %d]\n", __func__, __LINE__);
+
+    uint32_t test_case[] = { 1, 7, 6, 5, 8, 9, 0, 4, 3, 2 };
+    array_shift(test_case, ARRAY_SIZE(test_case), sizeof(test_case[0]));
+
+    char output[ARRAY_SIZE(test_case) * sizeof(int) + 1] = { 0 };
+    IntToAscii(test_case, output, sizeof(int), ARRAY_SIZE(test_case));
+
+    printf("%s\n", output);
+    if (strcmp(output, "00000007000000060000000500000008000000090000000000000004000000030000000200000000") == 0) {
+        printf("SUCCESS!\n");
+    }
+
+    uint16_t test_case_16[] = { 1, 7, 6, 5, 8, 9, 0, 4, 3, 2 };
+    array_shift(test_case_16, ARRAY_SIZE(test_case_16), sizeof(test_case_16[0]));
+
+    IntToAscii(test_case_16, output, sizeof(uint16_t), ARRAY_SIZE(test_case_16));
+    printf("%s\n", output);
+    if (strcmp(output, "0007000600050008000900000004000300020000") == 0) {
+        printf("SUCCESS!\n");
+    }
+
+    uint8_t test_case_8[] = { 1, 7, 6, 5, 8, 9, 0, 4, 3, 2 };
+    array_shift(test_case_8, ARRAY_SIZE(test_case_8), sizeof(test_case_8[0]));
+
+    IntToAscii(test_case_8, output, sizeof(uint8_t), ARRAY_SIZE(test_case_8));
+    printf("%s\n", output);
+    if (strcmp(output, "07060508090004030200") == 0) {
+        printf("SUCCESS!\n");
+    }
+}
+
 /**
  * @brief sizeof(array) is total size of array
  * sizeof(array[0]) is size of array member
@@ -72,5 +140,8 @@ int main()
 {
     test_AsciiToInt();
     test_IntToAscii();
+    test_bubble_sort();
+    test_quick_sort();
+    test_array_shift();
     return 0;
 }

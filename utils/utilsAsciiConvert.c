@@ -10,6 +10,9 @@
  */
 
 #include "utilsAsciiConvert.h"
+#include "Common.h"
+#include <stdint.h>
+#include <string.h>
 
 /**
  * @brief eg：将字符串 "12344321" --Convert--> 12,34,43,21 Or 1234,4321 Or 12344321, 无内存消耗
@@ -61,6 +64,16 @@ bool AsciiToInt(const char* p_ascii_data, void* p_void_data, int byte_size)
     return true;
 }
 
+/**
+ * @brief 将整数数组转化为一串字符串
+ *
+ * @param p_void_data 整数数组
+ * @param p_ascii_data 字符串指针
+ * @param byte_size 整数数组的成员的字节长度 eg:1,2,4
+ * @param size 整数数组长度
+ * @return true
+ * @return false
+ */
 bool IntToAscii(void* p_void_data, char* p_ascii_data, int byte_size, size_t size)
 {
     E_assert(byte_size == 1 || byte_size == 2 || byte_size == 4); // check byte size of int

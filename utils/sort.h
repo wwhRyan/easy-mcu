@@ -14,9 +14,9 @@
 
 #include "Common.h"
 
-void bubblesort(int* array, int size);
-void quicksort(int* array, int size);
-void insertsort(int* array, int size);
-void selectionsort(int* array, int size);
+void bubble_sort(int* array, int size);
+void quick_sort(int* x, int low, int high);
+
+bool array_shift(void* p_data, int length, uint8_t byte_size);
 
 #endif
