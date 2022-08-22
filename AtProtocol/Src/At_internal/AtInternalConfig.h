@@ -147,6 +147,18 @@ typedef struct __asAtObj {
     asAtStr* pFeedback_at_str;
 } asAtObj;
 
+typedef struct __asCmdListUnit {
+	int var;
+	void (*func)(asAtKvList*, asAtStr*);
+	char* str;
+} asCmdListUnit;
+
+typedef struct __asKeyListUnit {
+	int var;
+	void* type;
+	char* str;
+} asKeyListUnit;
+
 /* Help Global variables */
 extern uint8_t gMalloc_cnt;
 extern asAtHashUnit gMalloc_addrs[];

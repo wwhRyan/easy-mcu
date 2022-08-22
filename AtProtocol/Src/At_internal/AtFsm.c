@@ -1,5 +1,4 @@
 #include "AtFsm.h"
-#include "AtCmdHashTable.h"
 #include "AtUtils.h"
 #include <string.h>
 

@@ -146,7 +146,7 @@ void __ICastKvListTo_kAtValueInt(asAtKvList* kv_list_str, asAtKvUnit_Int* kv_lis
         /* num is MIN (kv_list_str->size , num), avoiding arrar bounds error.*/
         int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
         for (int i = 0; i < num; i++) {
-            kv_list[i].key = (aeKeyName)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].key.pData);
+            kv_list[i].key = (int)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].key.pData);
             kv_list[i].value = atoi(kv_list_str->pList[i].value.pData);
         }
     }
@@ -157,7 +157,7 @@ void __ICastKvListTo_kAtValueFloat(asAtKvList* kv_list_str, asAtKvUnit_Float* kv
     if (NULL != kv_list_str && NULL != kv_list) {
         int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
         for (int i = 0; i < num; i++) {
-            kv_list[i].key = (aeKeyName)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].key.pData);
+            kv_list[i].key = (int)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].key.pData);
             kv_list[i].value = atof(kv_list_str->pList[i].value.pData);
         }
     }
@@ -168,7 +168,7 @@ void __ICastKvListTo_kAtValueStr(asAtKvList* kv_list_str, asAtKvUnit_Str* kv_lis
     if (NULL != kv_list_str && NULL != kv_list) {
         int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
         for (int i = 0; i < num; i++) {
-            kv_list[i].key = (aeKeyName)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].key.pData);
+            kv_list[i].key = (int)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].key.pData);
             kv_list[i].value = kv_list_str->pList[i].value.pData;
         }
     }
@@ -179,8 +179,8 @@ void __ICastKvListTo_kAtValueEnum(asAtKvList* kv_list_str, asAtKvUnit_Enum* kv_l
     if (NULL != kv_list_str && NULL != kv_list) {
         int num = (kv_list_str->size <= array_size) ? kv_list_str->size : array_size;
         for (int i = 0; i < num; i++) {
-            kv_list[i].key = (aeKeyName)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].key.pData);
-            kv_list[i].value = (aeKeyName)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].value.pData);
+            kv_list[i].key = (int)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].key.pData);
+            kv_list[i].value = (int)__IGetHashIndex(kAtKeyFlag, kv_list_str->pList[i].value.pData);
         }
     }
 }

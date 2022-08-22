@@ -8,10 +8,8 @@
 #ifndef __AT_UTILS_H
 #define __AT_UTILS_H
 
-#include "AtCmdHashTable.h"
 #include "AtConfig.h"
 #include "AtInternalConfig.h"
-#include "AtKeyHashTable.h"
 #include "stateMachine.h"
 #include <stdio.h>
 #include <string.h>
@@ -30,6 +28,13 @@ STATIC int m_ReHash(uint16_t index, uint8_t var, uint8_t max_collide_num, asAtHa
 #endif
 
 /* Extern Variable */
+extern unsigned short g_atkey_num;
+extern asKeyListUnit gsKeyList[];
+extern uint16_t gSkey_list_len;
+
+extern unsigned short g_atcmd_num;
+extern asCmdListUnit gsCmdList[];
+extern uint16_t gScmd_list_len;
 
 /* At Key or Cmd flag for Hash check. */
 typedef enum __aeAtCmdKeyFlag {
@@ -39,23 +44,23 @@ typedef enum __aeAtCmdKeyFlag {
 
 /* At Key-Value list type */
 typedef struct __asAtKvUnit_Int {
-    aeKeyName key;
+    int key;
     int value;
 } asAtKvUnit_Int;
 
 typedef struct __asAtKvUnit_Float {
-    aeKeyName key;
+    int key;
     float value;
 } asAtKvUnit_Float;
 
 typedef struct __asAtKvUnit_Str {
-    aeKeyName key;
+    int key;
     char* value;
 } asAtKvUnit_Str;
 
 typedef struct __asAtKvUnit_Enum {
-    aeKeyName key;
-    aeKeyName value;
+    int key;
+    int value;
 } asAtKvUnit_Enum;
 
 void __ICastKvListTo_kAtValueInt(asAtKvList* kv_list_str, asAtKvUnit_Int* kv_list, size_t array_size);

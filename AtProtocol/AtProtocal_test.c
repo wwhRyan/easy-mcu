@@ -1,6 +1,8 @@
 #include "AtProtocol.h"
 #include "Common.h"
 #include "windows.h"
+#include "AtKeyHashTable.h"
+#include "AtCmdHashTable.h"
 #include <stdio.h>
 #include <string.h>
 

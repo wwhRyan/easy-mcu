@@ -7,6 +7,7 @@ Created on Sun Oct 25 16:34:01 2020
 import pandas as pd
 from math import sqrt
 
+
 def IAtParamGet(filepath):
     # sheetname='AT_CMD'
     data = pd.read_csv(filepath, header=0, usecols=[0, 1, 3])
@@ -29,7 +30,9 @@ def IAtParamGet(filepath):
     # key_list.sort()
     return cmd_list, key_list
 
-#  Judging Prime 
+#  Judging Prime
+
+
 def IsPrime(num):
     if num > 1:
         if num == 2:
@@ -43,6 +46,8 @@ def IsPrime(num):
     return False
 
 #  Find Minimum Prime over than "num"
+
+
 def MinPrime(num):
     while True:
         if(IsPrime(num) == True):
@@ -52,14 +57,18 @@ def MinPrime(num):
     return num
 
 #  Hash Function
+
+
 def BkdrHash(input_str):
     seed = 13131  # 31 131 1313 13131 131313 etc..
-    hashcode = 0           
+    hashcode = 0
     for char in input_str:
-        hashcode = hashcode * seed + ord(char)       
+        hashcode = hashcode * seed + ord(char)
     return (hashcode & 0x7FFFFFFF)
 
 #  Conflict Detection Function
+
+
 def ReHash(key, hashtable, hash_table_len):
     index = key
     delta = index % 7 + 1  # 7 is a prime number, +1 to avoid delta = 0.

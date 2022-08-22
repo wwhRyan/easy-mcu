@@ -8,10 +8,8 @@
 #ifndef __AT_FSM_H
 #define __AT_FSM_H
 
-#include "AtCmdHashTable.h"
 #include "AtConfig.h"
 #include "AtInternalConfig.h"
-#include "AtKeyHashTable.h"
 #include "stateMachine.h"
 
 
