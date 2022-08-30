@@ -9,13 +9,16 @@
  *
  */
 
+#include "Common.h"
 #include "file.h"
+#include "ulog.h"
 #include <stddef.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <string.h>
 
 #define mem_size 1024 /* 1024 / 32 - 1 - 1 = 30 */
-uint8_t mem[mem_size];
+uint8_t mem[mem_size * 2];
 
 void mem_read(void* pData, size_t size, uint32_t addr)
 {
@@ -27,7 +30,7 @@ void mem_write(void* pData, size_t size, uint32_t addr)
     memcpy(mem + addr, pData, size);
 }
 
-int main(int argc, char** argv)
+void file_base_test(void)
 {
     file_t file_opt;
     file_init(&file_opt, 0, mem_size,
@@ -106,5 +109,59 @@ int main(int argc, char** argv)
     assert(memcmp(&temp_line, &line3, sizeof(line_t)) == 0);
 
     printf("test success!\n");
+}
+
+void char_replace(char* str, char dest, char new_char)
+{
+    int len = strlen(str);
+    for (int i = 0; i < len; i++) {
+        if (str[i] == dest)
+            str[i] = new_char;
+    }
+}
+
+void my_console_logger(ulog_level_t severity, char* msg)
+{
+    printf("%s.%s", ulog_level_name(severity), msg);
+}
+
+int source_time = 0;
+file_t file_obj = { 0 };
+
+void my_file_logger(ulog_level_t severity, char* msg)
+{
+    line_t new_line;
+    new_line.level = severity;
+    new_line.time = source_time;
+    strncpy(new_line.text, msg, TEXT_NUMBER);
+    char_replace(new_line.text, ' ', '_');
+    char_replace(new_line.text, ',', '_');
+    char_replace(new_line.text, '\n', '\0');
+    file_append_line(&file_obj, &new_line);
+}
+
+void file_log_test(void)
+{
+    file_init(&file_obj, mem_size, mem_size,
+        mem_read, mem_write, NULL);
+    ULOG_INIT();
+    ULOG_SUBSCRIBE(my_console_logger, ULOG_DEBUG_LEVEL);
+    ULOG_SUBSCRIBE(my_file_logger, ULOG_WARNING_LEVEL);
+    ULOG_INFO("ULOG init\n"); // logs to file and console
+    ULOG_WARNING("test.\n");
+    ULOG_ERROR("red ntc %d error.\n", 56);
+    ULOG_ERROR("cw %#X error.\n", 0x999);
+
+    line_t line_tmp[10] = { 0 };
+    int number = file_burst_read(&file_obj, line_tmp, ARRAY_SIZE(line_tmp));
+    for (int i = 0; i < number; i++) {
+        printf("%s.%d.%s\n", ulog_level_name(line_tmp[i].level), line_tmp[i].time, line_tmp[i].text);
+    }
+}
+
+int main(int argc, char** argv)
+{
+    file_base_test();
+    file_log_test();
     return 0;
 }

@@ -19,14 +19,14 @@
 #define VERSION 0x00
 
 typedef struct header_t {
-    uint32_t check_sum;
-    uint32_t magic_num;
-    uint32_t version;
-    uint32_t start_addr;
-    uint32_t total_size;
-    uint32_t idx_num; // the total line idx number
-    uint32_t head_idx;
-    uint32_t tail_idx;
+    uint32_t check_sum; /* header check sum */
+    uint32_t magic_num; /* fixed magic number for check */
+    uint32_t version; /* file version */
+    uint32_t start_addr; /* line start addr */
+    uint32_t total_size; /* the total line size of bytes */
+    uint32_t idx_num; /* the total line idx number */
+    uint32_t head_idx; /* the head index of the stored line */
+    uint32_t tail_idx; /* the end index of the stored line */
 } header_t;
 
 typedef struct file_t {
@@ -49,5 +49,7 @@ bool file_init(file_t* file, uint32_t start_addr, size_t total_size,
 bool file_remove_all(file_t* file);
 bool file_append_line(file_t* file, line_t* line_write);
 bool file_read(file_t* file, line_t* line_read, size_t idx);
+int file_burst_read(file_t* pfile, line_t* pline_read, size_t size);
+int file_line_cnt(file_t* file);
 
 #endif

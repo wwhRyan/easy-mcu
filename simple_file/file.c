@@ -180,6 +180,7 @@ bool file_append_line(file_t* pfile, line_t* pline_input)
 
 /**
  * @brief only support read LINE_SIZE
+ * @brief only read once
  *
  * @param pfile file opt pointer
  * @param pline_read read line buffer pointer
@@ -200,4 +201,41 @@ bool file_read(file_t* pfile, line_t* pline_read, size_t idx)
     uint32_t idx_read = (pfile->header.head_idx + pfile->header.idx_num - idx) % pfile->header.idx_num;
     pfile->read(pline_read, LINE_SIZE, get_addr(pfile, idx_read));
     return true;
+}
+
+static int min(int a, int b)
+{
+    if (a < b)
+        return a;
+    else
+        return b;
+}
+
+/**
+ * @brief burst read line
+ *
+ * @param pfile file opt
+ * @param pline_read line buffer
+ * @param size line number
+ * @return int the number of line be read
+ */
+int file_burst_read(file_t* pfile, line_t* pline_read, size_t size)
+{
+    int number = min(get_used_idx_num(pfile), size);
+    for (int i = 0; i < number; i++) {
+        file_read(pfile, pline_read, i);
+        pline_read++;
+    }
+    return number;
+}
+
+/**
+ * @brief get the number of file
+ *
+ * @param pfile
+ * @return int
+ */
+int file_line_cnt(file_t* pfile)
+{
+    return get_used_idx_num(pfile);
 }
