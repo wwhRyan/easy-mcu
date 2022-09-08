@@ -38,6 +38,11 @@
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 #define ARRAYNUM(arr_name) (uint32_t)(sizeof(arr_name) / sizeof(*(arr_name)))
 
+#define GET_BIT(value, bit) ((value) & (1 << (bit)))
+#define REVERSE_BIT(value, bit) ((value) ^= (1 << (bit)))
+#define CLR_BIT(value, bit) ((value) &= ~(1 << (bit)))
+#define SET_BIT(value, bit) ((value) |= (1 << (bit)))
+
 /* Swap bytes in 32 bit value.  */
 #define BSWAP_32(x) \
     (uint32_t)((((uint32_t)(x)&0xff000000) >> 24) | (((uint32_t)(x)&0x00ff0000) >> 8) | (((uint32_t)(x)&0x0000ff00) << 8) | (((uint32_t)(x)&0x000000ff) << 24))
