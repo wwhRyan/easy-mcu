@@ -10,6 +10,8 @@
  */
 
 #include "utilsAsciiConvert.h"
+#include <stdint.h>
+#include <stdio.h>
 
 /**
  * @brief eg：将字符串 "12344321" --Convert--> 12,34,43,21 Or 1234,4321 Or 12344321, 无内存消耗
@@ -100,4 +102,20 @@ bool IsLittleEndian()
         return true;
     else
         return false;
+}
+
+bool memory_endian_conversion(void* pointer, size_t size)
+{
+    uint32_t* p_buff = pointer;
+    if (size % sizeof(uint32_t) != 0)
+        return false;
+    else {
+        int int_number = size / sizeof(uint32_t);
+        for (int i = 0; i < int_number; i++) {
+            // printf("p_buff[i] = %08X\n", p_buff[i]);
+            p_buff[i] = BSWAP_32(p_buff[i]);
+            // printf("swap p_buff[i] = %08X\n", p_buff[i]);
+        }
+        return true;
+    }
 }
