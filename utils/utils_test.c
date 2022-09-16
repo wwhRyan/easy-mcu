@@ -130,6 +130,15 @@ void test_array_shift(void)
     }
 }
 
+void test_memory_endian_conversion(void)
+{
+    uint32_t test[] = { 0x12345678, 0x11223344, 0x00001111 };
+    memory_endian_conversion(test, sizeof(test));
+    memory_endian_conversion(test, sizeof(test) - 1);
+
+    uint8_t test2[] = { 0x12, 0x34, 0x56, 0x78, 0x11, 0x22, 0x33, 0x44, 0x00, 0x00, 0x11, 0x11 };
+    memory_endian_conversion(test2, sizeof(test2));
+}
 /**
  * @brief sizeof(array) is total size of array
  * sizeof(array[0]) is size of array member
@@ -143,5 +152,6 @@ int main()
     test_bubble_sort();
     test_quick_sort();
     test_array_shift();
+    test_memory_endian_conversion();
     return 0;
 }
