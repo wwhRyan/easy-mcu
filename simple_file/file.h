@@ -12,9 +12,8 @@
 #define _FILE_H_
 #include <Common.h>
 
-#define LINE_SIZE 32
+#define LINE_SIZE 128
 #define TEXT_NUMBER (LINE_SIZE - sizeof(uint8_t) - sizeof(uint32_t))
-#define HEADER_SIZE 32
 #define MAGIC_NUM 0x12344321
 #define VERSION 0x00
 
@@ -28,6 +27,8 @@ typedef struct header_t {
     uint32_t head_idx; /* the head index of the stored line */
     uint32_t tail_idx; /* the end index of the stored line */
 } header_t;
+
+#define HEADER_SIZE sizeof(header_t)
 
 typedef struct file_t {
     header_t header;
