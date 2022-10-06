@@ -233,7 +233,7 @@ STATIC aeAtBool m_ParseAtKeyValues(asAtObj* obj, char* str_kvs, uint32_t MAX_KVS
         int kv_num = m_SplitStr2Tokens(str_kvs, ",", kv_couples, MAX_KV_COUPLES_NUM + 1);
 
         /* Too many key-values. */
-        if (MAX_KV_COUPLES_NUM <= kv_num) {
+        if (MAX_KV_COUPLES_NUM < kv_num) {
             AtTracePrintf("K-V overflow!");
             __IRaiseAtError(kAtKeyValueOverflow);
             return kAtFalse;
