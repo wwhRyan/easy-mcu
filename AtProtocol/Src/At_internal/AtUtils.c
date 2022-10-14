@@ -42,9 +42,15 @@ int __IGetHashIndex(aeAtCmdKeyFlag flag, char* input_str)
 
     uint32_t tmp_check = m_CalculateHashCheck(input_str);
 
-    for (int i = 0; i < table_len; i++) {
-        if (tmp_check == hash_table[i].var) {
-            return i;
+    int low = 0, high = table_len - 1, mid;
+    while (low <= high) {
+        mid = (low + high) / 2;
+        if (tmp_check > hash_table[mid].var) {
+            low = mid + 1;
+        } else if (tmp_check < hash_table[mid].var) {
+            high = mid - 1;
+        } else {
+            return mid;
         }
     }
     return -1;

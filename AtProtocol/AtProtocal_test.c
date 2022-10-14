@@ -1,4 +1,7 @@
 #include "AtProtocol.h"
+#ifndef WIN32
+#define WIN32
+#endif
 #include "Common.h"
 #include "windows.h"
 #include "AtKeyHashTable.h"
