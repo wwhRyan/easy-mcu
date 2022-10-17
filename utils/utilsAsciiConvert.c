@@ -11,6 +11,7 @@
 
 #include "utilsAsciiConvert.h"
 #include "Common.h"
+#include <stddef.h>
 #include <stdint.h>
 #include <string.h>
 
@@ -98,6 +99,39 @@ bool IntToAscii(void* p_void_data, char* p_ascii_data, int byte_size, size_t siz
         }
     }
     return true;
+}
+
+/**
+ * @brief string replace, The stack is used for temporary storage of strings, so the length is limited
+ * 
+ * @param dest string to be replaced
+ * @param oldstr old string replaced
+ * @param newstr new string after replacement
+ * @return char* string pointer after replacement
+ */
+char* strrpc(char* dest, char* oldstr, char* newstr)
+{
+    char buff[512] = { 0 };
+    size_t dest_size = strlen(dest);
+    size_t oldstr_size = strlen(oldstr);
+    size_t newstr_size = strlen(newstr);
+
+    for (int buff_offset = 0, dest_offset = 0; dest_offset < dest_size;) {
+        if (!strncmp(dest + dest_offset, oldstr, oldstr_size)) {
+            memcpy(buff + buff_offset, newstr, newstr_size);
+            dest_offset += oldstr_size;
+            buff_offset += newstr_size;
+        } else {
+            memmove(buff + buff_offset, dest + dest_offset, 1);
+            dest_offset++;
+            buff_offset++;
+        }
+    }
+
+    memset(dest, 0, dest_size);
+    memcpy(dest, buff, strlen(buff));
+
+    return dest;
 }
 
 /**

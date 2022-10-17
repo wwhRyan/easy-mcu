@@ -24,6 +24,8 @@ bool IntToAscii(void* p_void_data, char* p_ascii_data, int byte_size, size_t siz
 #define ASCII_TO_INT(p_ascii, p_data) \
     AsciiToInt(p_ascii, p_data, sizeof(p_data[0]))
 
+char* strrpc(char* dest, char* oldstr, char* newstr);
+
 bool IsLittleEndian(void);
 bool memory_endian_conversion(void* pointer, size_t size);
 
