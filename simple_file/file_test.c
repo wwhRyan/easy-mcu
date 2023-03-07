@@ -11,11 +11,14 @@
 
 #include "Common.h"
 #include "file.h"
-#include "ulog.h"
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+
+#ifdef ULOG_TEST
+#include "ulog.h"
+#endif
 
 #define mem_size 1024 /* 1024 / 32 - 1 - 1 = 30 */
 uint8_t mem[mem_size * 2];
@@ -120,6 +123,8 @@ void char_replace(char* str, char dest, char new_char)
     }
 }
 
+#ifdef ULOG_TEST
+
 void my_console_logger(ulog_level_t severity, char* msg)
 {
     printf("%s.%s", ulog_level_name(severity), msg);
@@ -158,10 +163,15 @@ void file_log_test(void)
         printf("%s.%d.%s\n", ulog_level_name(line_tmp[i].level), line_tmp[i].time, line_tmp[i].text);
     }
 }
+#endif
 
 int main(int argc, char** argv)
 {
     file_base_test();
+
+#ifdef ULOG_TEST
     file_log_test();
+#endif
+
     return 0;
 }
